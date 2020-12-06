@@ -11,5 +11,7 @@ export class ShowNotesComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  parentFunc(data){
+    console.log("parent", data)
+  }
 }

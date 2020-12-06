@@ -9,19 +9,10 @@ export class NotesListComponent implements OnInit {
 
   constructor() { }
   list;
-  searchText;
-  // list = [
-  //   {
-  //     topic : 'los angels journey',
-  //     subject : 'los angels is a very beautiful city'
-  //   },
-  //   {
-  //     topic : 'los angels journey',
-  //     subject : 'los angels is a very beautiful city'
-  //   }
-  // ];
+  searchText:string;
+  
   ngOnInit(): void {
-    // localStorage.setItem('myprivatenotes',JSON.stringify(this.list));
+   
     this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
   }
 
