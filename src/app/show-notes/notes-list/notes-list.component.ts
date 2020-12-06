@@ -14,6 +14,11 @@ export class NotesListComponent implements OnInit {
   ngOnInit(): void {
    
     this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
+    // setInterval(()=>{
+    //   this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
+    // },1000);
   }
-
+  ngOnChange(): void{
+    this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
+  }
 }
