@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from 'src/app/app.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-notes-list',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotesListComponent implements OnInit {
 
-  constructor() { }
   list;
   searchText:string;
+      constructor(private appService: AppService) {
+         // subscribe to home component messages
+          this.appService.subject.subscribe(message => {
+          if (message) {
+            this.list = message;
+          } 
+        });
+       }
   
   ngOnInit(): void {
    

@@ -2,6 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { EventEmitter } from 'protractor';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-add-notes',
@@ -11,11 +12,12 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class AddNotesComponent implements OnInit {
   notes:any;
   
-  constructor() { }
+  constructor(private appService : AppService) { }
 
   notesForm = new FormGroup({
     topic: new FormControl('',[Validators.required,Validators.minLength(1)]),
     subject: new FormControl('',[Validators.required,Validators.minLength(1)]),
+
   });
 
   ngOnInit(): void {
@@ -37,9 +39,15 @@ export class AddNotesComponent implements OnInit {
       else{
         this.notes = note;
       }
-      this.notes.push(this.notesForm.value);
+      let pushData = this.notesForm.value;
+      let date = new Date();
+      pushData.date = date;
+      let random =   Math.floor(Math.random() * 3875846868458367)+464564667 + date.getHours() + date.getMilliseconds() + date.getMinutes() + date.getSeconds();
+      pushData.id = random.toString();
+      this.notes.push(pushData);
        localStorage.setItem('myprivatenotes',JSON.stringify(this.notes));
       console.log(this.notes);
+      this.appService.subject.next(this.notes);
       this.notesForm.reset();
     }
   }

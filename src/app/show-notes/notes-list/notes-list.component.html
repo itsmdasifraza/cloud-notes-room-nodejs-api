@@ -5,7 +5,7 @@
     <div class="searchbox">
         <input type="text" name="search" [(ngModel)]="searchText" placeholder="search your notes here">
     </div>
-    <div class="item"  *ngFor="let item of list | filter:searchText" >
+    <div class="item" routerLink="jdkjs"  *ngFor="let item of list | filter:searchText" >
         <h3>{{item.topic}}</h3>
         <p>{{item.subject}}</p>
     </div>
