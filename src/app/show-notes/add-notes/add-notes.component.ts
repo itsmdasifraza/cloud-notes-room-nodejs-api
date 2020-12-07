@@ -10,46 +10,45 @@ import { AppService } from 'src/app/app.service';
   styleUrls: ['./add-notes.component.css']
 })
 export class AddNotesComponent implements OnInit {
-  notes:any;
-  
-  constructor(private appService : AppService) { }
+  notes: any;
+
+  constructor(private appService: AppService) { }
 
   notesForm = new FormGroup({
-    topic: new FormControl('',[Validators.required,Validators.minLength(1)]),
-    subject: new FormControl('',[Validators.required,Validators.minLength(1)]),
+    topic: new FormControl('', [Validators.required, Validators.minLength(1)]),
+    subject: new FormControl('', [Validators.required, Validators.minLength(1)]),
 
   });
 
   ngOnInit(): void {
-      
+
   }
 
-  pushNotes(){
+  pushNotes() {
     // console.log(this.notesForm.value);
-    if(this.notesForm.invalid){
-      console.log("invalid", this.notesForm);
-      
+    if (this.notesForm.invalid) {
+      // console.log("invalid");
     }
-    if(this.notesForm.valid){
+
+    if (this.notesForm.valid) {
       var note = JSON.parse(localStorage.getItem('myprivatenotes'));
-      if(!note){
+      if (!note) {
         // console.log("NULL");
-        this.notes=[];
+        this.notes = [];
       }
-      else{
+      else {
         this.notes = note;
       }
       let pushData = this.notesForm.value;
       let date = new Date();
       pushData.date = date;
-      let random =   Math.floor(Math.random() * 3875846868458367)+464564667 + date.getHours() + date.getMilliseconds() + date.getMinutes() + date.getSeconds();
+      let random = Math.floor(Math.random() * 3875846868458367) + 464564667 + date.getHours() + date.getMilliseconds() + date.getMinutes() + date.getSeconds();
       pushData.id = random.toString();
       this.notes.push(pushData);
-       localStorage.setItem('myprivatenotes',JSON.stringify(this.notes));
-      console.log(this.notes);
+      localStorage.setItem('myprivatenotes', JSON.stringify(this.notes));
+      // console.log(this.notes);
       this.appService.subject.next(this.notes);
       this.notesForm.reset();
     }
   }
-
 }

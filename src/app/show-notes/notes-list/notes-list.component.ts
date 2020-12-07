@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-notes-list',
@@ -10,24 +11,26 @@ import { Subscription } from 'rxjs';
 export class NotesListComponent implements OnInit {
 
   list;
-  searchText:string;
-      constructor(private appService: AppService) {
-         // subscribe to home component messages
-          this.appService.subject.subscribe(message => {
-          if (message) {
-            this.list = message;
-          } 
-        });
-       }
-  
-  ngOnInit(): void {
-   
-    this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
-    // setInterval(()=>{
-    //   this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
-    // },1000);
+  searchText: string;
+  constructor(private appService: AppService, private router: Router) {
+    // subscribe to home component messages
+    this.appService.subject.subscribe(message => {
+      if (message) {
+        this.list = message;
+      }
+    });
   }
-  ngOnChange(): void{
+
+  ngOnInit(): void {
+
     this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
+    
+  }
+  ngOnChange(): void {
+    this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
+  }
+  navigate(element){
+    this.router.navigate(["shownotes/"+element]);
+    // alert(element)
   }
 }
