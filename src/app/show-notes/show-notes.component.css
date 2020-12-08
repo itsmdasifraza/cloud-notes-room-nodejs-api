@@ -1,0 +1,19 @@
+.right-area{
+    height: 100vh;
+    overflow-y: scroll;
+}
+.left-area{
+    height: 100vh;
+    overflow-y: scroll;
+}
+@media only screen and (max-width:992px){
+    .right-area{
+        height: auto;
+        min-height: calc(100vh - 50px );
+        overflow-y: auto;
+    }
+    .left-area{
+        height: 0px;
+        overflow-y: auto;
+    }
+}

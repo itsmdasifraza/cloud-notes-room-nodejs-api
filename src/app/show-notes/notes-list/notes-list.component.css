@@ -53,3 +53,15 @@ p{
 .item:hover{
     background-color: rgb(248, 244, 244);
 }
+
+@media only screen and (max-width:992px){
+    .list{
+        position: fixed;
+        top:0;
+        height: 100vh;
+        left: -50px;
+        z-index: 5;
+        background-color: white;
+        overflow-y:scroll ;
+    }
+}

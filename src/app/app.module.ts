@@ -12,6 +12,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DefaultScreenComponent } from './show-notes/default-screen/default-screen.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AddNotesComponent } from './show-notes/add-notes/add-notes.component';
+import { HeaderComponent } from './show-notes/header/header.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AddNotesComponent } from './show-notes/add-notes/add-notes.component';
     NotesDetailComponent,
     DefaultScreenComponent,
     PageNotFoundComponent,
-    AddNotesComponent
+    AddNotesComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

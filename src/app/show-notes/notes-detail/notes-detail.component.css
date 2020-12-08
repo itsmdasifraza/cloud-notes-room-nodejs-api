@@ -1,0 +1,29 @@
+.notes-detail{
+    background-color: rgb(252, 252, 252);
+    min-height: 100%;
+    background-color: yellow;
+    /* padding:40px 15px; */
+}
+p{
+    margin: 0;
+    padding: 0;
+}
+.heading{
+    height: 55px;
+    background-color: rgb(223, 223, 35);
+    padding: 0px 15px;
+    display: flex;
+    align-items: center;
+}
+.data{
+    padding: 20px 15px;
+}
+
+.circle{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: red;
+    margin-right: 10px;
+}
