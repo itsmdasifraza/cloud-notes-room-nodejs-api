@@ -10,8 +10,8 @@
             </div>
         </div>
         <div style="flex-basis: 90%;">
-            <p><b>{{listItem.topic}}</b></p>
-            <p>{{listItem.date}}</p>
+            <p><b>{{listarray[0].topic}}</b></p>
+            <p>{{listarray[0].date}}</p>
         </div>
         <div style="flex-basis: 6%;">
             <button><svg width="100%" height="100%" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="#212529" xmlns="http://www.w3.org/2000/svg">
@@ -19,9 +19,19 @@
               </svg></button>
         </div>
     </div>
-    <div class="data">
+    <div *ngIf="listarray">
+        <div class="data" *ngFor="let item of listarray">
 
-        <p>{{listItem.subject}}</p>
+            <p>{{item.subject}}</p>
+        </div>
     </div>
-
+    
+    <div class="more-notes">
+        <form [formGroup]="morenotes" (ngSubmit)="moreNotes()" >
+            <div class="flx">
+                <input type="text" formControlName="subject">
+                <button type="submit">Send</button>
+            </div>
+        </form>
+    </div>
 </div>
