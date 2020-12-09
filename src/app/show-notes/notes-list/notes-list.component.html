@@ -1,6 +1,16 @@
-<div  class="list">
-    <div class="head">
-
+<div  class="list" [ngClass]="visible()">
+    <div class="logo">
+        <button>N</button>
+        <p> otebook</p>
+    </div>
+    <div class="head" >
+        <div>
+            <div class="circle"></div>
+        </div>
+        
+        <div>
+            add
+        </div>
     </div>
     <div class="searchbox">
         <input type="text"  name="search" [(ngModel)]="searchText" placeholder="search your notes here">
@@ -13,5 +23,5 @@
             </div>
         </div>
     </div>
-   
+    
 </div>

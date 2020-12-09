@@ -1,6 +1,6 @@
 .notes-detail{
     background-color: rgb(252, 252, 252);
-    min-height: 100%;
+    min-height: 100vh;
     background-color: yellow;
     /* padding:40px 15px; */
 }
@@ -10,13 +10,16 @@ p{
 }
 .heading{
     height: 55px;
-    background-color: rgb(223, 223, 35);
+    background-color:  rgb(236, 72, 72);
     padding: 0px 15px;
     display: flex;
     align-items: center;
 }
 .data{
+    margin: 15px;
+    background-color:rgb(243, 243, 16) ;
     padding: 20px 15px;
+    border-radius: 5px;
 }
 
 .circle{

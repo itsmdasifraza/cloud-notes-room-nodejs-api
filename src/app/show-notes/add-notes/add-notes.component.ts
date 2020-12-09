@@ -21,7 +21,7 @@ export class AddNotesComponent implements OnInit {
   });
 
   ngOnInit(): void {
-
+      this.appService.navtoggle.next(false);
   }
 
   pushNotes() {
@@ -51,4 +51,7 @@ export class AddNotesComponent implements OnInit {
       this.notesForm.reset();
     }
   }
+  ngOnDestroy(): void {
+    this.appService.navtoggle.next(true);
+}
 }

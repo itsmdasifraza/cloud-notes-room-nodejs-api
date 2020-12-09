@@ -11,12 +11,20 @@ import { Router } from '@angular/router';
 export class NotesListComponent implements OnInit {
 
   list;
+  navtoggle = true;
   searchText: string;
   constructor(private appService: AppService, private router: Router) {
     // subscribe to home component messages
     this.appService.subject.subscribe(message => {
       if (message) {
         this.list = message;
+        
+      }
+    });
+    this.appService.navtoggle.subscribe(message => {
+      this.navtoggle = message;
+      if (message) {
+        console.log("nav",message);
       }
     });
   }
@@ -32,5 +40,12 @@ export class NotesListComponent implements OnInit {
   navigate(element){
     this.router.navigate(["shownotes/"+element]);
     // alert(element)
+  }
+
+  visible() {
+    return {
+      'dnone': !this.navtoggle,
+      // 'btnnight': !this.day
+    }
   }
 }

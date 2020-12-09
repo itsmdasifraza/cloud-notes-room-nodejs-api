@@ -9,11 +9,16 @@
 @media only screen and (max-width:992px){
     .right-area{
         height: auto;
-        min-height: calc(100vh - 50px );
-        overflow-y: auto;
+        /* min-height: calc(100vh - 50px ); */
+        overflow-y: unset;
     }
-    .left-area{
+    /* .left-area{
         height: 0px;
         overflow-y: auto;
+    } */
+    .left-area{
+        height: auto;
+        /* min-height : calc(100vh - 50px); */
+        overflow-y: unset;
     }
 }
