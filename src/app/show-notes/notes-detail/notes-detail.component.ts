@@ -36,6 +36,7 @@ listItem;
   }
   ngOnDestroy(){
     this.appService.navtoggle.next(true);
+    // this.router.navigate(["/shownotes/"]);
   }
 
 }

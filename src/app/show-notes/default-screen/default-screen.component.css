@@ -3,8 +3,8 @@
     display: flex;
 justify-content: center;
 align-items: center;
-height: 100%;
-background-color: yellow;
+min-height: 100vh;
+background-color: var(--themebg);
 }
 .get-started{
     display: flex;
@@ -18,25 +18,21 @@ h1{
 button{
     font-weight: 20px;
     /* font-weight: bold; */
-    border: 1px solid rgb(199, 24, 53);
+    border: 1px solid var(--themeheader);
     outline: none;
     padding:5px 30px;
     background-color: transparent;
     margin: 2px;
 }
+button:hover{
+    background-color: var(--themeheader);
+    color: white;
+}
 button:active{
     transform: scale(.95);
 }
 @media only screen and (max-width:992px){
-    /* .list{
-        position: fixed;
-        top:0;
-        height: 100vh;
-        left: -50px;
-        z-index: 5;
-        background-color: white;
-        overflow-y:scroll ;
-    } */
+   
     .head{
         display: none;
     }

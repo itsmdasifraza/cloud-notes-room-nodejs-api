@@ -1,7 +1,7 @@
  .addnotes{
-     background-color: rgb(252, 252, 252);
+     /* background-color: rgb(252, 252, 252); */
      min-height: 100vh;
-     background-color: yellow;
+     background-color: var(--themebg);
      
  }
  h1{
@@ -43,11 +43,15 @@ button{
     width: 20%;
     font-weight: 20px;
     /* font-weight: bold; */
-    border: 1px solid rgb(199, 24, 53);
+    border: 1px solid var(--themeheader);
     outline: none;
     padding:5px 0px;
     background-color: transparent;
     
+}
+button:hover{
+    background-color: var(--themeheader);
+    color: white;
 }
 button:active{
     transform: scale(.95);
@@ -57,16 +61,8 @@ h1{
     text-align: center;
 }
 @media only screen and (max-width:991px){
-    button{
-        margin-top: 10px;
+    button{   
         width: 30%;
-        font-weight: 20px;
-        /* font-weight: bold; */
-        border: 1px solid rgb(199, 24, 53);
-        outline: none;
-        padding:5px 0px;
-        background-color: transparent;
-        
     }
     .form{
         align-items: flex-start;

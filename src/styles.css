@@ -4,3 +4,20 @@ body{
     padding:0;
     box-sizing: border-box;
 }
+/* Default App Theme Colors */
+:root{
+    --themeheader : #ec4848;
+    --themebg: #ffeaed;
+    --themelogo : rgb(199, 24, 24) ;
+}
+/* Default App Theme Colors */
+
+
+
+/* Custom App Theme Colors */
+/* :root{
+    --themeheader : #684edf;
+    --themebg: #bed1f3;
+    --themelogo : rgb(28, 62, 124) ;
+} */
+/* Custom App Theme Colors */

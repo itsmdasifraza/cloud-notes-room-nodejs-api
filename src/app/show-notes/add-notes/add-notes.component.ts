@@ -3,6 +3,7 @@ import { EventEmitter } from 'protractor';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AppService } from 'src/app/app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-notes',
@@ -12,7 +13,7 @@ import { AppService } from 'src/app/app.service';
 export class AddNotesComponent implements OnInit {
   notes: any;
 
-  constructor(private appService: AppService) { }
+  constructor(private appService: AppService, private router : Router) { }
 
   notesForm = new FormGroup({
     topic: new FormControl('', [Validators.required, Validators.minLength(1)]),
@@ -41,7 +42,9 @@ export class AddNotesComponent implements OnInit {
       }
       let pushData = this.notesForm.value;
       let date = new Date();
-      pushData.date = date;
+      console.log(date);
+
+      pushData.date = "Created on "+ date.toLocaleDateString()+" [M/D/Y].";
       let random = Math.floor(Math.random() * 3875846868458367) + 464564667 + date.getHours() + date.getMilliseconds() + date.getMinutes() + date.getSeconds();
       pushData.id = random.toString();
       this.notes.push(pushData);
@@ -49,9 +52,11 @@ export class AddNotesComponent implements OnInit {
       // console.log(this.notes);
       this.appService.subject.next(this.notes);
       this.notesForm.reset();
+      this.router.navigate(["shownotes/"+pushData.id]);
     }
   }
   ngOnDestroy(): void {
     this.appService.navtoggle.next(true);
+    
 }
 }

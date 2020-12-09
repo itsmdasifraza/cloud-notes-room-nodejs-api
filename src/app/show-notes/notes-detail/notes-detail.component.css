@@ -1,8 +1,8 @@
 .notes-detail{
-    background-color: rgb(252, 252, 252);
+    /* background-color: rgb(252, 252, 252); */
     min-height: 100vh;
-    background-color: yellow;
-    /* padding:40px 15px; */
+    background-color: var(--themebg);
+    
 }
 p{
     margin: 0;
@@ -10,7 +10,7 @@ p{
 }
 .heading{
     height: 55px;
-    background-color:  rgb(236, 72, 72);
+    background-color:  var(--themeheader);
     padding: 0px 15px;
     display: flex;
     align-items: center;
@@ -19,7 +19,7 @@ p{
 }
 .data{
     margin: 15px;
-    background-color:rgb(243, 243, 16) ;
+    background-color:white ;
     padding: 20px 15px;
     border-radius: 5px;
 }
@@ -37,8 +37,8 @@ p{
     border: 1px solid #212529;
 }
 button{
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border: none;
     padding: 0;
     cursor: pointer;

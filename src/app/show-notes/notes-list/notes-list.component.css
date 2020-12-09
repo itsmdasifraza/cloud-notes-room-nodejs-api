@@ -20,7 +20,7 @@ p{
     0 16px 16px rgba(0,0,0,0.12);
     min-height: 100vh;
     border-right: 1px solid rgb(228, 225, 225);
-    background-color: rgb(240, 238, 238);
+    background-color: var(--themebg);
 }
 
 
@@ -28,7 +28,7 @@ p{
 .head{
     padding :0px 15px ;
     height: 55px;
-    background-color: rgb(236, 72, 72);
+    background-color: var(--themeheader);
     display: flex;
     align-items: center;
     position: sticky;
@@ -94,7 +94,7 @@ button:active{
     height: 40px;
     overflow: hidden;
     border-radius: 50%;
-    background-color: #ec4848;
+    background-color: var(--themeheader);
     margin-right: 10px;
     display: flex;
     align-items: center;
