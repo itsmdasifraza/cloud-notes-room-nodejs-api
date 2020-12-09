@@ -1,8 +1,8 @@
  .addnotes{
      background-color: rgb(252, 252, 252);
-     min-height: 100%;
+     min-height: 100vh;
      background-color: yellow;
-     padding:40px 15px;
+     
  }
  h1{
      font-weight: bold;
@@ -52,4 +52,35 @@ button{
 button:active{
     transform: scale(.95);
    
+}
+h1{
+    text-align: center;
+}
+@media only screen and (max-width:991px){
+    button{
+        margin-top: 10px;
+        width: 30%;
+        font-weight: 20px;
+        /* font-weight: bold; */
+        border: 1px solid rgb(199, 24, 53);
+        outline: none;
+        padding:5px 0px;
+        background-color: transparent;
+        
+    }
+    .form{
+        align-items: flex-start;
+    }
+    input,textarea{
+        width:100%;
+    }
+    h1{
+        text-align: left;
+        font-size: 30px;
+    }
+}
+@media only screen and (min-width:992px){
+    .dnone{
+        display: none;
+    }
 }

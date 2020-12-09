@@ -23,9 +23,9 @@ export class NotesListComponent implements OnInit {
     });
     this.appService.navtoggle.subscribe(message => {
       this.navtoggle = message;
-      if (message) {
-        console.log("nav",message);
-      }
+      // if (message) {
+      //   console.log("nav",message);
+      // }
     });
   }
 
@@ -34,12 +34,15 @@ export class NotesListComponent implements OnInit {
     this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
     
   }
-  ngOnChange(): void {
-    this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
-  }
+  // ngOnChange(): void {
+  //   this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
+  // }
   navigate(element){
     this.router.navigate(["shownotes/"+element]);
     // alert(element)
+  }
+  add(){
+    this.router.navigate(["shownotes/addnotes"]);
   }
 
   visible() {

@@ -1,27 +1,31 @@
 <div class="addnotes">
+    <div style="position: sticky; top:0" class="dnone">
+        <app-header></app-header>
+    </div>
+    <div style="padding:20px 15px;">
 
-    
-    <h1 class="text-center">Fill Up Your Notes Here...</h1>
-<form [formGroup]="notesForm" (ngSubmit)="pushNotes()">
-    <div class="form">
-        <label for="topic">Topic</label><br />
-        <input type="text" id="topic" formControlName="topic">
-        <small class="text-danger"
-                *ngIf="!notesForm.get('topic').valid && notesForm.get('topic').touched">
-                    Topic can't be empty
+        <h1 >Fill Up Your Notes Here...</h1>
+    <form [formGroup]="notesForm" (ngSubmit)="pushNotes()">
+        <div class="form">
+            <label for="topic">Topic</label><br />
+            <input type="text" id="topic" formControlName="topic">
+            <small class="text-danger"
+                    *ngIf="!notesForm.get('topic').valid && notesForm.get('topic').touched">
+                        Topic can't be empty
+                    </small>
+        </div>
+        <div class="form">
+            <label for="notes">Notes</label><br />
+            <textarea id="notes" cols="30" rows="10" formControlName="subject"></textarea>
+            <small class="text-danger"
+                    *ngIf="!notesForm.get('subject').valid && notesForm.get('subject').touched">
+                    Notes can't be empty
                 </small>
+        </div>
+        <div class="form">
+            
+            <button type="submit" >push</button>
+        </div>
+    </form>
     </div>
-    <div class="form">
-        <label for="notes">Notes</label><br />
-        <textarea id="notes" cols="30" rows="10" formControlName="subject"></textarea>
-        <small class="text-danger"
-                *ngIf="!notesForm.get('subject').valid && notesForm.get('subject').touched">
-                Notes can't be empty
-            </small>
-    </div>
-    <div class="form">
-        
-        <button type="submit" >push</button>
-    </div>
-</form>
 </div>

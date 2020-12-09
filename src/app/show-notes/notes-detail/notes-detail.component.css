@@ -14,6 +14,8 @@ p{
     padding: 0px 15px;
     display: flex;
     align-items: center;
+    position: sticky;
+    top:0;
 }
 .data{
     margin: 15px;
@@ -27,6 +29,22 @@ p{
     height: 40px;
     overflow: hidden;
     border-radius: 50%;
-    background-color: red;
+    /* background-color: red; */
     margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #212529;
+}
+button{
+    width: 30px;
+    height: 30px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+}
+button:active{
+    transform: scale(.95);
 }

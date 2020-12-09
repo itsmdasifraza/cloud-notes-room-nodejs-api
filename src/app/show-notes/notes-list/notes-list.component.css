@@ -9,7 +9,7 @@ p{
     height: 40px;
     overflow: hidden;
     border-radius: 50%;
-    background-color: red;
+    /* background-color: red; */
     margin-right: 10px;
 }
 .list{
@@ -22,26 +22,7 @@ p{
     border-right: 1px solid rgb(228, 225, 225);
     background-color: rgb(240, 238, 238);
 }
-.logo{
-    padding :0px 15px ;
-    height: 55px;
-    background-color: rgb(236, 72, 72);
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid rgb(241, 239, 239);
-    
-}
-.logo button{
-    border-radius: 3px;
-    border:none;
-    background-color:rgb(199, 24, 24) ;
-    margin-right: 3px;
-    font-weight: bold;
-}
-.logo p{
-    color: black;
-    font-weight: bold;
-}
+
 
 
 .head{
@@ -52,6 +33,7 @@ p{
     align-items: center;
     position: sticky;
     top:0;
+    justify-content: space-between;
 }
 
 
@@ -81,6 +63,7 @@ p{
     background-color:white;
     border-radius: 3px;
     margin-bottom: 2px;
+    cursor: pointer;
 }
 .item h3{
     font-size: 16px;
@@ -88,6 +71,35 @@ p{
 }
 .item:hover{
     background-color: rgb(248, 244, 244);
+}
+
+button{
+    padding: 0;
+    border: none;
+    outline: none;
+    background: white;
+    border-radius: 5px;
+    overflow-y: hidden;
+}
+button:active{
+    transform: scale(.95);
+
+}
+.itm-flx{
+    display: flex;
+    align-items: center;
+}
+.circle{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #ec4848;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #212529;
 }
 
 @media only screen and (max-width:992px){
