@@ -10,15 +10,14 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./notes-detail.component.css']
 })
 export class NotesDetailComponent implements OnInit {
-
+  index;
   list;
   listItem;
-  newnote;
-  listarray=[];
+  
   constructor(private route: ActivatedRoute, private router: Router, private appService: AppService) { }
 
   morenotes = new FormGroup({
-    subject: new FormControl('', [Validators.required, Validators.minLength(1)]),
+    points: new FormControl('', [Validators.required, Validators.minLength(1)]),
   });
 
 
@@ -28,21 +27,22 @@ export class NotesDetailComponent implements OnInit {
       // do something with the query params
     });
     this.route.params.subscribe(routeParams => {
-      ///////////////////
+      
+      
       this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
       this.listItem = undefined;
-      this.listarray=[];
+      this.index = undefined;
+      
       if (this.list) {
-        this.list.forEach(element => {
+        this.list.forEach((element ,index) => {
           if (element.id == routeParams.id) {
             // console.log(element)
             this.listItem= element;
-            this.listarray.push(element);
-            console.log(this.listarray,"listarray")
+            this.index=index;
+            
           }
         });
         if (this.listItem == undefined) {
-          // console.log("und");
           this.router.navigate(['/shownotes']);
         }
       }
@@ -55,19 +55,23 @@ export class NotesDetailComponent implements OnInit {
   }
 
   moreNotes() {
-    // console.log(this.notesForm.value);
+    
     if (this.morenotes.valid) {
+
       // console.log("valid");
       // console.log(this.morenotes.value);
+
       var newData = this.morenotes.value;
-      newData.id = this.listItem.id;
-      console.log(newData);
+      ;
       this.morenotes.reset();
+
       var note = JSON.parse(localStorage.getItem('myprivatenotes'));
       if (note) {
-        note.push(newData);
+        
+        note[this.index].message.push(newData);
         localStorage.setItem('myprivatenotes', JSON.stringify(note));
-        this.listarray.push(newData);
+        this.listItem.message.push(newData);
+
       }
     }
   }

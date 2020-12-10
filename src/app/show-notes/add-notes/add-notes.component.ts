@@ -40,19 +40,26 @@ export class AddNotesComponent implements OnInit {
       else {
         this.notes = note;
       }
-      let pushData = this.notesForm.value;
+      
       let date = new Date();
-      console.log(date);
-
-      pushData.date = "Created on "+ date.toLocaleDateString()+" [M/D/Y].";
+      
+      
+      let pushData = {
+        "topic" : this.notesForm.value.topic
+      };
+      pushData["date"] = "Created on "+ date.toLocaleDateString()+" [M/D/Y].";
+      pushData["message"] = [];
+      pushData["message"].push({"points":this.notesForm.value.subject});
       let random = Math.floor(Math.random() * 3875846868458367) + 464564667 + date.getHours() + date.getMilliseconds() + date.getMinutes() + date.getSeconds();
-      pushData.id = random.toString();
+      pushData["id"] = random.toString();
+
+      
       this.notes.push(pushData);
       localStorage.setItem('myprivatenotes', JSON.stringify(this.notes));
-      // console.log(this.notes);
+      console.log(this.notes);
       this.appService.subject.next(this.notes);
       this.notesForm.reset();
-      this.router.navigate(["shownotes/"+pushData.id]);
+      this.router.navigate(["shownotes/"+pushData["id"]]);
     }
   }
   ngOnDestroy(): void {
