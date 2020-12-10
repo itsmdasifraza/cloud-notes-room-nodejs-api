@@ -85,9 +85,22 @@ export class NotesDetailComponent implements OnInit {
         note.splice(this.index,1);
         localStorage.setItem('myprivatenotes', JSON.stringify(note));
         this.appService.subject.next(note);
+        this.router.navigate(['/shownotes']);
       }
-      this.router.navigate(['/shownotes']);
 
 
+  }
+
+  deletePoints(index){
+      console.log("delete points clicked",index)
+      if(this.listItem){
+        this.listItem.message.splice(index,1);
+      }
+      let note = JSON.parse(localStorage.getItem('myprivatenotes'));
+      if(note){
+          note[this.index].message.splice(index,1);
+          localStorage.setItem('myprivatenotes', JSON.stringify(note));
+          this.appService.subject.next(note);
+        }
   }
 }

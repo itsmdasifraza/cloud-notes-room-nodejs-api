@@ -23,6 +23,23 @@ p{
     background-color:white ;
     padding: 20px 15px;
     border-radius: 5px;
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+.data button{
+    background-color: var(--themeheader);
+    padding: 0;
+    border: none;
+    margin: 0;
+    outline: none;
+    border-radius: 3px;
+    height: 30px;
+    width: 30px;
+    transform:scale(.7);
+}
+.data button:active{
+    transform:scale(.65);
 }
 
 .circle{
