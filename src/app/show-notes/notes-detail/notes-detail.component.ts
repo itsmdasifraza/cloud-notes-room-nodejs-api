@@ -78,6 +78,10 @@ export class NotesDetailComponent implements OnInit {
         this.listItem.message.push(newData);
         this.appService.subject.next(note);
       }
+      else{
+        this.appService.subject.next([]);
+        this.router.navigate(['/shownotes']);
+      }
     }
   }
 
@@ -103,14 +107,19 @@ export class NotesDetailComponent implements OnInit {
 
   deletePoints(index){
       // console.log("delete points clicked",index)
-      if(this.listItem){
-        this.listItem.message.splice(index,1);
-      }
+     // if(this.listItem){
+     // }
       let note = JSON.parse(localStorage.getItem('myprivatenotes'));
       if(note){
+        this.listItem.message.splice(index,1);
           note[this.index].message.splice(index,1);
           localStorage.setItem('myprivatenotes', JSON.stringify(note));
           this.appService.subject.next(note);
+        }
+        
+        else{
+          this.appService.subject.next([]);
+          this.router.navigate(['/shownotes']);
         }
   }
 }

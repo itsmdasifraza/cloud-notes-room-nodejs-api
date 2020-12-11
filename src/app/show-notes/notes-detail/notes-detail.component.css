@@ -27,8 +27,8 @@ p{
     top:55px;
 }
 .data{
-    margin: 5px 15px;
-    background-color:white ;
+    margin: 15px 15px;
+    background-color:var(--themenotespointsbg) ;
     padding: 20px 15px;
     border-radius: 5px;
     display: flex;
@@ -36,7 +36,7 @@ p{
     justify-content: space-between;
 }
 .data button{
-    background-color: var(--themeheader);
+    background-color: transparent;
     padding: 0;
     border: none;
     margin: 0;
@@ -45,6 +45,9 @@ p{
     height: 30px;
     width: 30px;
     transform:scale(.7);
+}
+.data button:hover{
+    background-color: rgb(187, 186, 186);
 }
 .data button:active{
     transform:scale(.65);
@@ -55,7 +58,7 @@ p{
     height: 40px;
     overflow: hidden;
     border-radius: 50%;
-    /* background-color: red; */
+    background-color: var(--themedeletebutton );
     margin-right: 10px;
     display: flex;
     align-items: center;
@@ -63,27 +66,45 @@ p{
     border: 1px solid #212529;
 }
 .heading button{
-    width: 25px;
-    height: 25px;
-    border: none;
-    padding: 0;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    padding: 5px;
     cursor: pointer;
-    background-color: transparent;
+    background-color: var(--themedeletebutton );
     outline: none;
-    margin-left: auto;
-    margin-right: 0;
+    /* margin-left: auto;
+    margin-right: 0; */
+    border-radius: 5px;
+    transform: scale(.6) translateX(30%);
+    /* transition: .3s ease; */
 }
-button:active{
-    transform: scale(.95);
+.heading button:hover{
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+                0 2px 4px rgba(0,0,0,0.07), 
+                0 4px 8px rgba(0,0,0,0.07), 
+                0 8px 16px rgba(0,0,0,0.07),
+                0 16px 32px rgba(0,0,0,0.07), 
+                0 32px 64px rgba(0,0,0,0.07);
+}
+
+.heading button:active{
+    transform: scale(.55) translateX(30%);
 }
 
 
 .topic{
-    margin: 5px 15px;
+    margin: 15px 15px;
     margin-top: 0px ;
     padding:20px  15px;
     border-radius: 5px;
-    background-color: white;
+    background-color: var(--themenotestopicbg);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+                0 2px 4px rgba(0,0,0,0.07), 
+                0 4px 8px rgba(0,0,0,0.07), 
+                0 8px 16px rgba(0,0,0,0.07),
+                0 16px 32px rgba(0,0,0,0.07), 
+                0 32px 64px rgba(0,0,0,0.07);
 }
 .topic h6{
     font-weight:bold;
@@ -110,6 +131,14 @@ button:active{
     border: 1px solid var(--themeheader);
     padding: 5px 20px;
 }
+.more-notes input:focus{
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+                0 2px 4px rgba(0,0,0,0.07), 
+                0 4px 8px rgba(0,0,0,0.07), 
+                0 8px 16px rgba(0,0,0,0.07),
+                0 16px 32px rgba(0,0,0,0.07), 
+                0 32px 64px rgba(0,0,0,0.07);
+}
 .more-notes button{
     background-color: var(--themeheader);
     flex:1;
@@ -119,3 +148,19 @@ button:active{
     outline: none;
     border: none;
 }
+.more-notes button:hover{
+    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+                0 2px 4px rgba(0,0,0,0.07), 
+                0 4px 8px rgba(0,0,0,0.07), 
+                0 8px 16px rgba(0,0,0,0.07),
+                0 16px 32px rgba(0,0,0,0.07), 
+                0 32px 64px rgba(0,0,0,0.07);
+}
+.more-notes button:active{
+    transform: scale(.95);
+}
+/* .delsvg{
+    fill: var(--themedeletebutton ) !important;
+    background-color: red;
+     color: red;
+} */

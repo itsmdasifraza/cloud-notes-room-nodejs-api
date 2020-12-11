@@ -5,23 +5,31 @@ body{
     box-sizing: border-box;
 }
 /* Default App Theme Colors */
-/* :root{
+:root{
     --themeheader : #ec4848;
     --themebg: #ffeaed;
     --themelogo : rgb(199, 24, 24) ;
-    --themenonotesbg : white;
-    --themenoteslistbg : #ffeaed;
-} */
+    --themenonotesbg : #f7eeef;
+    --themenoteslistbg : #f7eeef;
+    --themenotestopicbg : rgb(225, 225, 226);
+    --themenotespointsbg : white;
+    --themedeletebutton :rgb(248, 83, 83);
+    --themeaddbutton:rgb(223, 8, 62);
+}
 /* Default App Theme Colors */
 
 
 
 /* Custom App Theme Colors */
-:root{
+/* :root{
     --themeheader : #a896fc;
     --themebg: #bed1f3;
     --themelogo : rgb(181, 199, 233) ;
     --themenonotesbg : rgb(250, 250, 250);
     --themenoteslistbg : #fcf9f9;
-}
+    --themenotestopicbg : rgb(250, 250, 252);
+    --themenotespointsbg : rgb(255, 255, 255);
+    --themedeletebutton :rgb(139, 126, 250);
+    --themeaddbutton:rgb(109, 109, 248);
+} */
 /* Custom App Theme Colors */

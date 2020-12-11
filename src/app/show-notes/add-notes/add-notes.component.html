@@ -8,7 +8,7 @@
     <form [formGroup]="notesForm" (ngSubmit)="pushNotes()">
         <div class="form">
             <label for="topic">Topic</label><br />
-            <input type="text" id="topic" formControlName="topic">
+            <input type="text" id="topic" formControlName="topic" placeholder="type topic here ...">
             <small class="text-danger"
                     *ngIf="!notesForm.get('topic').valid && notesForm.get('topic').touched">
                         Topic can't be empty
@@ -16,7 +16,7 @@
         </div>
         <div class="form">
             <label for="notes">Notes</label><br />
-            <textarea id="notes" cols="30" rows="10" formControlName="subject"></textarea>
+            <textarea id="notes" cols="30" rows="10" formControlName="subject" placeholder="type notes here ..."></textarea>
             <small class="text-danger"
                     *ngIf="!notesForm.get('subject').valid && notesForm.get('subject').touched">
                     Notes can't be empty
