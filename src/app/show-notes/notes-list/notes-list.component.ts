@@ -18,7 +18,8 @@ export class NotesListComponent implements OnInit {
     this.appService.subject.subscribe(message => {
       if (message) {
         this.list = message;
-        
+
+        //console.log( "updated list",this.list);
       }
     });
     this.appService.navtoggle.subscribe(message => {
@@ -43,6 +44,14 @@ export class NotesListComponent implements OnInit {
   }
   add(){
     this.router.navigate(["shownotes/addnotes"]);
+  }
+  deleteAllNotes(){
+    let res = confirm("Do you really want to delete all your notes ?");
+    if(res){
+        localStorage.removeItem("myprivatenotes");
+        this.router.navigate(["/shownotes"]);
+        this.list=[];
+    }
   }
 
   visible() {

@@ -16,7 +16,15 @@ p{
     align-items: center;
     position: sticky;
     top:0;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
+    z-index:5;
+}
+.header2{
+    height: 15px;
+    background-color:  var(--themebg);
+    z-index:5;
+    position: sticky;
+    top:55px;
 }
 .data{
     margin: 5px 15px;
@@ -54,7 +62,7 @@ p{
     justify-content: center;
     border: 1px solid #212529;
 }
-button{
+.heading button{
     width: 25px;
     height: 25px;
     border: none;
@@ -62,13 +70,24 @@ button{
     cursor: pointer;
     background-color: transparent;
     outline: none;
+    margin-left: auto;
+    margin-right: 0;
 }
 button:active{
     transform: scale(.95);
 }
 
 
-
+.topic{
+    margin: 5px 15px;
+    margin-top: 0px ;
+    padding:20px  15px;
+    border-radius: 5px;
+    background-color: white;
+}
+.topic h6{
+    font-weight:bold;
+}
 
 /* more notes */
 .more-notes{
@@ -97,4 +116,6 @@ button:active{
     height: 40px;
     border-radius:20px;
     margin-left: 5px;
+    outline: none;
+    border: none;
 }

@@ -28,10 +28,12 @@ export class NotesDetailComponent implements OnInit {
     });
     this.route.params.subscribe(routeParams => {
       
-      
-      this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
+      this.list = undefined;
       this.listItem = undefined;
       this.index = undefined;
+
+      this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
+      // console.log("list",this.list);
       
       if (this.list) {
         this.list.forEach((element ,index) => {
@@ -42,9 +44,12 @@ export class NotesDetailComponent implements OnInit {
             
           }
         });
-        if (this.listItem == undefined) {
+        if (!this.listItem) {
           this.router.navigate(['/shownotes']);
         }
+      }
+      else{
+        this.router.navigate(['/shownotes']);
       }
     });
   }
@@ -62,7 +67,7 @@ export class NotesDetailComponent implements OnInit {
       // console.log(this.morenotes.value);
 
       var newData = this.morenotes.value;
-      ;
+      
       this.morenotes.reset();
 
       var note = JSON.parse(localStorage.getItem('myprivatenotes'));
@@ -71,7 +76,7 @@ export class NotesDetailComponent implements OnInit {
         note[this.index].message.push(newData);
         localStorage.setItem('myprivatenotes', JSON.stringify(note));
         this.listItem.message.push(newData);
-
+        this.appService.subject.next(note);
       }
     }
   }
@@ -87,12 +92,17 @@ export class NotesDetailComponent implements OnInit {
         this.appService.subject.next(note);
         this.router.navigate(['/shownotes']);
       }
+      else{
+        var empty = [];
+        this.appService.subject.next(empty);
+        this.router.navigate(['/shownotes']); 
+      }
 
 
   }
 
   deletePoints(index){
-      console.log("delete points clicked",index)
+      // console.log("delete points clicked",index)
       if(this.listItem){
         this.listItem.message.splice(index,1);
       }

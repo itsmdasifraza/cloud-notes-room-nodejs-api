@@ -56,7 +56,7 @@ export class AddNotesComponent implements OnInit {
       
       this.notes.push(pushData);
       localStorage.setItem('myprivatenotes', JSON.stringify(this.notes));
-      console.log(this.notes);
+      // console.log(this.notes);
       this.appService.subject.next(this.notes);
       this.notesForm.reset();
       this.router.navigate(["shownotes/"+pushData["id"]]);
