@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Title} from "@angular/platform-browser";
 @Component({
   selector: 'app-policy',
   templateUrl: './policy.component.html',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PolicyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService:Title) {
+    this.titleService.setTitle("Chat Notes | Policy");
+   }
 
   ngOnInit(): void {
   }

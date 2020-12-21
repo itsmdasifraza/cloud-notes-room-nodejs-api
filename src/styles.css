@@ -24,16 +24,16 @@ body{
 
 /* Custom App Theme Colors */
 /* :root{
-    --themeheader : #a896fc;
-    --themebg: #bed1f3;
+    --themeheader : #6710e5;
+    --themebg: #638dd6;
     --themelogo : rgb(181, 199, 233) ;
     --themenonotesbg : rgb(250, 250, 250);
     --themenoteslistbg : #fcf9f9;
     --themenotestopicbg : rgb(250, 250, 252);
     --themenotespointsbg : rgb(255, 255, 255);
     --themedeletebutton :rgb(139, 126, 250);
-    --themeaddbutton:rgb(109, 109, 248);
-    --themefooter : #6710e5;
-    --themehome : linear-gradient(to bottom, #ec4848, #f00063, #e4008a, #bd00ba, #5c12eb);
+    --themeaddbutton:rgb(51, 51, 245);
+    --themefooter : #ec0f25;
+    --themehome :   linear-gradient(to bottom, #6710e5, #c100b3, #e8007d, #f3004b, #eb121d);
 } */
 /* Custom App Theme Colors */

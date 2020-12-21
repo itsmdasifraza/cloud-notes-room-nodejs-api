@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'notebook';
+  title = 'Chat Notes | Here you can post your private notes in chats form';
 }

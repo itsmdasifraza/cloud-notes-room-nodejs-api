@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Title} from "@angular/platform-browser";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService:Title) { 
+    this.titleService.setTitle("Chat Notes | Here you can post your private notes in chats form");
+  }
 
   ngOnInit(): void {
   }

@@ -12,7 +12,7 @@ import { ShowNotesComponent } from './show-notes/show-notes.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
-  {path:'contact', component:ContactComponent, data: {title: 'stack Overflow'}},
+  {path:'contact', component:ContactComponent},
   {path:'policy', component:PolicyComponent},
   {path:'shownotes', component:ShowNotesComponent,
   children:[
