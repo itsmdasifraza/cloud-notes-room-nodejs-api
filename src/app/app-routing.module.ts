@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PolicyComponent } from './policy/policy.component';
 import { AddNotesComponent } from './show-notes/add-notes/add-notes.component';
 import { DefaultScreenComponent } from './show-notes/default-screen/default-screen.component';
 import { NotesDetailComponent } from './show-notes/notes-detail/notes-detail.component';
@@ -10,6 +12,8 @@ import { ShowNotesComponent } from './show-notes/show-notes.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
+  {path:'contact', component:ContactComponent, data: {title: 'stack Overflow'}},
+  {path:'policy', component:PolicyComponent},
   {path:'shownotes', component:ShowNotesComponent,
   children:[
     { path:'', component:DefaultScreenComponent},
@@ -20,7 +24,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{
+    scrollPositionRestoration: 'enabled'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

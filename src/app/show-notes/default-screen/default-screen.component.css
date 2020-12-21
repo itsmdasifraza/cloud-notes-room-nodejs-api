@@ -18,14 +18,14 @@ h1{
 button{
     font-weight: 20px;
     /* font-weight: bold; */
-    border: 1px solid var(--themeheader);
+    border: 2px solid var(--themeaddbutton);
     outline: none;
     padding:5px 30px;
     background-color: transparent;
     margin: 2px;
 }
 button:hover{
-    background-color: var(--themeheader);
+    background-color: var(--themeaddbutton);
     color: white;
 }
 button:active{

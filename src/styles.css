@@ -7,7 +7,7 @@ body{
 /* Default App Theme Colors */
 :root{
     --themeheader : #ec4848;
-    --themebg: #ffeaed;
+    --themebg: #f77185;
     --themelogo : rgb(199, 24, 24) ;
     --themenonotesbg : #f7eeef;
     --themenoteslistbg : #f7eeef;
@@ -33,5 +33,7 @@ body{
     --themenotespointsbg : rgb(255, 255, 255);
     --themedeletebutton :rgb(139, 126, 250);
     --themeaddbutton:rgb(109, 109, 248);
+    --themefooter : #6710e5;
+    --themehome : linear-gradient(to bottom, #ec4848, #f00063, #e4008a, #bd00ba, #5c12eb);
 } */
 /* Custom App Theme Colors */

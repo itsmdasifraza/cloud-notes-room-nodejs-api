@@ -1,0 +1,23 @@
+.contact{
+    background: var(--themehome);
+}
+.contact-data{
+    color: white;
+    margin-top:150px;
+    margin-bottom:150px;
+    max-width: 400px;
+    
+}
+h1{
+    font-weight: bold;
+}
+p{
+    color:rgb(229, 226, 226);
+}
+@media only screen and (max-width:500px){
+    .contact-data{
+       
+        margin-top:50px;
+        margin-bottom:50px;   
+    }
+}

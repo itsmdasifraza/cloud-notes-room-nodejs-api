@@ -1,0 +1,16 @@
+.page-not-found{
+    min-height: 500px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background:var(--themehome) ;
+    color:white;
+}
+.pnf-data{
+    flex-basis: 600px;
+    margin: 15px;
+    padding:50px 0px;
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+}

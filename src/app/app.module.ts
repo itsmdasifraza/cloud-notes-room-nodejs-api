@@ -16,6 +16,8 @@ import { HeaderComponent } from './show-notes/header/header.component';
 import { HomeComponent } from './home/home.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ContactComponent } from './contact/contact.component';
+import { PolicyComponent } from './policy/policy.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { FooterComponent } from './footer/footer.component';
     HeaderComponent,
     HomeComponent,
     MainHeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ContactComponent,
+    PolicyComponent
   ],
   imports: [
     BrowserModule,

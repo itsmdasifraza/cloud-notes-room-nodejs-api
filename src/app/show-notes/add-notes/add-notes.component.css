@@ -44,14 +44,14 @@ button{
     width: 20%;
     font-weight: 20px;
     /* font-weight: bold; */
-    border: 1px solid var(--themeheader);
+    border: 2px solid var(--themeaddbutton);
     outline: none;
     padding:5px 0px;
     background-color: transparent;
     
 }
 button:hover{
-    background-color: var(--themeheader);
+    background-color: var(--themeaddbutton);
     color: white;
 }
 button:active{
