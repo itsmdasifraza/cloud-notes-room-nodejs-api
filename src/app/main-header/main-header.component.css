@@ -1,0 +1,33 @@
+.logo{
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    
+}
+.header-color{
+    background-color: var(--themeheader);
+    -webkit-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.75);
+    z-index: 5;
+    position: sticky;
+    top:0;
+}
+.logo button{
+    border-radius: 3px;
+    border:none;
+    background-color:var(--themelogo) ;
+    margin-right: 3px;
+    font-weight: bold;
+    outline: none;
+    
+}
+.logo p{
+    margin: 0;
+    padding:0;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}

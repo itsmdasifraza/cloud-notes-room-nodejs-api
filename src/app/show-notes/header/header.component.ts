@@ -13,6 +13,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   showNotes(){
-    this.router.navigate(["/shownotes"]);
+    this.router.navigate(["/"]);
   }
 }

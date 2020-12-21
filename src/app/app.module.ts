@@ -13,6 +13,9 @@ import { DefaultScreenComponent } from './show-notes/default-screen/default-scre
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AddNotesComponent } from './show-notes/add-notes/add-notes.component';
 import { HeaderComponent } from './show-notes/header/header.component';
+import { HomeComponent } from './home/home.component';
+import { MainHeaderComponent } from './main-header/main-header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { HeaderComponent } from './show-notes/header/header.component';
     DefaultScreenComponent,
     PageNotFoundComponent,
     AddNotesComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent,
+    MainHeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
