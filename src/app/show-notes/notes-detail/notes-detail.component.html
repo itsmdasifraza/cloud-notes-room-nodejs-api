@@ -9,9 +9,9 @@
                   </svg>
             </div>
         </div>
-        <div style="flex-basis: 91%;">
-            <p><b>{{listItem.topic | slice: 0:30}}</b></p>
-            <p>{{listItem.date}}</p>
+        <div style="flex-basis: 91%; overflow-x:hidden;">
+            <p style="white-space:nowrap; "><b>{{listItem.topic | slice: 0:80}}</b></p>
+            <p style="white-space:nowrap; ">{{listItem.date}}</p>
         </div>
         <div style="flex-basis: 3%; ">
             <button (click)="deleteNotes()"><svg width="100%" height="100%" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -25,13 +25,13 @@
     </div>
     <div *ngIf="listItem">
         <div class="topic">
-            <h6>{{listItem.topic}}</h6>
+            <h6 style="overflow-x:hidden; overflow-y:hidden; ">{{listItem.topic}}</h6>
         </div>
     </div>
     <div *ngIf="listItem">
         <div class="data" *ngFor="let item of listItem.message; let i = index">
 
-            <p>{{item.points}}</p>
+            <p style="overflow-x:hidden;">{{item.points}}</p>
             <div >
 
                 <button (click)="deletePoints(i)"> <svg width="100%" height="100%" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

@@ -39,9 +39,9 @@
                               </svg>
                         </div>
                     </div>
-                    <div>
-                        <h3>{{item.topic | slice: 0:23}}</h3>
-                        <p *ngIf="item.message.length > 0 ">{{item.message[item.message.length - 1].points | slice: 0:25}} </p>
+                    <div style="overflow-x : hidden">
+                        <h3 style="white-space:nowrap; ">{{item.topic | slice: 0:40}}</h3>
+                        <p style="white-space:nowrap; " *ngIf="item.message.length > 0 ">{{item.message[item.message.length - 1].points | slice: 0:40}} </p>
                         <p *ngIf="item.message.length == 0">Empty Notes !</p>
                     </div>
                 </div>
