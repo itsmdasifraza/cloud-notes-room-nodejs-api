@@ -18,7 +18,11 @@ export class NotesListComponent implements OnInit {
     this.appService.subject.subscribe(message => {
       if (message) {
         this.list = message;
-        this.list.reverse();
+        if(this.list){
+          if(this.list.length>0){
+            this.list.reverse();
+          }
+        }
         //console.log( "updated list",this.list);
       }
     });
@@ -33,7 +37,11 @@ export class NotesListComponent implements OnInit {
   ngOnInit(): void {
 
     this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
-    this.list.reverse();
+    if(this.list){
+      if(this.list.length>0){
+        this.list.reverse();
+      }
+    }
     
   }
   // ngOnChange(): void {
