@@ -2,9 +2,9 @@
     <!-- <div style="position: sticky; top:0" class="dnone header-back"></div> -->
         <app-main-header class="dnone "></app-main-header>
     
-    <div style="padding:20px 15px;">
+    <div style="padding:40px 15px;">
 
-        <h1 >Fill Up Your Notes Here...</h1>
+        <h1 >Fill your notes</h1>
     <form [formGroup]="notesForm" (ngSubmit)="pushNotes()">
         <div class="form">
             <label for="topic">Topic</label><br />
@@ -16,7 +16,7 @@
         </div>
         <div class="form">
             <label for="notes">Notes</label><br />
-            <textarea id="notes" cols="30" rows="10" formControlName="subject" placeholder="type notes here ..."></textarea>
+            <textarea id="notes" cols="30" rows="6" formControlName="subject" placeholder="type notes here ..."></textarea>
             <small class="text-danger"
                     *ngIf="!notesForm.get('subject').valid && notesForm.get('subject').touched">
                     Notes can't be empty

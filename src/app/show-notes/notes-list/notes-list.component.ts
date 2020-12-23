@@ -9,24 +9,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./notes-list.component.css']
 })
 export class NotesListComponent implements OnInit {
-
+  private subscription: Subscription;
+  private navsub : Subscription;
   list;
   navtoggle = true;
   searchText: string;
   constructor(private appService: AppService, private router: Router) {
     // subscribe to home component messages
-    this.appService.subject.subscribe(message => {
+    this.subscription=this.appService.subject.subscribe(message => {
+      // console.log("reverse subject working");
       if (message) {
-        this.list = message;
-        if(this.list){
-          if(this.list.length>0){
-            this.list.reverse();
-          }
+        if(message.length > 0){
+          this.list = message.slice().reverse();
+          // this.list  = message.reverse();
+         
         }
+        else{
+          this.list = [];
+        }
+        
         //console.log( "updated list",this.list);
       }
+      else{
+        this.list = [];
+      }
     });
-    this.appService.navtoggle.subscribe(message => {
+    this.navsub =this.appService.navtoggle.subscribe(message => {
       this.navtoggle = message;
       // if (message) {
       //   console.log("nav",message);
@@ -36,11 +44,18 @@ export class NotesListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
-    if(this.list){
-      if(this.list.length>0){
-        this.list.reverse();
+    var data = JSON.parse(localStorage.getItem('myprivatenotes'));
+    if(data){
+      if(data.length > 0){
+        this.list = data.reverse();
+        // console.log("reverse init working");
       }
+      else{
+        this.list = [];
+      }
+    }
+    else{
+      this.list = [];
     }
     
   }
@@ -68,5 +83,10 @@ export class NotesListComponent implements OnInit {
       'dnone': !this.navtoggle,
       // 'btnnight': !this.day
     }
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+    this.navsub.unsubscribe();
   }
 }

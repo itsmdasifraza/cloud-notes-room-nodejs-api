@@ -1,6 +1,7 @@
 .home-main{
-    min-height: calc(100vh - 55px);
-    padding-top: 100px;
+    /* min-height: calc(100vh - 55px); */
+    padding-top: 50px;
+    padding-bottom:50px;
     background-image:var(--themehome);
     color: white;
 }
@@ -38,7 +39,7 @@
     }  
     .home-main{
         padding-top: 20px;
-      
+        padding-bottom:20px ;
     }
 }
 
