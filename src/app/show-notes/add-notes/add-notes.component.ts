@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AddNotesComponent implements OnInit {
   notes: any;
-
+  month = ["Jan","Feb","Mar","Apr","May","Jun","July","Aug","Sep","Oct","Nov","Dec"];
   constructor(private appService: AppService, private router : Router) { }
 
   notesForm = new FormGroup({
@@ -47,7 +47,7 @@ export class AddNotesComponent implements OnInit {
       let pushData = {
         "topic" : this.notesForm.value.topic
       };
-      pushData["date"] = "Created on "+ date.toLocaleDateString()+" [M/D/Y].";
+      pushData["date"] = "Created on "+ date.getDate()+" "+ this.month[date.getMonth()] +", "+date.getFullYear() ;
       pushData["message"] = [];
       pushData["message"].push({"points":this.notesForm.value.subject});
       let random = Math.floor(Math.random() * 3875846868458367) + 464564667 + date.getHours() + date.getMilliseconds() + date.getMinutes() + date.getSeconds();
@@ -61,6 +61,9 @@ export class AddNotesComponent implements OnInit {
       this.notesForm.reset();
       this.router.navigate(["shownotes/"+pushData["id"]]);
     }
+  }
+  showNotes(){
+    this.router.navigate(["/"]);
   }
   ngOnDestroy(): void {
     this.appService.navtoggle.next(true);

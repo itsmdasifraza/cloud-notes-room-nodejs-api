@@ -1,45 +1,46 @@
 .home-main{
-    /* min-height: calc(100vh - 55px); */
-    padding-top: 50px;
-    padding-bottom:50px;
     background-image:var(--themehome);
     color: white;
 }
+.spacing{
+    padding: 160px 0;
+}
 .home-main h1{
-    font-size: 50px;
+    font-size: 40px;
+    font-weight: 1000;
 }
 .home-main p{
     font-size: 18px;
 }
 .home-main button{
-    background-color: transparent;
+    background-color: rgb(79, 148, 252);
     padding: 5px 10px;
     outline:none;
-    border: 2px solid white;
+    border: 2px solid rgb(223, 223, 223);
     cursor: pointer;
     font-weight: bold;
+    color: rgb(17, 17, 17);
 }
 .home-main button:hover{
-    border: 2px solid black;
-    color: white;
+    border: 2px solid rgb(46, 46, 46);
+    color: rgb(243, 243, 243);
 }
 .home-main button:active{
    transform: scale(.95);
   
 }
 .image{
-    width:100%;
+    width: 100%;
 }
 
-
+@media only screen and (max-width:991px){   
+    .spacing{
+        padding: 80px 0;
+    }
+}
 @media only screen and (max-width:767px){
-    .image{
-        width:300px;
-        
-    }  
-    .home-main{
-        padding-top: 20px;
-        padding-bottom:20px ;
+    .spacing{
+        padding: 30px 0;
     }
 }
 

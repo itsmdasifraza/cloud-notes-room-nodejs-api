@@ -4,7 +4,7 @@
 justify-content: center;
 align-items: center;
 min-height: 100vh;
-background-color: var(--themebg);
+background: var(--themebg);
 }
 .get-started{
     display: flex;
@@ -25,7 +25,7 @@ button{
     margin: 2px;
 }
 button:hover{
-    background-color: var(--themeaddbutton);
+    background-color: #4f94fc;
     color: white;
 }
 button:active{

@@ -1,11 +1,8 @@
 .footer{
     color:white;
-    padding: 20px 0px;
+    padding: 30px 0px;
     background-color: var(--themefooter);
-    -webkit-box-shadow: 0px -2px 6px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 0px -2px 6px 0px rgba(0,0,0,0.75);
-box-shadow: 0px -2px 6px 0px rgba(0,0,0,0.75);
-position: relative;
+    position: relative;
 }
 .footer a,span{
     color: rgb(175, 173, 173);

@@ -6,18 +6,20 @@ body{
 }
 /* Default App Theme Colors */
 :root{
-    --themeheader : #ec4848;
-    --themebg: #f77185;
-    --themelogo : rgb(199, 24, 24) ;
+    --themeheader : #7a67ad;
+    --themebg:linear-gradient(to right, #eaafc8, #654ea3); 
+    --themelogo : rgb(53, 53, 53) ;
     --themenonotesbg : #f7eeef;
     --themenoteslistbg : #f7eeef;
     --themenotestopicbg : rgb(225, 225, 226);
     --themenotespointsbg : white;
-    --themedeletebutton :rgb(248, 83, 83);
-    --themeaddbutton:rgb(223, 8, 62);
-    --themefooter : #6710e5;
-    --themehome : linear-gradient(to bottom, #ec4848, #f00063, #e4008a, #bd00ba, #5c12eb);
+    --themedeletebutton :rgb(184, 184, 184);
+    --themeaddbutton:rgb(184, 184, 184);
+    --themefooter : #494949;
+    --themehome :linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
+
 /* Default App Theme Colors */
 
 

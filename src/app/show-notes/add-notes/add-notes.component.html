@@ -1,13 +1,18 @@
 <div class="addnotes">
     <!-- <div style="position: sticky; top:0" class="dnone header-back"></div> -->
-        <app-main-header class="dnone "></app-main-header>
+    <div class="logo dnone">
+        <button (click)="showNotes()">C</button>
+        <p style="outline:none" routerLink="/">hat Notes</p>
+    </div>
     
-    <div style="padding:40px 15px;">
+    <div style="padding:40px 15px;" class="btns"> 
 
         <h1 >Fill your notes</h1>
     <form [formGroup]="notesForm" (ngSubmit)="pushNotes()">
         <div class="form">
-            <label for="topic">Topic</label><br />
+            <div class="label">
+                <label for="topic">Topic</label>
+            </div>
             <input type="text" id="topic" formControlName="topic" placeholder="type topic here ...">
             <small class="text-danger"
                     *ngIf="!notesForm.get('topic').valid && notesForm.get('topic').touched">
@@ -15,7 +20,9 @@
                     </small>
         </div>
         <div class="form">
-            <label for="notes">Notes</label><br />
+            <div class="label">
+                <label for="notes">Notes</label>
+            </div>
             <textarea id="notes" cols="30" rows="6" formControlName="subject" placeholder="type notes here ..."></textarea>
             <small class="text-danger"
                     *ngIf="!notesForm.get('subject').valid && notesForm.get('subject').touched">
