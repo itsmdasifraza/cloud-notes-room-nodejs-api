@@ -5,9 +5,9 @@
     position: relative;
 }
 .footer a,span{
-    color: rgb(175, 173, 173);
+    color: rgb(235, 235, 235);
     margin-right: 10px;
 }
 .footer a:hover{
-color: rgb(238, 235, 235);
+color: rgb(221, 220, 220);
 }

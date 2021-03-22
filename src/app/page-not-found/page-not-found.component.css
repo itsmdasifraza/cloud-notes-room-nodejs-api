@@ -7,6 +7,7 @@
     color:white;
 }
 .pnf-data{
+    background-color: var(--themeheader);
     flex-basis: 600px;
     margin: 15px;
     padding:50px 0px;

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppService } from 'src/app/app.service';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-notes-detail',
@@ -13,8 +14,20 @@ export class NotesDetailComponent implements OnInit {
   index;
   list;
   listItem;
-  
-  constructor(private route: ActivatedRoute, private router: Router, private appService: AppService) { }
+  location = window.location.href;
+  constructor(private route: ActivatedRoute, private router: Router, private appService: AppService,private titleService:Title, private meta: Meta) {
+    this.titleService.setTitle("Saved Notes Detail | Chat Notes");
+    this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
+    this.meta.updateTag({ name: 'keywords', content: `chat notes, chatnotes, md asif raza` });
+    // this.meta.updateTag({ name: 'description', content: `Fill your notes in the form below. topic contains heading and notes contain description.` });
+    this.meta.updateTag({ property: "og:url", content: `${this.location}` });
+    this.meta.updateTag({ property:"og:type", content:"website" });
+    this.meta.updateTag({ property: "og:title", content: `Saved Notes Detail | Chat Notes` });
+    // this.meta.updateTag({ property: "og:description", content: `Fill your notes in the form below. topic contains heading and notes contain description.`});
+    this.meta.updateTag({ property: "og:image", content: `https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png` });
+    this.meta.updateTag({ property:"og:image:secure_url", content: `https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png`});
+
+   }
 
   morenotes = new FormGroup({
     points: new FormControl('', [Validators.required, Validators.minLength(1)]),

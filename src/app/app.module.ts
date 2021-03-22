@@ -18,6 +18,8 @@ import { MainHeaderComponent } from './main-header/main-header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactComponent } from './contact/contact.component';
 import { PolicyComponent } from './policy/policy.component';
+import { ExplainationComponent } from './home/explaination/explaination.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { PolicyComponent } from './policy/policy.component';
     MainHeaderComponent,
     FooterComponent,
     ContactComponent,
-    PolicyComponent
+    PolicyComponent,
+    ExplainationComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

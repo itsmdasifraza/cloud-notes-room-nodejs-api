@@ -7,13 +7,12 @@ import {Title} from "@angular/platform-browser";
 })
 export class ShowNotesComponent implements OnInit {
 
-  constructor(private titleService:Title) {
-    this.titleService.setTitle("Chat Notes | Manage your notes here");
+  constructor() {
    }
 
   ngOnInit(): void {
   }
   parentFunc(data){
-    console.log("parent", data)
+    // console.log("parent", data)
   }
 }

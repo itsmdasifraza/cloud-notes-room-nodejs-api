@@ -6,7 +6,7 @@ body{
 }
 /* Default App Theme Colors */
 :root{
-    --themeheader : #7a67ad;
+    --themeheader : #734ae4;
     --themebg:linear-gradient(to right, #eaafc8, #654ea3); 
     --themelogo : rgb(53, 53, 53) ;
     --themenonotesbg : #f7eeef;
@@ -15,8 +15,8 @@ body{
     --themenotespointsbg : white;
     --themedeletebutton :rgb(184, 184, 184);
     --themeaddbutton:rgb(184, 184, 184);
-    --themefooter : #494949;
-    --themehome :linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    --themefooter : #734ae4;
+    --themehome : linear-gradient(to right,#654ea3, #eaafc8 );  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 

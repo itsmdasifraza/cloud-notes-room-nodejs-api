@@ -149,6 +149,7 @@ p{
     height: 40px;
     border-radius:20px;
     margin-left: 5px;
+    font-weight: 600;
     outline: none;
     border: none;
     box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
@@ -162,8 +163,3 @@ p{
 .more-notes button:active{
     transform: scale(.95);
 }
-/* .delsvg{
-    fill: var(--themedeletebutton ) !important;
-    background-color: red;
-     color: red;
-} */

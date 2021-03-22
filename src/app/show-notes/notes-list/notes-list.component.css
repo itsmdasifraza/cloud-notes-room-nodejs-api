@@ -130,6 +130,9 @@ p{
     height: 40px;
     overflow: hidden;
     border-radius: 50%;
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
     /* background-color: var(--themeheader); */
     background-color: var(--themedeletebutton );
     margin-right: 10px;
