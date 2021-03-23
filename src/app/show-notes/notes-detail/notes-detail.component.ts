@@ -16,14 +16,14 @@ export class NotesDetailComponent implements OnInit {
   listItem;
   location = window.location.href;
   constructor(private route: ActivatedRoute, private router: Router, private appService: AppService,private titleService:Title, private meta: Meta) {
-    this.titleService.setTitle("Saved Notes Detail | Chat Notes");
+   
     this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
     this.meta.updateTag({ name: 'keywords', content: `chat notes, chatnotes, md asif raza` });
-    // this.meta.updateTag({ name: 'description', content: `Fill your notes in the form below. topic contains heading and notes contain description.` });
+    this.meta.updateTag({ name: 'description', content: `` });
     this.meta.updateTag({ property: "og:url", content: `${this.location}` });
     this.meta.updateTag({ property:"og:type", content:"website" });
-    this.meta.updateTag({ property: "og:title", content: `Saved Notes Detail | Chat Notes` });
-    // this.meta.updateTag({ property: "og:description", content: `Fill your notes in the form below. topic contains heading and notes contain description.`});
+    // this.meta.updateTag({ property: "og:title", content: `Saved Notes Detail | Chat Notes` });
+    this.meta.updateTag({ property: "og:description", content: ``});
     this.meta.updateTag({ property: "og:image", content: `https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png` });
     this.meta.updateTag({ property:"og:image:secure_url", content: `https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png`});
 
@@ -44,7 +44,7 @@ export class NotesDetailComponent implements OnInit {
       this.list = undefined;
       this.listItem = undefined;
       this.index = undefined;
-
+      this.titleService.setTitle(`Loading | Chat Notes`);
       this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
       // console.log("list",this.list);
       
@@ -55,6 +55,7 @@ export class NotesDetailComponent implements OnInit {
             this.listItem= element;
             this.index=index;
             
+            this.titleService.setTitle(`${this.list[index].topic} | Chat Notes`);
           }
         });
         if (!this.listItem) {

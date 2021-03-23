@@ -1,10 +1,14 @@
-
+.main{
+    margin-top: -20px !important;
+    background-color:white;
+    position: relative;
+    z-index: 10 !important;
+}
 .card {
     z-index: 0;
     background-color: #ECEFF1;
     overflow: hidden;
     padding-bottom: 20px;
-    margin-top: -20px;
     margin-bottom: 40px;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -15,8 +19,8 @@
 
 .top {
     padding-top: 40px;
-    padding-left: 13% !important;
-    padding-right: 13% !important
+    padding-left: 12% !important;
+    padding-right: 12% !important
 }
 
 #progressbar {

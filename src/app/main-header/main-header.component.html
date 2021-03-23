@@ -1,21 +1,52 @@
+<!-- side nav for mobile start-->
+<div [@mobileNav]="tglState ? 'invisible' : 'visible'" class="side-nav-mobile nav-mobile-hide" id="mob-nav" *ngIf="headerDetail">
+
+    <div class="px-3 py-3 sdnav">
+        <div class="mb-4">
+            <img src="assets/logo/nav_logo.png" width="100%"  alt="chat notes">
+        </div>
+        <a routerLink="/" (click)="toggle()" class="py-3 px-4">HOME
+        </a>
+        <a routerLink="/about" (click)="toggle()" class="py-3 px-4">ABOUT
+        </a>
+        <a routerLink="/policy" (click)="toggle()" class="py-3 px-4">POLICY
+        </a>
+        <a routerLink="/contact" (click)="toggle()" class="py-3 px-4">CONTACT
+        </a>
+        <a routerLink="/shownotes" (click)="toggle()" class="py-3 px-4">EXPLORE
+        </a>
+
+    </div>
+</div>
+
+
+<!-- side nav mobile black background  -->
+<div *ngIf="headerDetail" [@mobileBlackBackground]="tglState ? 'invisible' : 'visible'" class="" id="mob-nav-back" (click)="toggle()"></div>
+
 <div class="header-color" >
     <div class="container">
     <div class="row">
         <div class="col">
             <div class="logo">
+                
                 <div style="display: flex;">
                     <button (click)="notes()">C</button>
                     <p style="outline:none" routerLink="/"> HAT NOTES</p>
 
                 </div>
-                <div>
+                <div class="chat-link">
                     <a routerLink="/" class="mr-3">HOME</a>
                     <a routerLink="/about" class="mr-3">ABOUT</a>
                     <a routerLink="/policy" class="mr-3">POLICY</a>
                     <a routerLink="/contact" >CONTACT</a>
                 </div>
-                <div>
+                <div class="chat-link">
                     <a routerLink="/shownotes" >EXPLORE</a>
+                </div>
+                <div class="tgl-icn" (click)="toggle()">
+                    <button id="tgl-btn" class="">
+                        <div class="line"></div>
+                    </button>
                 </div>
             </div>
         </div>

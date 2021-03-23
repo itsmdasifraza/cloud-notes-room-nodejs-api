@@ -13,7 +13,7 @@
             <div class="label">
                 <label for="topic">Topic</label>
             </div>
-            <input type="text" id="topic" formControlName="topic" placeholder="type topic here ...">
+            <input type="text" id="topic" autocomplete="off" formControlName="topic" placeholder="type topic here ...">
             <small class="text-white bg-danger px-2 py-1"
                     *ngIf="!notesForm.get('topic').valid && notesForm.get('topic').touched">
                         Topic can't be empty
@@ -21,12 +21,12 @@
         </div>
         <div class="form">
             <div class="label">
-                <label for="notes">Notes</label>
+                <label for="desc">Description</label>
             </div>
-            <textarea id="notes" cols="30" rows="6" formControlName="subject" placeholder="type notes here ..."></textarea>
+            <textarea id="desc" autocomplete="off" cols="30" rows="6" formControlName="subject" placeholder="type description here ..."></textarea>
             <small class="text-white bg-danger px-2 py-1"
                     *ngIf="!notesForm.get('subject').valid && notesForm.get('subject').touched">
-                    Notes can't be empty
+                    Description can't be empty
                 </small>
         </div>
         <div class="form">

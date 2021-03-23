@@ -40,8 +40,18 @@
                         </div>
                     </div>
                     <div style="overflow-x : hidden">
-                        <h3 style="white-space:nowrap; ">{{item.topic | slice: 0:40}}</h3>
-                        <p style="white-space:nowrap; " *ngIf="item.message.length > 0 ">{{item.message[item.message.length - 1].points | slice: 0:40}} </p>
+                        <h3 style=" overflow: hidden;
+                        text-overflow: ellipsis;
+                            -webkit-line-clamp: 1;
+                            display: -webkit-box;
+                          -webkit-box-orient: vertical;
+                          word-wrap: break-word; ">{{item.topic}}</h3>
+                        <p style=" overflow: hidden;
+                        text-overflow: ellipsis;
+                            -webkit-line-clamp: 1;
+                            display: -webkit-box;
+                          -webkit-box-orient: vertical;
+                          word-wrap: break-word;" *ngIf="item.message.length > 0 ">{{item.message[item.message.length - 1].points}} </p>
                         <p *ngIf="item.message.length == 0">Empty Notes !</p>
                     </div>
                 </div>

@@ -7,6 +7,7 @@
 .footer a,span{
     color: rgb(235, 235, 235);
     margin-right: 10px;
+    outline: none;
 }
 .footer a:hover{
 color: rgb(221, 220, 220);

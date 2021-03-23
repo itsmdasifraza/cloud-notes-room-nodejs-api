@@ -1,8 +1,21 @@
 .notes-detail{
     min-height: 100vh;
     background: var(--themebg);
-    
+    /* animation: fadeIn; */
+    /* -webkit-animation: fadeIn; */
+    /* animation-duration: .5s; */
+    /* opacity: 0; */
+    /* animation-fill-mode: forwards; */
 }
+/* @keyframes fadeIn{
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+} */
+
 p{
     margin: 0;
     padding: 0;

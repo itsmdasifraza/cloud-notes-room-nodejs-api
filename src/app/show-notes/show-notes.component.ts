@@ -9,7 +9,7 @@ import { RouterOutlet } from '@angular/router';
   animations: [
     trigger('animShow', [
       transition('* => *', [
-            query(':enter', [style({position:'relative',opacity:'0.2'}), animate('1s ease-in-out', style({  opacity:'1'}))], {
+            query(':enter', [style({position:'relative',opacity:'0.2'}), animate('.5s ease-in-out', style({  opacity:'1'}))], {
                 optional: true,
             }),   
       ])
