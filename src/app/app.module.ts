@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShowNotesComponent } from './show-notes/show-notes.component';
@@ -44,7 +46,8 @@ import { AboutComponent } from './about/about.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule, 
-    Ng2SearchPipeModule 
+    Ng2SearchPipeModule ,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
