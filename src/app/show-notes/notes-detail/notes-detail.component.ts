@@ -19,11 +19,11 @@ export class NotesDetailComponent implements OnInit {
    
     this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
     this.meta.updateTag({ name: 'keywords', content: `chat notes, chatnotes, md asif raza` });
-    this.meta.updateTag({ name: 'description', content: `` });
+    this.meta.updateTag({ name: 'description', content: `Click to see your private notes` });
     this.meta.updateTag({ property: "og:url", content: `${this.location}` });
     this.meta.updateTag({ property:"og:type", content:"website" });
-    // this.meta.updateTag({ property: "og:title", content: `Saved Notes Detail | Chat Notes` });
-    this.meta.updateTag({ property: "og:description", content: ``});
+    
+    this.meta.updateTag({ property: "og:description", content: `Click to see your private notes`});
     this.meta.updateTag({ property: "og:image", content: `https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png` });
     this.meta.updateTag({ property:"og:image:secure_url", content: `https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png`});
 
@@ -45,6 +45,7 @@ export class NotesDetailComponent implements OnInit {
       this.listItem = undefined;
       this.index = undefined;
       this.titleService.setTitle(`Loading | Chat Notes`);
+      this.meta.updateTag({ property: "og:title", content: `Loading | Chat Notes` });
       this.list = JSON.parse(localStorage.getItem('myprivatenotes'));
       // console.log("list",this.list);
       
@@ -56,14 +57,16 @@ export class NotesDetailComponent implements OnInit {
             this.index=index;
             
             this.titleService.setTitle(`${this.list[index].topic} | Chat Notes`);
+            this.meta.updateTag({ property: "og:title", content: `${this.list[index].topic} | Chat Notes` });
+            
           }
         });
         if (!this.listItem) {
-          this.router.navigate(['/shownotes']);
+          this.router.navigate(['/page-not-found']);
         }
       }
       else{
-        this.router.navigate(['/shownotes']);
+        this.router.navigate(['/page-not-found']);
       }
     });
   }
