@@ -23,9 +23,12 @@ router.post('/',
     //pushing user object to mongo
     newUser.save(function(err,data){
         if(err) 
-            return res.status(400).json({mssg:"failed => try unique username and email"});
+            return res.status(400).json({error:'request failed',
+                mssg:"username/email already in use"});
         else{
-           return res.status(200).json({mssg:"success => user registered"});
+           return res.status(200).json({success:'request success',
+                        mssg:"congratulations user registered",
+                    data : data});
         }
     });
 
