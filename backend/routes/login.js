@@ -22,9 +22,7 @@ router.post('/',
      if(usernameExist){
          // verify password
          let jwtData = {
-            user : {
-                id : usernameExist.id 
-            }
+                id : usernameExist.id   
         }
          if(bcrypt.compareSync(req.body.password, usernameExist.password)){
             let token = jwt.sign( jwtData, jwtSecret);
@@ -45,9 +43,7 @@ router.post('/',
         if(emailExist){
             //verify password
             let jwtData = {
-                user : {
                     id : emailExist.id 
-                }
             }
             if(bcrypt.compareSync(req.body.password, emailExist.password)){
                 let token = jwt.sign( jwtData, jwtSecret);
