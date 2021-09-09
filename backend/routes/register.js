@@ -1,24 +1,31 @@
 var express = require('express');
 var router = express.Router();
 const { body, validationResult } = require('express-validator');
+var bcrypt = require('bcryptjs');
 
 var userModel = require('../models/user');
 router.post('/',
-    body('username','username must be minimum 3 character').isLength({ min: 3 }),
+    body('username','username must be minimum 3 character').trim().isLength({ min: 3 }),
     body('email','email must be valid').isEmail(),
-    body('password','password must be minimum 8 character').isLength({ min: 8 }),
+    body('password','password must be minimum 8 character').trim().isLength({ min: 8 }),
      async (req, res) => {
 
     const errors = validationResult(req);
-
+    
+    // throw validation errors
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
+
+    // enctypting password 
+    var salt = bcrypt.genSaltSync(10);
+    var hash = bcrypt.hashSync(req.body.password, salt);
+
     // creating user object
     var newUser = new userModel({
         username:req.body.username,
         email:req.body.email,
-        password:req.body.password
+        password:hash
     });
 
      //check username already exist or not
@@ -43,7 +50,7 @@ router.post('/',
         else{
            return res.status(200).json({success:'request success',
                         mssg:"congratulations user registered",
-                    data : data});
+                    info : {username :data.username , email: data.email}});
         }
     });
 
