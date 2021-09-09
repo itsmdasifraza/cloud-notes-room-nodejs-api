@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const { body, validationResult } = require('express-validator');
-const authToken = require('../middleware/auth-token');
+const authToken = require('../middlewares/auth-token');
 
 var chatModel = require('../models/chat');
 
