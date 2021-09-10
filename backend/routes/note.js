@@ -54,27 +54,26 @@ router.post('/create/:chatid',
 
 });
 
-router.post('/delete/:chatid/:noteid',
+router.post('/read/:chatid',
     authToken,
      async (req, res) => {
 
-  
-    // console.log(req.userid);
-     // check note with logged in userid and chatid already exist or not
+     // find all the note with their userid and chatid
      try{
-     let noteExist = await noteModel.findOneAndDelete({_id:req.params.noteid , userid : req.userid , chatid: req.params.chatid});
-    //  console.log(noteExist)
-     if(!noteExist){
+     var noteData = await noteModel.find({ userid : req.userid , chatid: req.params.chatid});
+    //  console.log(noteData)
+     if( !noteData || noteData.length == 0){
         return res.status(404).json({error:'404',
-        mssg:"note not found"});
+        mssg:"notes not found"});
      }
      }
      catch{
         return res.status(404).json({error:'404',
-        mssg:"note not found"});
+        mssg:"notes not found"});
      }
      return res.status(200).json({success:'200',
-     mssg:"note deleted"});
+     mssg:"all notes retrieved",
+    data : noteData});
 });
 
 module.exports = router;
