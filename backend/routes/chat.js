@@ -4,6 +4,7 @@ const { body, validationResult } = require('express-validator');
 const authToken = require('../middlewares/auth-token');
 
 var chatModel = require('../models/chat');
+var noteModel = require('../models/note');
 
 ////////////////////////////////////////////////
 //           Route for create chat            //
@@ -49,19 +50,20 @@ router.post('/delete/:chatid',
 
      // delete chat with logged in userid and chatid 
         try{
-     let chatExist = await chatModel.findOneAndDelete({_id : req.params.chatid , userid : req.userid });
-    //  console.log(chatExist)
-     if(!chatExist){
-        return res.status(404).json({error:'404',
-        mssg:"chat not found"});
-     }
+            let noteExist = await noteModel.deleteMany({ chatid : req.params.chatid , userid : req.userid });
+        let chatExist = await chatModel.findOneAndDelete({_id : req.params.chatid , userid : req.userid });
+        // console.log(chatExist)
+        if(!chatExist){
+            return res.status(404).json({error:'404',
+            mssg:"chat not found"});
+        }
      }
      catch{
         return res.status(404).json({error:'404',
         mssg:"chat not found"});
      }
      return res.status(200).json({success:'200',
-     mssg:"chat deleted"});
+     mssg:"chat deleted with their notes"});
 });
 
 module.exports = router;
