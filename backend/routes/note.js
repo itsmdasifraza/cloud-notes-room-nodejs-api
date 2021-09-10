@@ -6,6 +6,10 @@ const authToken = require('../middlewares/auth-token');
 var chatModel = require('../models/chat');
 var noteModel = require('../models/note');
 
+
+////////////////////////////////////////////////
+//           Route for create note            //
+////////////////////////////////////////////////
 router.post('/create/:chatid',
     body('message','message must be minimum 1 character').trim().isLength({ min: 1 }),
     authToken,
@@ -54,6 +58,10 @@ router.post('/create/:chatid',
 
 });
 
+
+////////////////////////////////////////////////
+//             Route for read note            //
+////////////////////////////////////////////////
 router.post('/read/:chatid',
     authToken,
      async (req, res) => {
@@ -74,6 +82,32 @@ router.post('/read/:chatid',
      return res.status(200).json({success:'200',
      mssg:"all notes retrieved",
     data : noteData});
+});
+
+////////////////////////////////////////////////
+//           Route for delete note            //
+////////////////////////////////////////////////
+router.post('/delete/:chatid/:noteid',
+    authToken,
+     async (req, res) => {
+
+  
+    // console.log(req.userid);
+     // check note with logged in userid and chatid already exist or not
+     try{
+     let noteExist = await noteModel.findOneAndDelete({_id:req.params.noteid , userid : req.userid , chatid: req.params.chatid});
+    //  console.log(noteExist)
+     if(!noteExist){
+        return res.status(404).json({error:'404',
+        mssg:"note not found"});
+     }
+     }
+     catch{
+        return res.status(404).json({error:'404',
+        mssg:"note not found"});
+     }
+     return res.status(200).json({success:'200',
+     mssg:"note deleted"});
 });
 
 module.exports = router;
