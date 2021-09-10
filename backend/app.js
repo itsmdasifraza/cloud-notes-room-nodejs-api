@@ -9,6 +9,7 @@ const connectMongo = require('./database');
 var registerRouter = require('./routes/register');
 var loginRouter = require('./routes/login');
 var chatRouter = require('./routes/chat');
+var noteRouter = require('./routes/note');
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api/account/register', registerRouter);
 app.use('/api/account/login', loginRouter);
 app.use('/api/chat', chatRouter);
+app.use('/api/note', noteRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
