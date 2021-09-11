@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'contact', loadChildren: () => import('./user/pages/main/contact/contact.module').then(m => m.ContactModule)},
   { path: 'about', loadChildren: () => import('./user/pages/main/about/about.module').then(m => m.AboutModule)},
   { path: 'policy', loadChildren: () => import('./user/pages/guide/policy/policy.module').then(m => m.PolicyModule)},
-  { path: 'chats', loadChildren: () => import('./user/pages/chat/show-notes/show-notes.module').then(m => m.ShowNotesModule)},
+  { path: 'chat', loadChildren: () => import('./user/pages/chat/read-chat/read-chat.module').then(m => m.ReadChatModule)},
   { path: '**', loadChildren: () => import('./user/pages/404/page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)},
   // {path:'shownotes', component:ShowNotesComponent,
   // children:[
