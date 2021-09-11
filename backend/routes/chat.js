@@ -42,6 +42,31 @@ router.post('/create',
 });
 
 ////////////////////////////////////////////////
+//             Route for read chat            //
+////////////////////////////////////////////////
+router.post('/read',
+    authToken,
+     async (req, res) => {
+
+     // find all the chat with their userid
+     try{
+     var chatData = await chatModel.find({ userid : req.userid });
+    //  console.log(chatData)
+     if( !chatData || chatData.length == 0){
+        return res.status(404).json({error:'404',
+        mssg:"chats not found"});
+     }
+     }
+     catch{
+        return res.status(404).json({error:'404',
+        mssg:"chats not found"});
+     }
+     return res.status(200).json({success:'200',
+     mssg:"all chats retrieved",
+    data : chatData});
+});
+
+////////////////////////////////////////////////
 //           Route for delete chat            //
 ////////////////////////////////////////////////
 router.post('/delete/:chatid',
