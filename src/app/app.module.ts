@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { HttpClientModule } from '@angular/common/http';
 
 // import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MainHeaderModule } from './user/navigator/main-header/main-header.module';
@@ -23,7 +24,8 @@ import { FooterModule } from './user/navigator/footer/footer.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MainHeaderModule,
-    FooterModule
+    FooterModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
