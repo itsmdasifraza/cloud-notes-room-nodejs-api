@@ -32,19 +32,22 @@ export class RegisterComponent implements OnInit {
       this.spinner = true;
       this.error = false;
         console.log(this.registerForm.value);
-        let username = this.registerForm.value.username;
-        let email = this.registerForm.value.email;
-        let password = this.registerForm.value.password;
+        
+        let user = {
+          "username" : this.registerForm.value.username,
+          "email" : this.registerForm.value.email,
+          "password" : this.registerForm.value.password
+        }
         this.registerForm.reset();
-        this.authService.register(this.registerForm.value).subscribe(
+        this.authService.register(user).subscribe(
           (res)=>{
-            console.log(res);
+            console.log("res",res);
     
             this.spinner = false;
             this.router.navigate(["/login"]);
 
           },(err)=>{
-            console.log(err);
+            console.log("err",err);
             this.spinner = false;
             this.error = true;
         });
