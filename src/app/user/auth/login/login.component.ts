@@ -4,19 +4,17 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthRegLoginService } from '../../services/auth/auth-reg-login.service';
 
-
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   constructor(private authService : AuthRegLoginService, private router : Router) { }
 
-  registerForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
+  loginForm = new FormGroup({
+    usermail: new FormControl('', [Validators.required, Validators.minLength(3) ]),
     password: new FormControl('', [Validators.required, Validators.minLength(4)]),
 
   });
@@ -27,25 +25,23 @@ export class RegisterComponent implements OnInit {
   error = false;
   spinner : boolean = false;
   
-  register(){
-    if(this.registerForm.valid){
+  login(){
+    if(this.loginForm.valid){
       this.spinner = true;
       this.error = false;
-        // console.log(this.registerForm.value);
-        
+        // console.log(this.loginForm.value);
         let user = {
-          "username" : this.registerForm.value.username,
-          "email" : this.registerForm.value.email,
-          "password" : this.registerForm.value.password
-        }
+          "usermail" : this.loginForm.value.usermail,
+         "password" : this.loginForm.value.password
+        } 
         
-        this.authService.register(user).subscribe(
+        this.authService.login(user).subscribe(
           (res)=>{
             // console.log("res",res);
-    
+            localStorage.setItem("user-token",res.token);
             this.spinner = false;
-            this.registerForm.reset();
-            this.router.navigate(["/login"]);
+            this.loginForm.reset();
+            this.router.navigate(["/chat"]);
 
           },(err)=>{
             // console.log("err",err);
@@ -54,4 +50,5 @@ export class RegisterComponent implements OnInit {
         });
     }
   }
+
 }
