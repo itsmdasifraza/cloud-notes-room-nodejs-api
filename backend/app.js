@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
 const connectMongo = require('./database');
+var cors = require('cors');
 
 var registerRouter = require('./routes/register');
 var loginRouter = require('./routes/login');
@@ -28,6 +29,12 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(cors());
+// app.use(cors({
+//   origin: "http://127.0.0.7:4200",
+//   credentials: true
+// }))
 
 app.use('/api/account/register', registerRouter);
 app.use('/api/account/login', loginRouter);
