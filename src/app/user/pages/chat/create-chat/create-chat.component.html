@@ -8,14 +8,14 @@
     <div style="padding:40px 15px;" class="btns"> 
 
         <h1 >Fill your notes</h1>
-    <form [formGroup]="notesForm" (ngSubmit)="pushNotes()">
+    <form [formGroup]="chatForm" (ngSubmit)="createChat()">
         <div class="form">
             <div class="label">
                 <label for="topic">Topic</label>
             </div>
-            <input type="text" id="topic" autocomplete="off" formControlName="topic" placeholder="type topic here ...">
+            <input type="text" id="topic" autocomplete="off" formControlName="title" placeholder="type chat name ...">
             <small class="text-white bg-danger px-2 py-1"
-                    *ngIf="!notesForm.get('topic').valid && notesForm.get('topic').touched">
+                    *ngIf="!chatForm.get('title').valid && chatForm.get('title').touched">
                         Topic can't be empty
                     </small>
         </div>
@@ -23,15 +23,15 @@
             <div class="label">
                 <label for="desc">Description</label>
             </div>
-            <textarea id="desc" autocomplete="off" cols="30" rows="6" formControlName="subject" placeholder="type description here ..."></textarea>
+            <textarea id="desc" autocomplete="off" cols="30" rows="6" formControlName="description" placeholder="type description here ..."></textarea>
             <small class="text-white bg-danger px-2 py-1"
-                    *ngIf="!notesForm.get('subject').valid && notesForm.get('subject').touched">
+                    *ngIf="!chatForm.get('description').valid && chatForm.get('description').touched">
                     Description can't be empty
                 </small>
         </div>
         <div class="form">
             
-            <button type="submit">SAVE</button>
+            <button type="submit">Create</button>
         </div>
     </form>
     </div>

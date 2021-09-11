@@ -44,7 +44,7 @@ router.post('/create',
 ////////////////////////////////////////////////
 //             Route for read chat            //
 ////////////////////////////////////////////////
-router.post('/read',
+router.get('/read',
     authToken,
      async (req, res) => {
 

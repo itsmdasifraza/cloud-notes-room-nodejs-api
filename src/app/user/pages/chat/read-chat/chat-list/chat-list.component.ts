@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { ChatService } from 'src/app/user/services/chat.service';
 @Component({
   selector: 'app-chat-list',
   templateUrl: './chat-list.component.html',
@@ -13,24 +14,27 @@ export class ChatListComponent implements OnInit {
   list;
   navtoggle = true;
   searchText: string;
-  constructor(private appService: AppService, private router: Router) {
+  constructor(private appService: AppService, private chatService: ChatService, private router: Router) {
     // subscribe to home component messages
-    this.subscription=this.appService.subject.subscribe(message => {
+    this.subscription=this.chatService.readChat().subscribe(res => {
       // console.log("reverse subject working");
-      if (message) {
-        if(message.length > 0){
-          this.list = message.slice().reverse();
-          // this.list  = message.reverse();
+      if (res) {
+        
+          console.log("res",res);
+          // this.list = res.data.slice().reverse();
+          this.list  = res.data.reverse();
+          // console.log(this.list);
          
-        }
-        else{
-          this.list = [];
-        }
+
         
         //console.log( "updated list",this.list);
       }
-      else{
-        this.list = [];
+     
+    },err =>{
+      if(err){
+
+        console.log("err",err);
+
       }
     });
     this.navsub =this.appService.navtoggle.subscribe(message => {

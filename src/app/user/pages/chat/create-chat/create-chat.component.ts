@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
+import { ChatService } from 'src/app/user/services/chat.service';
 
 @Component({
   selector: 'app-create-chat',
@@ -13,10 +14,9 @@ import { Title, Meta } from '@angular/platform-browser';
 })
 export class CreateChatComponent implements OnInit {
 
-  notes: any;
-  month = ["Jan","Feb","Mar","Apr","May","Jun","July","Aug","Sep","Oct","Nov","Dec"];
+
   location = window.location.href;
-  constructor(private appService: AppService, private router : Router,private titleService:Title, private meta: Meta) {
+  constructor(private appService: AppService, private chatService : ChatService, private router : Router,private titleService:Title, private meta: Meta) {
     this.titleService.setTitle("Create New Notes | Chat Notes");
     this.meta.updateTag({ name: 'robots', content: 'index, follow' });
     this.meta.updateTag({ name: 'keywords', content: `chat notes, chatnotes, md asif raza` });
@@ -31,9 +31,9 @@ export class CreateChatComponent implements OnInit {
    }
 
 
-  notesForm = new FormGroup({
-    topic: new FormControl('', [Validators.required, Validators.minLength(1)]),
-    subject: new FormControl('', [Validators.required, Validators.minLength(1)]),
+  chatForm = new FormGroup({
+    title: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
 
   });
 
@@ -41,46 +41,36 @@ export class CreateChatComponent implements OnInit {
       this.appService.navtoggle.next(false);
   }
 
-  pushNotes() {
-    // console.log(this.notesForm.value);
-    if (this.notesForm.invalid) {
-      // console.log("invalid");
-    }
+  
 
-    if (this.notesForm.valid) {
-      var note = JSON.parse(localStorage.getItem('myprivatenotes'));
-      if (!note) {
-        // console.log("NULL");
-        this.notes = [];
-      }
-      else {
-        this.notes = note;
-      }
-      
-      let date = new Date();
-      
-      
-      let pushData = {
-        "topic" : this.notesForm.value.topic
-      };
-      pushData["date"] = "Created on "+ date.getDate()+" "+ this.month[date.getMonth()] +", "+date.getFullYear() ;
-      pushData["message"] = [];
-      pushData["message"].push({"points":this.notesForm.value.subject});
-      let random = Math.floor(Math.random() * 3875846868458367) + 464564667 + date.getHours() + date.getMilliseconds() + date.getMinutes() + date.getSeconds();
-      pushData["id"] = random.toString();
+  error = false;
+  spinner : boolean = false;
+  
+  createChat(){
+    if(this.chatForm.valid){
+      this.spinner = true;
+      this.error = false;
+        // console.log(this.chatForm.value);
+        let chat = {
+          "title" : this.chatForm.value.title,
+         "description" : this.chatForm.value.description
+        } 
+        
+        this.chatService.createChat(chat).subscribe(
+          (res)=>{
+            // console.log("res",res);
+            this.spinner = false;
+            this.chatForm.reset();
+            this.router.navigate(["/chat"]);
 
-      
-      this.notes.push(pushData);
-      localStorage.setItem('myprivatenotes', JSON.stringify(this.notes));
-      // console.log(this.notes);
-      this.appService.subject.next(this.notes);
-      this.notesForm.reset();
-      this.router.navigate(["shownotes/"+pushData["id"]]);
+          },(err)=>{
+            // console.log("err",err);
+            this.spinner = false;
+            this.error = err.error.mssg;
+        });
     }
   }
-  showNotes(){
-    this.router.navigate(["/"]);
-  }
+
   ngOnDestroy(): void {
     this.appService.navtoggle.next(true);
     

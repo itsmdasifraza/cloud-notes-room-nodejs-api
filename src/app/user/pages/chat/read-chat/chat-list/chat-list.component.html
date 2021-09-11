@@ -45,14 +45,14 @@
                              -webkit-line-clamp: 1;
                              display: -webkit-box;
                            -webkit-box-orient: vertical;
-                           word-wrap: break-word; ">{{item.topic}}</h3>
+                           word-wrap: break-word; ">{{item.title}}</h3>
                          <p style=" overflow: hidden;
                          text-overflow: ellipsis;
                              -webkit-line-clamp: 1;
                              display: -webkit-box;
                            -webkit-box-orient: vertical;
-                           word-wrap: break-word;" *ngIf="item.message.length > 0 ">{{item.message[item.message.length - 1].points}} </p>
-                         <p *ngIf="item.message.length == 0">Empty Notes !</p>
+                           word-wrap: break-word;">{{item.description}} </p>
+                         <!-- <p *ngIf="item.message.length == 0">Empty Notes !</p> -->
                      </div>
                  </div>
              </div>
