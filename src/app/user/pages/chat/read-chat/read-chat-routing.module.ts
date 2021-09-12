@@ -9,7 +9,7 @@ const routes: Routes = [
     children:[
       // { path:'', component:DefaultScreenComponent},
       { path: 'create', loadChildren: () => import('../create-chat/create-chat.module').then(m => m.CreateChatModule)},
-      { path: 'note', loadChildren: () => import('../../note/read-note/read-note.module').then(m => m.ReadNoteModule)},
+      { path: ':chatid/note', loadChildren: () => import('../../note/read-note/read-note.module').then(m => m.ReadNoteModule)},
     ]
   }
 ];

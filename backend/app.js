@@ -36,8 +36,8 @@ app.use(cors());
 //   credentials: true
 // }))
 
-app.use('/api/account/register', registerRouter);
-app.use('/api/account/login', loginRouter);
+app.use('/api/auth/register', registerRouter);
+app.use('/api/auth/login', loginRouter);
 app.use('/api/chat', chatRouter);
 app.use('/api/note', noteRouter);
 

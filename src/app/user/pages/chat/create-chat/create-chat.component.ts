@@ -5,7 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
-import { ChatService } from 'src/app/user/services/chat.service';
+import { ChatService } from 'src/app/user/services/chat/chat.service';
 
 @Component({
   selector: 'app-create-chat',

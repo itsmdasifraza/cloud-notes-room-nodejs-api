@@ -40,7 +40,7 @@ export class ReadNoteComponent implements OnInit {
       // do something with the query params
     });
     this.route.params.subscribe(routeParams => {
-      
+      console.log(routeParams.chatid);
       this.list = undefined;
       this.listItem = undefined;
       this.index = undefined;
