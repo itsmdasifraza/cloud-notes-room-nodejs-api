@@ -62,7 +62,7 @@ router.post('/create/:chatid',
 ////////////////////////////////////////////////
 //             Route for read note            //
 ////////////////////////////////////////////////
-router.post('/read/:chatid',
+router.get('/read/:chatid',
     authToken,
      async (req, res) => {
 
