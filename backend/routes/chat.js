@@ -20,12 +20,17 @@ router.post('/create',
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-   
+   let date = new Date();
     // creating user object
     var newChat = new chatModel({
         userid : req.userid,
         title:req.body.title,
-        description:req.body.description
+        description:req.body.description,
+        stamp : {
+            day : date.getDate(),
+            month : date.getMonth(),
+            year : date.getFullYear(),
+         }
     });
 
     //pushing user object to mongo

@@ -35,12 +35,17 @@ router.post('/create/:chatid',
         return res.status(404).json({error:'404',
         mssg:"chat not found"});
      }
-     
+     let date = new Date();
     // creating note object
     var newNote = new noteModel({
         userid : req.userid,
         chatid : req.params.chatid,
-        message:req.body.message
+        message:req.body.message,
+        stamp : {
+           day : date.getDate(),
+           month : date.getMonth(),
+           year : date.getFullYear(),
+        }
     });
 
 
@@ -95,8 +100,8 @@ router.get('/delete/:chatid/:noteid',
     // console.log(req.userid);
      // check note with logged in userid and chatid already exist or not
      try{
-     let noteExist = await noteModel.findOneAndDelete({_id:req.params.noteid , userid : req.userid , chatid: req.params.chatid});
-    //  console.log(noteExist)
+     var noteExist = await noteModel.findOneAndDelete({_id:req.params.noteid , userid : req.userid , chatid: req.params.chatid});
+   //   console.log(noteExist)
      if(!noteExist){
         return res.status(404).json({error:'404',
         mssg:"note not found"});
@@ -107,7 +112,7 @@ router.get('/delete/:chatid/:noteid',
         mssg:"note not found"});
      }
      return res.status(200).json({success:'200',
-     mssg:"note deleted"});
+     mssg:"note deleted",info : noteExist});
 });
 
 module.exports = router;

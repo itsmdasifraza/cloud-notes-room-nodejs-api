@@ -8,6 +8,7 @@ import { NoteService } from 'src/app/user/services/note/note.service';
 import { Subscription } from 'rxjs';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
 import { ChatService } from 'src/app/user/services/chat/chat.service';
+import { userInfo } from 'os';
 @Component({
   selector: 'app-read-note',
   templateUrl: './read-note.component.html',
@@ -16,6 +17,9 @@ import { ChatService } from 'src/app/user/services/chat/chat.service';
 export class ReadNoteComponent implements OnInit {
   subscription : Subscription;
   notes = [];
+  months = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
   chat;
   listItem;
   location = window.location.href;
@@ -44,7 +48,7 @@ chatid;
       // do something with the query params
     });
     this.route.params.subscribe(routeParams => {
-      console.log(routeParams.chatid);
+      // console.log(routeParams.chatid);
       this.chatid = routeParams.chatid; 
       this.notes = undefined;
       this.subscription = this.noteService.readNote(routeParams.chatid).subscribe(res => {
@@ -63,6 +67,8 @@ chatid;
         if (res) {
           // console.log("res",res);   
           this.chat = res.data;
+          this.chat.stamp.month = this.months[this.chat.stamp.month];
+          console.log(this.chat);
         }
       }, err => {
         if (err) {
@@ -109,6 +115,13 @@ chatid;
     this.noteService.deleteNote(this.chatid,noteid).subscribe((res)=>{
         if(res){
           // console.log("res",res);
+          let info = res.info;
+          this.notes.forEach((element , index)=>{
+            // console.log(element,index)
+            if(element._id == info._id && element.userid == info.userid && element.chatid == info.chatid){
+                this.notes.splice(index , 1);
+            }
+          });
         }
     },(err)=>{
       if(err){

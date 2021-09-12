@@ -16,6 +16,10 @@ const noteSchema = new Schema ({
         type : String,
         required : true,
     },
+    stamp : {
+        type : Object,
+        required : true
+    },
     date : {
         type : Date,
         default : Date.now
