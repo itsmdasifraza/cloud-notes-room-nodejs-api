@@ -87,7 +87,7 @@ router.get('/read/:chatid',
 ////////////////////////////////////////////////
 //           Route for delete note            //
 ////////////////////////////////////////////////
-router.post('/delete/:chatid/:noteid',
+router.get('/delete/:chatid/:noteid',
     authToken,
      async (req, res) => {
 

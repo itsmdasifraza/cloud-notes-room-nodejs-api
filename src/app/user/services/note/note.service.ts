@@ -9,6 +9,7 @@ export class NoteService {
   
   private ROOT_URL = "http://127.0.0.1:3000/api/chat/create";
   private readNoteApi = "http://127.0.0.1:3000/api/note/read";
+  private deleteNoteApi = "http://127.0.0.1:3000/api/note/delete";
   private createNoteApi = "http://127.0.0.1:3000/api/note/create";
   constructor(private http: HttpClient) { }
 
@@ -16,12 +17,12 @@ export class NoteService {
   
     
 
-  deleteNote(chat) {
+  deleteNote(chatid,noteid) {
     let header= new HttpHeaders({
-      "Content-Type":"application/json",
+      // "Content-Type":"application/json",
       "token":localStorage.getItem("user-token")
     });
-    return this.http.post<any>(this.ROOT_URL,chat,{headers:header} );
+    return this.http.get<any>(`${this.deleteNoteApi}/${chatid}/${noteid}`,{headers:header} );
   }
    createNote(chatid,note){
     let header= new HttpHeaders({

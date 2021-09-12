@@ -6,6 +6,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Title, Meta } from '@angular/platform-browser';
 import { NoteService } from 'src/app/user/services/note/note.service';
 import { Subscription } from 'rxjs';
+import { CompileShallowModuleMetadata } from '@angular/compiler';
+import { ChatService } from 'src/app/user/services/chat/chat.service';
 @Component({
   selector: 'app-read-note',
   templateUrl: './read-note.component.html',
@@ -14,8 +16,9 @@ import { Subscription } from 'rxjs';
 export class ReadNoteComponent implements OnInit {
   subscription : Subscription;
   notes;
+  listItem;
   location = window.location.href;
-  constructor(private route: ActivatedRoute,private noteService : NoteService, private router: Router, private appService: AppService,private titleService:Title, private meta: Meta) {
+  constructor(private route: ActivatedRoute,private chatService : ChatService, private noteService : NoteService, private router: Router, private appService: AppService,private titleService:Title, private meta: Meta) {
    
     this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
     this.meta.updateTag({ name: 'keywords', content: `chat notes, chatnotes, md asif raza` });
@@ -45,12 +48,12 @@ chatid;
       this.notes = undefined;
       this.subscription = this.noteService.readNote(routeParams.chatid).subscribe(res => {
         if (res) {
-          console.log("res",res);
+          // console.log("res",res);
           this.notes = res.data;
         }
       }, err => {
         if (err) {
-          console.log("err", err);
+          // console.log("err", err);
         }
       });
       
@@ -73,27 +76,39 @@ chatid;
       
       this.noteService.createNote(this.chatid,note).subscribe(
         (res)=>{
-          console.log("res",res);
-          // this.spinner = false;
+          // console.log("res",res);
           this.noteForm.reset();
-          // this.router.navigate(["/chat"]);
 
         },(err)=>{
-          console.log("err",err);
-          // this.spinner = false;
-          // this.error = err.error.mssg;
+          // console.log("err",err);
       });
     }
   }
 
 
-  deleteNotes(){
-  
+  deleteNote(noteid){
+    this.noteService.deleteNote(this.chatid,noteid).subscribe((res)=>{
+        if(res){
+          // console.log("res",res);
+        }
+    },(err)=>{
+      if(err){
+        // console.log("err",err);
+      }
+    });
   }
 
-  deletePoints(index){  
-  }
-
- 
+  deleteChat(){
+    this.chatService.deleteChat(this.chatid).subscribe((res)=>{
+      if(res){
+        // console.log("res",res);
+        this.router.navigate(["/chat"]);
+      }
+  },(err)=>{
+    if(err){
+      // console.log("err",err);
+    }
+  });
+}
 
 }
