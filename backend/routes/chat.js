@@ -67,6 +67,31 @@ router.get('/read',
 });
 
 ////////////////////////////////////////////////
+//           Route for read one chat          //
+////////////////////////////////////////////////
+router.get('/read/:chatid',
+    authToken,
+     async (req, res) => {
+
+     // find all the chat with their userid
+     try{
+     var chatData = await chatModel.findOne({_id : req.params.chatid , userid : req.userid });
+    //  console.log(chatData)
+     if( !chatData){
+        return res.status(404).json({error:'404',
+        mssg:"chats not found"});
+     }
+     }
+     catch{
+        return res.status(404).json({error:'404',
+        mssg:"chats not found"});
+     }
+     return res.status(200).json({success:'200',
+     mssg:"chat retrieved",
+    data : chatData});
+});
+
+////////////////////////////////////////////////
 //           Route for delete chat            //
 ////////////////////////////////////////////////
 router.get('/delete/:chatid',
