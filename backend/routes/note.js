@@ -52,7 +52,7 @@ router.post('/create/:chatid',
         else{
            return res.status(200).json({success:'200',
                         mssg:"congratulations note created",
-                    info : {message :data.message }});
+                    info : data});
         }
     });
 

@@ -10,15 +10,15 @@
             </div>
         </div>
         <div style="flex-basis: 91%; overflow-x:hidden; ">
-            <p style=" overflow: hidden;
+            <p *ngIf="chat" style=" overflow: hidden;
             text-overflow: ellipsis;
                 -webkit-line-clamp: 1;
                 display: -webkit-box;
               -webkit-box-orient: vertical;
               word-wrap: break-word; "><b>
-                  <!-- {{listItem.topic}} -->
+                  {{chat.title}}
                 </b></p>
-            <p style=" overflow: hidden;
+            <p *ngIf="chat" style=" overflow: hidden;
             text-overflow: ellipsis;
                 -webkit-line-clamp: 1;
                 display: -webkit-box;
@@ -37,9 +37,9 @@
     <div class="header2">
 
     </div>
-    <div *ngIf="listItem">
+    <div *ngIf="chat">
         <div class="topic">
-            <h6 style="overflow: hidden; word-wrap: break-word;">{{listItem.topic}}</h6>
+            <h6 style="overflow: hidden; word-wrap: break-word;">{{chat.description}}</h6>
         </div>
     </div>
     <div *ngIf="notes">

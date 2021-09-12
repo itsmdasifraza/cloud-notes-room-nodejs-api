@@ -15,7 +15,8 @@ import { ChatService } from 'src/app/user/services/chat/chat.service';
 })
 export class ReadNoteComponent implements OnInit {
   subscription : Subscription;
-  notes;
+  notes = [];
+  chat;
   listItem;
   location = window.location.href;
   constructor(private route: ActivatedRoute,private chatService : ChatService, private noteService : NoteService, private router: Router, private appService: AppService,private titleService:Title, private meta: Meta) {
@@ -57,8 +58,18 @@ chatid;
         }
       });
       
-      // console.log("list",this.list);
- 
+
+      this.subscription = this.chatService.readSingleChat(routeParams.chatid).subscribe(res => {
+        if (res) {
+          // console.log("res",res);   
+          this.chat = res.data;
+        }
+      }, err => {
+        if (err) {
+          // console.log("err", err);
+        }
+      });
+      
     });
   }
 
@@ -76,7 +87,15 @@ chatid;
       
       this.noteService.createNote(this.chatid,note).subscribe(
         (res)=>{
-          // console.log("res",res);
+          console.log("res",res);
+          let info = res.info;
+          
+          if(!this.notes){
+            this.notes = [info];
+          }
+          else{
+            this.notes.push(info);
+          }
           this.noteForm.reset();
 
         },(err)=>{

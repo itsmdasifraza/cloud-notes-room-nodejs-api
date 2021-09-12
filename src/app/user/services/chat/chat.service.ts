@@ -29,6 +29,14 @@ export class ChatService {
     });
     return this.http.get<any>(`${this.readChatApi}`,{headers:header});
   }
+  
+  readSingleChat(chatid){
+    let header= new HttpHeaders({
+      // "Content-Type":"application/json",
+      "token":localStorage.getItem("user-token")
+    });
+    return this.http.get<any>(`${this.readChatApi}/${chatid}`,{headers:header});
+  }
 
   deleteChat(chatid){
     let header= new HttpHeaders({
