@@ -12,7 +12,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  showNotes(){
+  home(){
     this.router.navigate(["/"]);
+  }
+  logout(){
+    console.log("clicked");
+    localStorage.removeItem("user-token");
+    this.router.navigate(["/login"]);
   }
 }

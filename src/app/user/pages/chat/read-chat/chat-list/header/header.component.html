@@ -1,4 +1,26 @@
 <div class="logo">
-    <button (click)="showNotes()">C</button>
-    <p style="outline:none" routerLink="/">HAT NOTES</p>
+    <div class="d-flex">
+        <button (click)="home()">C</button>
+        <p style="outline:none" routerLink="/">HAT NOTES</p>
+    </div>
+    
+    <div class="menu-item"></div>
+    <div class="dropdown-container" tabindex="-1">
+        <div class="three-dots"></div>
+        <div class="dropdown">
+            <a href="#">
+                <div>Profile
+                </div>
+                <hr>
+            </a>
+            <a href="#">
+                <div>Setting
+                </div>
+                <hr>
+            </a>
+            <a (click)= "logout()">
+                <div>Logout</div>
+            </a>
+        </div>
+    </div>
 </div>
