@@ -2,10 +2,11 @@ import { Component, OnInit, Output } from '@angular/core';
 import { EventEmitter } from 'protractor';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { ChatService } from 'src/app/user/services/chat/chat.service';
+import { ConnectService } from 'src/app/user/services/connect/connect.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-create-chat',
@@ -13,10 +14,11 @@ import { ChatService } from 'src/app/user/services/chat/chat.service';
   styleUrls: ['./create-chat.component.css']
 })
 export class CreateChatComponent implements OnInit {
-
-
+chatSubscription : Subscription;
+chats;
+dummy;
   location = window.location.href;
-  constructor(private appService: AppService, private chatService : ChatService, private router : Router,private titleService:Title, private meta: Meta) {
+  constructor(private connectService: ConnectService, private chatService : ChatService, private router : Router,private titleService:Title, private meta: Meta) {
     this.titleService.setTitle("Create New Notes | Chat Notes");
     this.meta.updateTag({ name: 'robots', content: 'index, follow' });
     this.meta.updateTag({ name: 'keywords', content: `chat notes, chatnotes, md asif raza` });
@@ -28,6 +30,8 @@ export class CreateChatComponent implements OnInit {
     this.meta.updateTag({ property: "og:image", content: `https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png` });
     this.meta.updateTag({ property:"og:image:secure_url", content: `https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png`});
 
+
+
    }
 
 
@@ -38,7 +42,19 @@ export class CreateChatComponent implements OnInit {
   });
 
   ngOnInit(): void {
-      this.appService.navtoggle.next(false);
+      this.connectService.chatToggle.next(false);
+      this.chatSubscription = this.connectService.chatRefresh.subscribe((res)=>{
+        if(res){
+          if(res.length > 0){
+            this.chats = res;
+            // console.log("list2 reteive", this.chats);
+          }
+        }
+      },(err)=>{
+        if(err){
+          // console.log("err",err);
+        }
+      });
   }
 
   
@@ -58,7 +74,16 @@ export class CreateChatComponent implements OnInit {
         
         this.chatService.createChat(chat).subscribe(
           (res)=>{
-            // console.log("res",res);
+            console.log("res",res);
+            let singleChat = res.info;
+            if(this.chats && this.chats.length > 0){
+
+              this.chats.push(singleChat)
+            }
+            else{
+              this.chats = [singleChat];
+            }
+           this.connectService.chatRefresh.next(this.chats);
             this.spinner = false;
             this.chatForm.reset();
             this.router.navigate(["/chat"]);
@@ -72,7 +97,8 @@ export class CreateChatComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.appService.navtoggle.next(true);
+    this.connectService.chatToggle.next(true);
+    this.chatSubscription.unsubscribe();
     
 }
 }

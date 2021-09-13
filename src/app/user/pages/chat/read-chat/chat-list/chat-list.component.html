@@ -26,7 +26,7 @@
          <input type="text"  name="search" [(ngModel)]="searchText" placeholder="search your notes here">
      </div>
      <div *ngIf="list  && list.length > 0" >
-         <div *ngFor="let item of list | filter:searchText">
+         <div *ngFor="let item of list.slice().reverse() | filter:searchText">
  
              <div class="item" >
                  <div (click)="navigate(item._id)" class="itm-flx">

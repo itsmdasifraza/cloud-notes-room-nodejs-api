@@ -21,7 +21,7 @@ export class ChatListComponent implements OnInit {
         if(res){
           if(res.length > 0){
 
-            this.list = res.reverse();
+            this.list = res;
           }
         }
     });
@@ -34,11 +34,10 @@ export class ChatListComponent implements OnInit {
   ngOnInit(): void {
     // subscribe to home component messages
     this.chatSubscription = this.chatService.readChat().subscribe(res => {
-      if (res) {
+      if (res && res.length > 0) {
         // console.log("res",res);
-
-        // this.list = res.data.reverse();
         let list = res.data;
+        // console.log("list1 " ,list);
         this.connectService.chatRefresh.next(list);
       }
     }, err => {

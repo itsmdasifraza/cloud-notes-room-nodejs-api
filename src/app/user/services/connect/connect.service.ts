@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +7,7 @@ import { Observable, Subject } from 'rxjs';
 export class ConnectService {
 
   //this subject refresh the chat section whenever a chat is created or deleted.
-  chatRefresh = new Subject<any>();
+  chatRefresh = new BehaviorSubject([]);
   //this subject toggle chat section on following routes => chat/create , chat/:chatid
   chatToggle = new Subject<boolean>();
   constructor() { }

@@ -41,7 +41,7 @@ router.post('/create',
         else{
            return res.status(200).json({success:'200',
                         mssg:"congratulations chat created",
-                    info : {title :data.title , description: data.description}});
+                    info : data});
         }
     });
 });
