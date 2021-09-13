@@ -1,44 +1,55 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from 'src/app/app.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { ChatService } from 'src/app/user/services/chat/chat.service';
+import { ConnectService } from 'src/app/user/services/connect/connect.service';
 @Component({
   selector: 'app-chat-list',
   templateUrl: './chat-list.component.html',
   styleUrls: ['./chat-list.component.css']
 })
 export class ChatListComponent implements OnInit {
-  private subscription: Subscription;
-  private navsub: Subscription;
+  private chatSubscription: Subscription;
+  private toggleSubscription: Subscription;
   list;
-  navtoggle = true;
+  private refreshSubscription : Subscription;
+  chatToggle = true;
   searchText: string;
-  constructor(private appService: AppService, private chatService: ChatService, private router: Router) {
+  constructor(private connectService: ConnectService, private chatService: ChatService, private router: Router) {
 
+    this.refreshSubscription = this.connectService.chatRefresh.subscribe(res => {
+        if(res){
+          if(res.length > 0){
+
+            this.list = res.reverse();
+          }
+        }
+    });
+
+    this.toggleSubscription = this.connectService.chatToggle.subscribe(res => {
+      this.chatToggle = res;
+    });
+  }
+
+  ngOnInit(): void {
     // subscribe to home component messages
-    this.subscription = this.chatService.readChat().subscribe(res => {
+    this.chatSubscription = this.chatService.readChat().subscribe(res => {
       if (res) {
         // console.log("res",res);
-        this.list = res.data.reverse();
+
+        // this.list = res.data.reverse();
+        let list = res.data;
+        this.connectService.chatRefresh.next(list);
       }
     }, err => {
       if (err) {
         // console.log("err", err);
       }
     });
-
-    this.navsub = this.appService.navtoggle.subscribe(message => {
-      this.navtoggle = message;
-    });
-  }
-
-  ngOnInit(): void {
   }
 
   navigate(element) {
     this.router.navigate(["/chat/" + element + "/note"]);
-    // alert(element)
   }
 
   add() {
@@ -50,14 +61,14 @@ export class ChatListComponent implements OnInit {
 
   visible() {
     return {
-      'dnone': !this.navtoggle,
-      // 'btnnight': !this.day
+      'dnone': !this.chatToggle,
     }
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
-    this.navsub.unsubscribe();
+    this.refreshSubscription.unsubscribe();
+    this.chatSubscription.unsubscribe();
+    this.toggleSubscription.unsubscribe();
   }
 
 }

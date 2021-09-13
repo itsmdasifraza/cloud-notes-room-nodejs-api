@@ -6,7 +6,7 @@ import { Observable, Subject } from 'rxjs';
 })
 export class AppService {
 
-  subject = new Subject<any>();
+  chatSubject = new Subject<any>();
   navtoggle = new Subject<boolean>();
   constructor() { }
 }
