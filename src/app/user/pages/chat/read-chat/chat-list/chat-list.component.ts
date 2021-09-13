@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { ChatService } from 'src/app/user/services/chat/chat.service';
 import { ConnectService } from 'src/app/user/services/connect/connect.service';
+import { UserService } from 'src/app/user/services/user/user.service';
 @Component({
   selector: 'app-chat-list',
   templateUrl: './chat-list.component.html',
@@ -10,12 +11,14 @@ import { ConnectService } from 'src/app/user/services/connect/connect.service';
 })
 export class ChatListComponent implements OnInit {
   private chatSubscription: Subscription;
+  private userSubscription: Subscription;
   private toggleSubscription: Subscription;
   list;
+  user;
   private refreshSubscription : Subscription;
   chatToggle = true;
   searchText: string;
-  constructor(private connectService: ConnectService, private chatService: ChatService, private router: Router) {
+  constructor(private connectService: ConnectService,private userService: UserService, private chatService: ChatService, private router: Router) {
 
     this.refreshSubscription = this.connectService.chatRefresh.subscribe(res => {
         if(res){
@@ -45,6 +48,16 @@ export class ChatListComponent implements OnInit {
         // console.log("err", err);
       }
     });
+    this.userSubscription = this.userService.readUser().subscribe(res => {
+      if (res) {
+        // console.log("res",res);
+        this.user = res.info;
+      }
+    }, err => {
+      if (err) {
+        // console.log("err", err);
+      }
+    });
   }
 
   navigate(element) {
@@ -67,6 +80,7 @@ export class ChatListComponent implements OnInit {
   ngOnDestroy() {
     this.refreshSubscription.unsubscribe();
     this.chatSubscription.unsubscribe();
+    this.userSubscription.unsubscribe();
     this.toggleSubscription.unsubscribe();
   }
 
