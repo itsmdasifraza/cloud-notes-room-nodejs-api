@@ -74,7 +74,7 @@ dummy;
         
         this.chatService.createChat(chat).subscribe(
           (res)=>{
-            console.log("res",res);
+            // console.log("res",res);
             let singleChat = res.info;
             if(this.chats && this.chats.length > 0){
 
@@ -86,7 +86,7 @@ dummy;
            this.connectService.chatRefresh.next(this.chats);
             this.spinner = false;
             this.chatForm.reset();
-            this.router.navigate(["/chat"]);
+            this.router.navigate([`/chat/${singleChat._id}/note`]);
 
           },(err)=>{
             // console.log("err",err);

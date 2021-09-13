@@ -106,7 +106,7 @@ router.get('/delete/:chatid',
      // delete chat with logged in userid and chatid 
         try{
             let noteExist = await noteModel.deleteMany({ chatid : req.params.chatid , userid : req.userid });
-        let chatExist = await chatModel.findOneAndDelete({_id : req.params.chatid , userid : req.userid });
+        var chatExist = await chatModel.findOneAndDelete({_id : req.params.chatid , userid : req.userid });
         // console.log(chatExist)
         if(!chatExist){
             return res.status(404).json({error:'404',
@@ -118,7 +118,8 @@ router.get('/delete/:chatid',
         mssg:"chat not found"});
      }
      return res.status(200).json({success:'200',
-     mssg:"chat deleted with their notes"});
+     mssg:"chat deleted with their notes",
+    info : chatExist});
 });
 
 module.exports = router;

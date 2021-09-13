@@ -24,6 +24,7 @@ export class ReadNoteComponent implements OnInit {
   chat;
   listItem;
   location = window.location.href;
+  refreshSubscription : Subscription;
   constructor(private route: ActivatedRoute, private chatService: ChatService, private noteService: NoteService, private router: Router, private connectService: ConnectService, private titleService: Title, private meta: Meta) {
 
     this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
@@ -41,10 +42,19 @@ export class ReadNoteComponent implements OnInit {
   noteForm = new FormGroup({
     message: new FormControl('', [Validators.required, Validators.minLength(1)]),
   });
-
+  chatList;
   chatid;
   ngOnInit(): void {
     this.connectService.chatToggle.next(false);
+    this.refreshSubscription = this.connectService.chatRefresh.subscribe(res => {
+      if(res){
+        if(res.length > 0){
+          this.chatList = res;
+          // console.log(this.chatList);
+        }
+      }
+  });
+
     this.route.queryParams.subscribe(queryParams => {
       // do something with the query params
     });
@@ -69,7 +79,7 @@ export class ReadNoteComponent implements OnInit {
           // console.log("res",res);   
           this.chat = res.data;
           this.chat.stamp.month = this.months[this.chat.stamp.month];
-          console.log(this.chat);
+          // console.log(this.chat);
         }
       }, err => {
         if (err) {
@@ -132,6 +142,13 @@ export class ReadNoteComponent implements OnInit {
     this.chatService.deleteChat(this.chatid).subscribe((res) => {
       if (res) {
         // console.log("res",res);
+        let delChat = res.info;
+        this.chatList.forEach((element , index )=> {
+          if (element._id == delChat._id && element.userid == delChat.userid) {
+            this.chatList.splice(index, 1);
+          }
+        });
+        this.connectService.chatRefresh.next(this.chatList);
         this.router.navigate(["/chat"]);
       }
     }, (err) => {

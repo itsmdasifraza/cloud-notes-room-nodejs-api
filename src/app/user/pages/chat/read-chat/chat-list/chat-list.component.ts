@@ -34,7 +34,7 @@ export class ChatListComponent implements OnInit {
   ngOnInit(): void {
     // subscribe to home component messages
     this.chatSubscription = this.chatService.readChat().subscribe(res => {
-      if (res && res.length > 0) {
+      if (res && res.data.length > 0) {
         // console.log("res",res);
         let list = res.data;
         // console.log("list1 " ,list);
