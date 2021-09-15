@@ -1,32 +1,38 @@
-<app-main-header></app-main-header>
 <section>
     <div class="admin-login">
         <div class="container">
             <div class="row">
                 <div class="col">
                     <div class="login">
-                        <h1>REGISTER</h1>
+                        <div class="d-flex justify-content-between">
+                            <h1>REGISTER</h1>
+                            <div class="text-center" *ngIf="spinner==true">
+                                <div class="spinner-border" style="width:18px; height:18px;"  role="status">
+                                  <span class="sr-only">Loading...</span>
+                                </div>
+                              </div>
+                        </div>
                         <!-- <h2>(Administrator)</h2> -->
-                        <div class="text-center" *ngIf="spinner==true">
-                            <div class="spinner-border" role="status">
-                              <span class="sr-only">Loading...</span>
-                            </div>
-                          </div>
-                        <p *ngIf="error">{{error}}</p>
+                        
+                        <div class="error" *ngIf="error">
+                            <p >{{error}}</p>
+                        </div>
                         <form [formGroup]="registerForm" (ngSubmit)="register()">
                             <input formControlName="username" placeholder="username">
                             <small *ngIf="!registerForm.get('username').valid && registerForm.get('username').touched">
-                                incorrect username !
-                            </small>
-                            <input formControlName="email" placeholder="Email Address">
-                            <small *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched">
-                                incorrect email address !
-                            </small>
-                            <input type="password" formControlName="password" placeholder="Password">
-                            <small *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched">
                                 must contain minimum 4 characters !
                             </small>
-                            <button type="submit">Register</button>
+                            <input formControlName="email" placeholder="email">
+                            <small *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched">
+                                must contain valid email address !
+                            </small>
+                            <input type="password" formControlName="password" placeholder="password">
+                            <small *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched">
+                                must contain minimum 8 characters !
+                            </small>
+                            <button type="submit">REGISTER</button>
+                            <br/><br>
+                            <p>Already have an account? <a routerLink="/login">Login</a>.</p>
                         </form>
                     </div>
                 </div>
@@ -34,4 +40,3 @@
         </div>
     </div>
 </section>
-<app-footer></app-footer>

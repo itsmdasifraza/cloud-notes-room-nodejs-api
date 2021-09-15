@@ -1,5 +1,5 @@
 .admin-login{
-    padding-top: 150px;
+    padding-top: calc(100vh / 100 * 20);
     padding-bottom: 40px;
     background-color: rgb(49 49 49);
     min-height: 100vh;
@@ -46,8 +46,8 @@ form{
     padding:5px 0px;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid white;
-    color: white;
+    border-bottom: 1px solid rgb(214, 214, 214);
+    color: rgb(214, 214, 214);
 }
 .login button{
     width: 100%;
