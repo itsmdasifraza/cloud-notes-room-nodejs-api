@@ -16,14 +16,9 @@ const routes: Routes = [
   // { path: 'register', loadChildren: () => import('./user/auth/register/register.module').then(m => m.RegisterModule)},
   { path: 'login',
   canActivate: [UnauthorizedGuard] , loadChildren: () => import('./user/auth/login/login.module').then(m => m.LoginModule)},
+  { path: ':id' , loadChildren: () => import('./user/pages/user/profile/profile.module').then(m => m.ProfileModule)},
  
   { path: '**', loadChildren: () => import('./user/pages/404/page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)},
-  // {path:'shownotes', component:ShowNotesComponent,
-  // children:[
-  //   { path:'', component:DefaultScreenComponent},
-  //   { path:'addnotes', component:AddNotesComponent},
-  //   {path: ':id', component:NotesDetailComponent}
-  // ]},
 ];
 
 @NgModule({
