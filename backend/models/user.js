@@ -23,6 +23,26 @@ const userSchema = {
         type : String,
         default : "user0"
     },
+    phone : {
+        type : String,
+        default : ""
+    },
+    address : {
+        type : String,
+        default : ""
+    },
+    college : {
+        type : String,
+        default : ""
+    },
+    education : {
+        type : String,
+        default : ""
+    },
+    about : {
+        type : String,
+        default : ""
+    },
     date : {
         type : Date,
         default : Date.now
