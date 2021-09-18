@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
+import { EditRoutingModule } from './edit-routing.module';
+import { EditComponent } from './edit.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [EditComponent],
   imports: [
     CommonModule,
-    HomeRoutingModule,
+    EditRoutingModule,
     ReactiveFormsModule,
     FormsModule, 
   ]
 })
-export class HomeModule { }
+export class EditModule { }

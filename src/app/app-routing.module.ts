@@ -16,7 +16,8 @@ const routes: Routes = [
   // { path: 'register', loadChildren: () => import('./user/auth/register/register.module').then(m => m.RegisterModule)},
   { path: 'login',
   canActivate: [UnauthorizedGuard] , loadChildren: () => import('./user/auth/login/login.module').then(m => m.LoginModule)},
-  { path: ':id' , loadChildren: () => import('./user/pages/user/profile/profile.module').then(m => m.ProfileModule)},
+  { path: ':username' , loadChildren: () => import('./user/pages/user/profile/profile.module').then(m => m.ProfileModule)},
+  { path: 'edit' , loadChildren: () => import('./user/pages/user/profile/edit//edit.module').then(m => m.EditModule)},
  
   { path: '**', loadChildren: () => import('./user/pages/404/page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)},
 ];

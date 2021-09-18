@@ -3,14 +3,14 @@ import { FormGroup, FormControl, ReactiveFormsModule, FormArray } from '@angular
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileService } from 'src/app/user/services/profile/profile.service';
-
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.css']
 })
-export class HomeComponent implements OnInit {
+export class EditComponent implements OnInit {
 
+  username;
   constructor(private route: ActivatedRoute,private fb: FormBuilder,private router: Router , private profileService : ProfileService) { }
   avatar = ["user1", "user4","user5","user2" , "user6", "user7", "user3","user8", "user9"];
 
@@ -21,8 +21,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(routeParams => {
-      // console.log(routeParams.username);
-      // this.username = routeParams.username;
+      console.log(routeParams);
+      this.username = routeParams.username;
   this.profileService.readProfile(routeParams.username).subscribe(res => {
         if (res) {
           console.log("res",res);
@@ -38,8 +38,20 @@ export class HomeComponent implements OnInit {
     });
   }
   changeAvatar(){
-    if (this.changeAvatarForm.valid) {
-      console.log(this.changeAvatarForm.value);
+    if(this.changeAvatarForm.valid){
+  
+        // console.log(this.changeAvatarForm.value);
+        let avatar = {
+          "avatar" : this.changeAvatarForm.value.user_icon
+        } 
+        
+        this.profileService.updateProfileAvatar(this.username,avatar).subscribe(
+          (res)=>{
+            console.log("res",res);
+
+          },(err)=>{
+            console.log("err",err);
+        });
     }
   }
 
