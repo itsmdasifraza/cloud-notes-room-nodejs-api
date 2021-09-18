@@ -57,4 +57,36 @@ router.get('/read/:username',
     data : userData});
 });
 
+
+////////////////////////////////////////////////
+//           Route for read username          //
+////////////////////////////////////////////////
+router.post('/update/avatar/:username',
+    authToken,
+     async (req, res) => {
+
+     // find all the chat with their userid
+     try{
+         console.log(req.body);
+         let avatar = {
+             avatar : req.body.avatar
+         }
+     var userData = await userModel.findOneAndUpdate({username : req.params.username , _id : req.userid },avatar);
+    //  console.log(userData)
+     if(!userData){
+        return res.status(404).json({error:'404',
+        mssg:"internal server error",
+       });
+     }       
+     }
+     catch{
+        return res.status(404).json({error:'404',
+        mssg:"internal server error",
+       });
+     }
+     return res.status(200).json({success:'200',
+     mssg:"user avatar changed",
+    });
+});
+
 module.exports = router;

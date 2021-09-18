@@ -19,6 +19,10 @@ const userSchema = {
         type : String,
         default : ""
     },
+    avatar : {
+        type : String,
+        default : "user0"
+    },
     date : {
         type : Date,
         default : Date.now
