@@ -7,6 +7,7 @@ import { ChatListComponent } from './chat-list/chat-list.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './chat-list/header/header.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,7 +18,8 @@ import { HeaderComponent } from './chat-list/header/header.component';
     ReadChatRoutingModule,
     ReactiveFormsModule,
     FormsModule, 
-    Ng2SearchPipeModule 
+    Ng2SearchPipeModule ,
+    RouterModule
   ]
 })
 export class ReadChatModule { }

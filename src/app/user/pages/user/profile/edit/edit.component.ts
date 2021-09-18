@@ -21,16 +21,16 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(routeParams => {
-      console.log(routeParams);
+      // console.log(routeParams);
       this.username = routeParams.username;
   this.profileService.readProfile(routeParams.username).subscribe(res => {
         if (res) {
-          console.log("res",res);
+          // console.log("res",res);
           // this.notes = res.data;
         }
       }, err => {
         if (err) {
-          console.log("err", err);
+          // console.log("err", err);
         }
       });
 
@@ -39,7 +39,7 @@ export class EditComponent implements OnInit {
   }
   changeAvatar(){
     if(this.changeAvatarForm.valid){
-  
+
         // console.log(this.changeAvatarForm.value);
         let avatar = {
           "avatar" : this.changeAvatarForm.value.user_icon
@@ -47,10 +47,11 @@ export class EditComponent implements OnInit {
         
         this.profileService.updateProfileAvatar(this.username,avatar).subscribe(
           (res)=>{
-            console.log("res",res);
+            // console.log("res",res);
+            this.router.navigate(["/chat"]);
 
           },(err)=>{
-            console.log("err",err);
+            // console.log("err",err);
         });
     }
   }

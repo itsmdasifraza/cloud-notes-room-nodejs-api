@@ -1,11 +1,11 @@
 <div  class="list" [ngClass]="visible()">
-    <app-header ></app-header>
+    <app-header [username]="username" *ngIf="user"></app-header>
      <div class="head" >
          <div class="d-flex">
              <div routerLink="/{{user.username}}" class="circle" *ngIf="user">
                  <img src="assets/avatar/{{user.avatar}}.jpg" width="100%" alt="">
              </div>
-             <h6 *ngIf="user">{{user.username}} <br/>{{user.email}}</h6>
+             <h6 routerLink="/{{user.username}}" *ngIf="user">{{user.username}} <br/>{{user.email}}</h6>
              <!-- <h6 *ngIf="user"></h6> -->
          </div>
          <!-- <div class="deleteallnotes" *ngIf="list && list.length > 0">

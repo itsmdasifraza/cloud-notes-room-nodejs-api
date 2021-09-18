@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,14 +9,23 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   constructor(private router: Router) { }
-
+  @Input() username;
   ngOnInit(): void {
+
   }
   home(){
     this.router.navigate(["/"]);
   }
+  account(){
+    // console.log("clicked");
+    this.router.navigate(["/"+this.username]);
+  }
+  settings(){
+    // console.log("clicked");
+    this.router.navigate(["/edit/"+this.username]);
+  }
   logout(){
-    console.log("clicked");
+    // console.log("clicked");
     localStorage.removeItem("user-token");
     this.router.navigate(["/login"]);
   }

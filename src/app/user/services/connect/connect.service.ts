@@ -10,5 +10,7 @@ export class ConnectService {
   chatRefresh = new BehaviorSubject([]);
   //this subject toggle chat section on following routes => chat/create , chat/:chatid
   chatToggle = new Subject<boolean>();
+
+  userInfo = new BehaviorSubject({});
   constructor() { }
 }

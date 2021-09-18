@@ -8,13 +8,13 @@
     <div class="dropdown-container" tabindex="-1">
         <div class="three-dots"></div>
         <div class="dropdown">
-            <a href="#">
-                <div>Profile
+            <a *ngIf="username" (click)="account()" >
+                <div >Profile
                 </div>
                 <hr>
             </a>
-            <a href="#">
-                <div>Setting
+            <a (click)= "settings()">
+                <div>Settings
                 </div>
                 <hr>
             </a>

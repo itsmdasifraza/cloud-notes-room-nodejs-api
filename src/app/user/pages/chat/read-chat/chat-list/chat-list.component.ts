@@ -15,6 +15,7 @@ export class ChatListComponent implements OnInit {
   private toggleSubscription: Subscription;
   list;
   user;
+  username;
   private refreshSubscription : Subscription;
   chatToggle = true;
   searchText: string;
@@ -52,6 +53,7 @@ export class ChatListComponent implements OnInit {
       if (res) {
         // console.log("res",res);
         this.user = res.info;
+        this.username = this.user.username;
       }
     }, err => {
       if (err) {

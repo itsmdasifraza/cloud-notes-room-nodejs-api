@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,private fb: FormBuilder,private router: Router , private profileService : ProfileService) { }
   avatar = ["user1", "user4","user5","user2" , "user6", "user7", "user3","user8", "user9"];
-
+  userData;
   changeAvatarForm = this.fb.group({ 
     user_icon: new FormControl('', [Validators.required]),
 
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   this.profileService.readProfile(routeParams.username).subscribe(res => {
         if (res) {
           console.log("res",res);
-          // this.notes = res.data;
+          this.userData = res.data;
         }
       }, err => {
         if (err) {
