@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
       }, err => {
         if (err) {
           // console.log("err", err);
+          this.router.navigate(["/error/page-not-found"]);
         }
       });
     });

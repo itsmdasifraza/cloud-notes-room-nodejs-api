@@ -10,9 +10,10 @@ const routes: Routes = [
   {
     path : '' , 'component' : SettingComponent,
     children:[
-      { path: ':username/avatar', 'component' : UpdateAvatarComponent},
-      { path: ':username/details', 'component' : UpdateDetailsComponent},
-      { path: ':username/password', 'component' : UpdatePasswordComponent},
+      { path: '', redirectTo: 'user-icon', pathMatch: 'full' },
+      { path: 'user-icon', 'component' : UpdateAvatarComponent},
+      { path: 'info', 'component' : UpdateDetailsComponent},
+      { path: 'password', 'component' : UpdatePasswordComponent},
     ]
   }
 ];

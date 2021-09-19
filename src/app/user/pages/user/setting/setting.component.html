@@ -1,2 +1,26 @@
-<p>setting works!</p>
-<router-outlet></router-outlet>
+<section>
+    <div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-3">
+                    <div class="setting-option">
+                        <div class="setting">
+                            <a routerLink="/settings/user-icon">Change Avatar</a>
+                        </div>
+                        <div class="setting">
+                            <a routerLink="/settings/info">Change Profile</a>
+                        </div>
+                        <div class="setting">
+                            <a routerLink="/settings/password">Change Password</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-9">
+<div>
+    <router-outlet></router-outlet>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

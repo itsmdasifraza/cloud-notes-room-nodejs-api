@@ -11,49 +11,25 @@ var userModel = require('../models/user');
 //           Route for read username          //
 ////////////////////////////////////////////////
 router.get('/read/:username',
-    authToken,
+    
      async (req, res) => {
 
      // find all the chat with their userid
      try{
-     var userData = await userModel.findOne({username : req.params.username , _id : req.userid });
-    //  console.log(chatData)
+     var userData = await userModel.findOne({username : req.params.username });
+    //  console.log(userData)
         if( !userData){
-            try{
-                var userData = await userModel.findOne({username : req.params.username  });
-                if(!userData){
-                    return res.status(404).json({error:'404',
-                    mssg:"username not found"});
-                }
-            }
-            catch{
-
                 return res.status(404).json({error:'404',
                     mssg:"username not found"});
-            }
-            return res.status(200).json({success:'200',
-            mssg:"not owner of this username",
-           data : userData});
         }
      }
      catch{
-        try{
-            var userData = await userModel.findOne({username : req.params.username  });
-            if(!userData){
-                return res.status(404).json({error:'404',
-                mssg:"username not found"});
-            }
-        }
-        catch{
             return res.status(404).json({error:'404',
             mssg:"username not found"});
         }
-        return res.status(200).json({success:'200',
-        mssg:"not owner of this username",
-       data : userData});
-     }
+       
      return res.status(200).json({success:'200',
-     mssg:"owner of this username",
+     mssg:"fetched username",
     data : userData});
 });
 
@@ -61,7 +37,33 @@ router.get('/read/:username',
 ////////////////////////////////////////////////
 //           Route for read username          //
 ////////////////////////////////////////////////
-router.post('/update/avatar/:username',
+router.get('/read/info/owner',
+    authToken,
+     async (req, res) => {
+
+     // find all the chat with their userid
+     try{
+     var ownerUserData = await userModel.findOne({_id : req.userid });
+    //  console.log(ownerUserData)
+        if( !ownerUserData){
+                    return res.status(404).json({error:'404',
+                    mssg:"username not 56 found"});
+        }
+     }
+     catch{
+        return res.status(404).json({error:'404',
+        mssg:"username not 57 found"});
+     }
+     return res.status(200).json({success:'200',
+     mssg:"owner of this username",
+    data : ownerUserData});
+});
+
+
+////////////////////////////////////////////////
+//           Route for read username          //
+////////////////////////////////////////////////
+router.post('/update/info/avatar',
     authToken,
      async (req, res) => {
 
@@ -71,7 +73,7 @@ router.post('/update/avatar/:username',
          let avatar = {
              avatar : req.body.avatar
          }
-     var userData = await userModel.findOneAndUpdate({username : req.params.username , _id : req.userid },avatar);
+     var userData = await userModel.findOneAndUpdate({_id : req.userid },avatar);
     //  console.log(userData)
      if(!userData){
         return res.status(404).json({error:'404',
@@ -93,13 +95,13 @@ router.post('/update/avatar/:username',
 ////////////////////////////////////////////////
 //           Route for read username          //
 ////////////////////////////////////////////////
-router.post('/update/personal/:username',
+router.post('/update/info/personal',
     authToken,
      async (req, res) => {
 
      // find all the chat with their userid
      try{
-         console.log(req.body);
+        //  console.log(req.body);
          let personal = {
              name : req.body.name,
              phone : req.body.phone,
@@ -108,7 +110,7 @@ router.post('/update/personal/:username',
              education : req.body.education,
              about : req.body.about
          }
-     var personalData = await userModel.findOneAndUpdate({username : req.params.username , _id : req.userid },personal);
+     var personalData = await userModel.findOneAndUpdate({_id : req.userid },personal);
     //  console.log(userData)
      if(!personalData){
         return res.status(404).json({error:'404',

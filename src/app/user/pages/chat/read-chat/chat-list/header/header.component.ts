@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   }
   settings(){
     // console.log("clicked");
-    this.router.navigate(["/edit/"+this.username]);
+    this.router.navigate(["/settings"]);
   }
   logout(){
     // console.log("clicked");

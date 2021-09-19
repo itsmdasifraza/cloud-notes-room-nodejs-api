@@ -10,8 +10,6 @@ import { ProfileService } from 'src/app/user/services/profile/profile.service';
 })
 export class UpdateAvatarComponent implements OnInit {
 
-  
-  username;
   constructor(private route: ActivatedRoute,private fb: FormBuilder,private router: Router , private profileService : ProfileService) { }
   avatar = ["user0","user1", "user4","user5","user2" , "user6", "user7", "user3","user8", "user9"];
   userData;
@@ -20,12 +18,10 @@ export class UpdateAvatarComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.route.params.subscribe(routeParams => {
-      console.log(routeParams);
-      this.username = routeParams.username;
-  this.profileService.readProfile(routeParams.username).subscribe(res => {
+  
+  this.profileService.readOwnerProfile().subscribe(res => {
         if (res) {
-          console.log("res",res);
+          // console.log("res",res);
           this.userData = res.data;
           this.changeAvatarForm.setValue({
             user_icon : this.userData.avatar
@@ -33,10 +29,10 @@ export class UpdateAvatarComponent implements OnInit {
         }
       }, err => {
         if (err) {
-          console.log("err", err);
+          // console.log("err", err);
         }
       });
-    });
+    
   }
   changeAvatar(){
     if(this.changeAvatarForm.valid){
@@ -46,7 +42,7 @@ export class UpdateAvatarComponent implements OnInit {
           "avatar" : this.changeAvatarForm.value.user_icon
         } 
         
-        this.profileService.updateProfileAvatar(this.username,avatar).subscribe(
+        this.profileService.updateProfileAvatar(avatar).subscribe(
           (res)=>{
             // console.log("res",res);
             this.router.navigate(["/chat"]);
