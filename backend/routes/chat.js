@@ -26,6 +26,7 @@ router.post('/create',
         userid : req.userid,
         title:req.body.title,
         description:req.body.description,
+        protected:req.body.protected,
         stamp : {
             day : date.getDate(),
             month : date.getMonth(),

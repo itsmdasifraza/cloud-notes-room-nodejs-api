@@ -1,38 +1,55 @@
 <div class="addnotes">
     <!-- <div style="position: sticky; top:0" class="dnone header-back"></div> -->
-    <div class="logo dnone">
-        <button >C</button>
+    <!-- <div class="logo dnone">
+        <button>C</button>
         <p style="outline:none" routerLink="/">HAT NOTES</p>
-    </div>
-    
-    <div style="padding:40px 15px;" class="btns"> 
+    </div> -->
 
-        <h1 >Fill your notes</h1>
-    <form [formGroup]="chatForm" (ngSubmit)="createChat()">
-        <div class="form">
-            <div class="label">
-                <label for="topic">Topic</label>
-            </div>
-            <input type="text" id="topic" autocomplete="off" formControlName="title" placeholder="type chat name ...">
-            <small class="text-white bg-danger px-2 py-1"
+    <div class="chat-box btns ">
+
+        <h6><b>CREATE CHAT</b></h6>
+        <form [formGroup]="chatForm" (ngSubmit)="createChat()">
+            <div class="form">
+           
+                <input type="text" id="topic" autocomplete="off" formControlName="title"
+                    placeholder="chat name">
+                <small class=""
                     *ngIf="!chatForm.get('title').valid && chatForm.get('title').touched">
-                        Topic can't be empty
-                    </small>
-        </div>
-        <div class="form">
-            <div class="label">
-                <label for="desc">Description</label>
-            </div>
-            <textarea id="desc" autocomplete="off" cols="30" rows="6" formControlName="description" placeholder="type description here ..."></textarea>
-            <small class="text-white bg-danger px-2 py-1"
-                    *ngIf="!chatForm.get('description').valid && chatForm.get('description').touched">
-                    Description can't be empty
+                    chat name can't be empty
                 </small>
-        </div>
-        <div class="form">
+            </div>
+            <div class="form">
+                
+                <input id="desc" autocomplete="off"  formControlName="description"
+                    placeholder="chat description">
+                <small class=""
+                    *ngIf="!chatForm.get('description').valid && chatForm.get('description').touched">
+                    chat description can't be empty
+                </small>
+            </div>
+            <br>
+            <div class="d-flex">
+                <div class="mr-3">
+                    <div class="radio-buttons public">
+                        <input type="radio" name="protected" id="public" value="false" formControlName="protected">
+                        <label for="public">Public</label>
+                    </div>
+    
+                </div>
+                
+                <div class="">
+                    <div class="radio-buttons private">
+                        <input type="radio" name="protected" id="private" value="true" formControlName="protected">
+                        <label for="private">Private</label>
+                    </div>
+    
+                </div>
+            </div>
             
-            <button type="submit">Create</button>
-        </div>
-    </form>
+            <div class="form">
+
+                <button type="submit">Create</button>
+            </div>
+        </form>
     </div>
 </div>

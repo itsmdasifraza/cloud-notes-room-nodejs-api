@@ -15,13 +15,23 @@ const chatSchema = new Schema ({
         type : String,
         required : true,
     },
+    protected : {
+        type : String,
+        required : true,
+    },
     stamp : {
         type : Object,
         required : true
     },
     date : {
         type : Date,
-        default : Date.now
+        default : Date.now,
+        required : true
+    },
+    lastupdated : {
+        type : Date,
+        default : Date.now,
+        required : true
     },
 });
 

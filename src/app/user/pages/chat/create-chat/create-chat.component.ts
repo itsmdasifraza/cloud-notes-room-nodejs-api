@@ -38,10 +38,15 @@ dummy;
   chatForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
-
+    protected: new FormControl('', [Validators.required]),
   });
-
+  
   ngOnInit(): void {
+      this.chatForm.setValue({
+        title : '',
+        description:'',
+        protected : "false"
+      });
       this.connectService.chatToggle.next(false);
       this.chatSubscription = this.connectService.chatRefresh.subscribe((res)=>{
         if(res){
@@ -69,12 +74,13 @@ dummy;
         // console.log(this.chatForm.value);
         let chat = {
           "title" : this.chatForm.value.title,
-         "description" : this.chatForm.value.description
+         "description" : this.chatForm.value.description,
+         "protected" : this.chatForm.value.protected
         } 
         
         this.chatService.createChat(chat).subscribe(
           (res)=>{
-            // console.log("res",res);
+            console.log("res",res);
             let singleChat = res.info;
             if(this.chats && this.chats.length > 0){
 
