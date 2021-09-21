@@ -66,9 +66,7 @@ export class ChatListComponent implements OnInit {
     this.router.navigate(["/chat/" + element + "/note"]);
   }
 
-  add() {
-    this.router.navigate(["/chat/create"]);
-  }
+
 
   deleteAllNotes() {
   }

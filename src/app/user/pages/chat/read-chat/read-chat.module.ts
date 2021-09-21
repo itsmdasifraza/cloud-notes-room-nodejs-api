@@ -8,11 +8,12 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './chat-list/header/header.component';
 import { RouterModule } from '@angular/router';
+import { UserNavComponent } from './chat-list/user-nav/user-nav.component';
 
 
 
 @NgModule({
-  declarations: [ReadChatComponent, ChatListComponent , HeaderComponent],
+  declarations: [ReadChatComponent, ChatListComponent , HeaderComponent, UserNavComponent],
   imports: [
     CommonModule,
     ReadChatRoutingModule,
@@ -20,6 +21,8 @@ import { RouterModule } from '@angular/router';
     FormsModule, 
     Ng2SearchPipeModule ,
     RouterModule
-  ]
+  ],
+  exports : [HeaderComponent, UserNavComponent] 
+
 })
 export class ReadChatModule { }
