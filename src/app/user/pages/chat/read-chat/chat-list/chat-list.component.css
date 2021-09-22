@@ -84,7 +84,7 @@ p{
     font-weight: bold;
 }
 .item:hover{
-    background-color: rgb(248, 244, 244);
+    background-color: var(--activelink);
 }
 
 
@@ -137,4 +137,7 @@ p{
     .dnone{
         display: none;
     }
+}
+.active-link{
+    background-color: var(--activelink);
 }

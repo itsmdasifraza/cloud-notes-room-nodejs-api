@@ -7,8 +7,8 @@
      <div *ngIf="list  && list.length > 0" >
          <div *ngFor="let item of list.slice().reverse() | filter:searchText">
  
-             <div class="item" >
-                 <div (click)="navigate(item._id)" class="itm-flx">
+             <div class="item" routerLink="/chat/{{item._id}}/note/view/all" routerLinkActive="active-link" >
+                 <div  class="itm-flx">
                      <div>
                          <div class="circle">
                              <svg width="60%" height="60%" viewBox="0 0 16 16" class="bi bi-journal-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

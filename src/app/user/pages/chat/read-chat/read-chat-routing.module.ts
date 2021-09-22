@@ -9,7 +9,7 @@ const routes: Routes = [
     children:[
       { path: '', loadChildren: () => import('../chat-screen/chat-screen.module').then(m => m.ChatScreenModule)},
       { path: 'create', loadChildren: () => import('../create-chat/create-chat.module').then(m => m.CreateChatModule)},
-      { path: ':chatid/note', loadChildren: () => import('../../note/read-note/read-note.module').then(m => m.ReadNoteModule)},
+      { path: ':chatid/note/view/all', loadChildren: () => import('../../note/read-note/read-note.module').then(m => m.ReadNoteModule)},
     ]
   }
 ];

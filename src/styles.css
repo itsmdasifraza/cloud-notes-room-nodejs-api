@@ -16,6 +16,7 @@ body{
     --themedeletebutton :rgb(184, 184, 184);
     --themeaddbutton:rgb(184, 184, 184);
     --themefooter : #734ae4;
+    --activelink : rgb(234, 243, 253);
     --themehome : linear-gradient(to right,#654ea3, #eaafc8 );  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
@@ -36,6 +37,7 @@ body{
     --themedeletebutton :rgb(139, 126, 250);
     --themeaddbutton:rgb(51, 51, 245);
     --themefooter : #ec0f25;
+    --activelink : rgb(234, 243, 253);
     --themehome :   linear-gradient(to bottom, #6710e5, #c100b3, #e8007d, #f3004b, #eb121d);
 } */
 /* Custom App Theme Colors */

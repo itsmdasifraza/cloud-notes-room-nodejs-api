@@ -76,6 +76,7 @@ router.get('/read/:chatid',
      var noteData = await noteModel.find({ userid : req.userid , chatid: req.params.chatid});
     //  console.log(noteData)
      if( !noteData || noteData.length == 0){
+        //check if 
         return res.status(404).json({error:'404',
         mssg:"notes not found"});
      }
