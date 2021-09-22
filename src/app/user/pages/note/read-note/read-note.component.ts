@@ -10,6 +10,8 @@ import { CompileShallowModuleMetadata } from '@angular/compiler';
 import { ChatService } from 'src/app/user/services/chat/chat.service';
 import { userInfo } from 'os';
 import { ConnectService } from 'src/app/user/services/connect/connect.service';
+
+import { ProfileService } from 'src/app/user/services/profile/profile.service';
 @Component({
   selector: 'app-read-note',
   templateUrl: './read-note.component.html',
@@ -25,7 +27,7 @@ export class ReadNoteComponent implements OnInit {
   listItem;
   location = window.location.href;
   refreshSubscription : Subscription;
-  constructor(private route: ActivatedRoute, private chatService: ChatService, private noteService: NoteService, private router: Router, private connectService: ConnectService, private titleService: Title, private meta: Meta) {
+  constructor(private profileService: ProfileService ,private route: ActivatedRoute, private chatService: ChatService, private noteService: NoteService, private router: Router, private connectService: ConnectService, private titleService: Title, private meta: Meta) {
 
     this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
     this.meta.updateTag({ name: 'keywords', content: `chat notes, chatnotes, md asif raza` });
@@ -44,6 +46,10 @@ export class ReadNoteComponent implements OnInit {
   });
   chatList;
   chatid;
+  owner;
+  username;
+  avatar;
+  own = true;
   ngOnInit(): void {
     this.connectService.chatToggle.next(false);
     this.refreshSubscription = this.connectService.chatRefresh.subscribe(res => {
@@ -61,10 +67,12 @@ export class ReadNoteComponent implements OnInit {
     this.route.params.subscribe(routeParams => {
       // console.log(routeParams.chatid);
       this.chatid = routeParams.chatid;
+      this.username = routeParams.username;
       this.notes = undefined;
       this.subscription = this.noteService.readNote(routeParams.chatid).subscribe(res => {
         if (res) {
           // console.log("res",res);
+          
           this.notes = res.data;
         }
       }, err => {
@@ -77,9 +85,26 @@ export class ReadNoteComponent implements OnInit {
       this.subscription = this.chatService.readSingleChat(routeParams.chatid).subscribe(res => {
         if (res) {
           // console.log("res",res);   
+          this.owner = res.owner;
           this.chat = res.data;
           this.chat.stamp.month = this.months[this.chat.stamp.month];
           // console.log(this.chat);
+          if(this.owner == "false"){
+            this.own = false;
+            this.profileService.readProfile(this.username).subscribe(res => {
+              if (res) {
+                // console.log("res",res);
+                this.avatar = res.data.avatar;
+              }
+            }, err => {
+              if (err) {
+                // console.log("err", err);
+              }
+            });
+          }
+          else{
+            this.own = true;
+          }
         }
       }, err => {
         if (err) {
@@ -156,6 +181,13 @@ export class ReadNoteComponent implements OnInit {
         // console.log("err",err);
       }
     });
+  }
+
+
+  visible() {
+    return {
+      'side-hide': !this.own,
+    }
   }
 
   ngOnDestroy() {

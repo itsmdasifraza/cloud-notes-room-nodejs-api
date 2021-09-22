@@ -176,3 +176,34 @@ p{
 .more-notes button:active{
     transform: scale(.95);
 }
+.side-hide{
+    background-color: var(--themenoteslistbg );
+    width: 25%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+.profile-circle{
+    height: 100px;
+    width: 100px;
+    overflow:hidden;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+@media only screen and (max-width:1199px){
+   
+    .side-hide{
+        width: 33.3%;
+    }
+}
+@media only screen and (max-width:991px){
+   
+    .side-hide{
+        display: none !important;
+    }
+}
