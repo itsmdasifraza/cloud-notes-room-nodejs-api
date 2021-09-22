@@ -92,7 +92,7 @@ dummy;
            this.connectService.chatRefresh.next(this.chats);
             this.spinner = false;
             this.chatForm.reset();
-            this.router.navigate([`/chat/${singleChat._id}/note`]);
+            this.router.navigate([`/chat/${singleChat._id}/note/view/all`]);
 
           },(err)=>{
             // console.log("err",err);

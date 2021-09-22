@@ -64,12 +64,12 @@ export class ReadNoteComponent implements OnInit {
       this.notes = undefined;
       this.subscription = this.noteService.readNote(routeParams.chatid).subscribe(res => {
         if (res) {
-          // console.log("res",res);
+          console.log("res",res);
           this.notes = res.data;
         }
       }, err => {
         if (err) {
-          // console.log("err", err);
+          console.log("err", err);
         }
       });
 
