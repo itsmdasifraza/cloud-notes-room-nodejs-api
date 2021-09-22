@@ -87,7 +87,7 @@ router.get('/read/:chatid',
             //check if chat is public or not
             try {
                var verifyChat = await chatModel.findOne({ _id: req.params.chatid, protected: 'false' });
-             console.log(verifyChat);
+            //  console.log(verifyChat);
 
                if (!verifyChat) {
                   return res.status(404).json({
