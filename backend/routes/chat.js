@@ -3,6 +3,7 @@ var router = express.Router();
 const { body, validationResult } = require('express-validator');
 const authToken = require('../middlewares/auth-token');
 
+var userModel = require('../models/user');
 var chatModel = require('../models/chat');
 var noteModel = require('../models/note');
 
@@ -81,6 +82,57 @@ router.get('/read',
             data: chatData
         });
     });
+
+////////////////////////////////////////////////
+//             Route for public cha           //
+////////////////////////////////////////////////
+router.get('/read/public/:username',
+    authToken,
+    async (req, res) => {
+
+        // find all the chat with their userid
+        try {
+            var publicChatOwner = await userModel.findOne({ username: req.params.username});
+            //  console.log(chatData)
+            if (!publicChatOwner) {
+                return res.status(404).json({
+                    error: '404',
+                    mssg: "username not exist"
+                });
+            }
+            else{
+                try{
+                    var publicChatData = await chatModel.find({ userid: publicChatOwner._id , protected : 'false'});
+                    //  console.log(chatData)
+                    if (!publicChatData) {
+                        return res.status(404).json({
+                            error: '404',
+                            mssg: "no public chats"
+                        });
+                    }
+                }
+                catch{
+                    return res.status(404).json({
+                        error: '404',
+                        mssg: "internal server error"
+                    });
+                }
+                return res.status(200).json({
+                    success: '200',
+                    mssg: "all chats retrieved",
+                    data: publicChatData
+                });
+            }
+        }
+        catch {
+            return res.status(404).json({
+                error: '404',
+                mssg: "internal server error"
+            });
+        }
+    });
+
+
 
 ////////////////////////////////////////////////
 //           Route for read one chat          //

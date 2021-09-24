@@ -1,82 +1,101 @@
-<div class="container" *ngIf="userData">
-    <div class="row gutters">
-    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-    <div class="card h-100">
-        <div class="card-body">
-            <div class="account-settings">
-                <div class="user-profile">
-                    <div *ngIf="userData" class="user-avatar">
-                        <img src="assets/avatar/{{userData.avatar}}.jpg" alt="Maxwell Admin">
+<div class="">
+    <div class="row p-0 m-0">
+        <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-xs-12 p-0 left-area">
+            <div>
+                <div class="list">
+                    <!-- <app-header [username]="username" *ngIf="username"></app-header> -->
+                    <!-- <app-user-nav  [user]="user" *ngIf="user"></app-user-nav> -->
+
+                    <div>
+                        <div style="margin: auto;" class="circle">
+                            <img src="assets/avatar/{{userData.avatar}}.jpg" alt="Maxwell Admin">                              
+                        </div>
+                        <h5 *ngIf="userData" class="user-name text-center">@{{userData.username}}</h5>
                     </div>
-                    <h5 *ngIf="userData" class="user-name">@{{userData.username}}</h5>
-                    <h6 *ngIf="userData" class="user-email">{{userData.email}}</h6>
+
                 </div>
-                <div class="about">
-                    <h5>About</h5>
-                    <p *ngIf="userData && userData.about != ''">{{userData.about}}</p>
-                    <p *ngIf="userData && userData.about == ''">---</p>
+            </div>
+        </div>
+        <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-xs-12 p-0 right-area">
+            <div class="router-wrapper">
+                <div class="p-3" *ngIf="userData">
+                    <div class="row gutters">
+                        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="account-settings">
+                                        <div class="about">
+                                            <h5>About</h5>
+                                            <p *ngIf="userData && userData.about != ''">{{userData.about}}</p>
+                                            <p *ngIf="userData && userData.about == ''">---</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="row gutters">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <h6 class="mb-2 text-primary">Personal Details</h6>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="fullName">Name</label>
+                                                <p *ngIf="userData && userData.name != ''">{{userData.name}}</p>
+                                                <p *ngIf="userData && userData.name == ''">@{{userData.username}}</p>
+                                                <hr>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="fullName">Email</label>
+                                                <p *ngIf="userData">{{userData.email}}</p>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="fullName">Phone</label>
+                                                <p *ngIf="userData && userData.phone != ''">{{userData.phone}}</p>
+                                                <p *ngIf="userData && userData.phone == ''">---</p>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="fullName">Address</label>
+                                                <p *ngIf="userData && userData.address != ''">{{userData.address}}</p>
+                                                <p *ngIf="userData && userData.address == ''">---</p>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="fullName">College</label>
+                                                <p *ngIf="userData && userData.college != ''">{{userData.college}}</p>
+                                                <p *ngIf="userData && userData.college == ''">---</p>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="fullName">Education</label>
+                                                <p *ngIf="userData && userData.education != ''">{{userData.education}}
+                                                </p>
+                                                <p *ngIf="userData && userData.education == ''">---</p>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-    <div class="card h-100">
-        <div class="card-body">
-            <div class="row gutters">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <h6 class="mb-2 text-primary">Personal Details</h6>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group">
-                        <label for="fullName">Name</label>
-                        <p *ngIf="userData && userData.name != ''">{{userData.name}}</p>
-                        <p *ngIf="userData && userData.name == ''">@{{userData.username}}</p>
-                        <hr>
-                        </div>
-                </div>
-                
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group">
-                        <label for="fullName">Email</label>
-                        <p *ngIf="userData">{{userData.email}}</p>
-                        <hr>
-                        </div>
-                </div><div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group">
-                        <label for="fullName">Phone</label>
-                        <p *ngIf="userData && userData.phone != ''">{{userData.phone}}</p>
-                        <p *ngIf="userData && userData.phone == ''">---</p>
-                        <hr>
-                        </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group">
-                        <label for="fullName">Address</label>
-                        <p *ngIf="userData && userData.address != ''">{{userData.address}}</p>
-                        <p *ngIf="userData && userData.address == ''">---</p>
-                        <hr>
-                        </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group">
-                        <label for="fullName">College</label>
-                        <p *ngIf="userData && userData.college != ''">{{userData.college}}</p>
-                        <p *ngIf="userData && userData.college == ''">---</p>
-                        <hr>
-                        </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group">
-                        <label for="fullName">Education</label>
-                        <p *ngIf="userData && userData.education != ''">{{userData.education}}</p>
-                        <p *ngIf="userData && userData.education == ''">---</p>
-                        <hr>
-                        </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
+</div>
