@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ChatService } from 'src/app/user/services/chat/chat.service';
 import { ProfileService } from 'src/app/user/services/profile/profile.service';
 
 @Component({
@@ -8,9 +9,10 @@ import { ProfileService } from 'src/app/user/services/profile/profile.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  constructor(private route: ActivatedRoute,private router: Router , private profileService : ProfileService) { }
+  constructor(private route: ActivatedRoute,private router: Router , private chatService : ChatService, private profileService : ProfileService) { }
   userData;
-  
+  publicChat;
+  username;
   ngOnInit(): void {
     this.route.params.subscribe(routeParams => {
       // console.log(routeParams.username);
@@ -18,11 +20,23 @@ export class ProfileComponent implements OnInit {
         if (res) {
           // console.log("res",res);
           this.userData = res.data;
+          this.username  = this.userData.username;
         }
       }, err => {
         if (err) {
           // console.log("err", err);
           this.router.navigate(["/error/page-not-found"]);
+        }
+      });
+      this.chatService.readPublicChat(routeParams.username).subscribe(res => {
+        if (res) {
+          console.log("res",res);
+          this.publicChat = res.data;
+        }
+      }, err => {
+        if (err) {
+          // console.log("err", err);
+          // this.router.navigate(["/error/page-not-found"]);
         }
       });
     });

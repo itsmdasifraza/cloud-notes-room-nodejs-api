@@ -87,7 +87,7 @@ router.get('/read',
 //             Route for public cha           //
 ////////////////////////////////////////////////
 router.get('/read/public/:username',
-    authToken,
+   
     async (req, res) => {
 
         // find all the chat with their userid
@@ -119,7 +119,7 @@ router.get('/read/public/:username',
                 }
                 return res.status(200).json({
                     success: '200',
-                    mssg: "all chats retrieved",
+                    mssg: "all public chats retrieved",
                     data: publicChatData
                 });
             }

@@ -1,3 +1,28 @@
+.right-area{
+    height: 100vh;
+    overflow-y: scroll;
+}
+.left-area{
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+@media only screen and (max-width:991px){
+    .right-area{
+        height: auto;
+        /* min-height: calc(100vh - 50px ); */
+        overflow-y: unset;
+    }
+    /* .left-area{
+        height: 0px;
+        overflow-y: auto;
+    } */
+    .left-area{
+        height: auto;
+        /* min-height : calc(100vh - 50px); */
+        overflow-y: unset;
+    }
+}
 .account-settings .user-profile {
     margin: 0 0 1rem 0;
     padding-bottom: 1rem;
@@ -66,7 +91,12 @@ p{
     min-height: 100vh;
     border-right: 1px solid rgb(228, 225, 225);
     background-color: var(--themenoteslistbg );
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+
 
 .item{
     padding:5px 15px;
@@ -83,7 +113,14 @@ p{
     background-color: var(--activelink);
 }
 
- .itm-flx{
+.addnotemain button{
+    padding: 0;
+    border: none;
+    outline: none;
+    
+}
+.itm-flx
+{
     display: flex;
     align-items: center;
 }
@@ -95,6 +132,7 @@ p{
     outline: none;
     text-decoration: none;
     cursor: pointer;
+    /* background-color: var(--themeheader); */
     background-color: var(--themedeletebutton );
     margin-right: 10px;
     display: flex;

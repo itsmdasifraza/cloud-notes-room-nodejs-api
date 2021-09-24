@@ -6,11 +6,12 @@
                     <!-- <app-header [username]="username" *ngIf="username"></app-header> -->
                     <!-- <app-user-nav  [user]="user" *ngIf="user"></app-user-nav> -->
 
-                    <div>
-                        <div style="margin: auto;" class="circle">
-                            <img src="assets/avatar/{{userData.avatar}}.jpg" alt="Maxwell Admin">                              
+                    <div >
+                        <div class="circle" style="margin: 0 auto;">
+                            <img  *ngIf="userData" width="100%" src="assets/avatar/{{userData.avatar}}.jpg" alt="Maxwell Admin">                              
                         </div>
-                        <h5 *ngIf="userData" class="user-name text-center">@{{userData.username}}</h5>
+                        <br>
+                        <h4 *ngIf="userData" class="user-name text-center"><b>@{{userData.username}}</b></h4>
                     </div>
 
                 </div>
@@ -95,6 +96,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="p-3">
+                    <h4>Public Chats</h4>
+                </div>
+                <app-public-chat [publicChat]="publicChat" [username]="username" ></app-public-chat>
+                
             </div>
         </div>
     </div>

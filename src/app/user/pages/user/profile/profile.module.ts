@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PublicChatComponent } from './public-chat/public-chat.component';
 
 
 @NgModule({
-  declarations: [ProfileComponent],
+  declarations: [ProfileComponent, PublicChatComponent],
   imports: [
     CommonModule,
     ProfileRoutingModule,

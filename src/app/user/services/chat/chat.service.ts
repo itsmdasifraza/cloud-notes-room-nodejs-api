@@ -7,6 +7,7 @@ export class ChatService {
 
   private ROOT_URL = "http://127.0.0.1:3000/api/chat/create";
   private readChatApi = "http://127.0.0.1:3000/api/chat/read";
+  private readPublicChatApi = "http://127.0.0.1:3000/api/chat/read/public";
   private deleteChatApi = "http://127.0.0.1:3000/api/chat/delete";
   constructor(private http: HttpClient) { }
 
@@ -28,6 +29,14 @@ export class ChatService {
       "token":localStorage.getItem("user-token")
     });
     return this.http.get<any>(`${this.readChatApi}`,{headers:header});
+  }
+
+  readPublicChat(username){
+    let header= new HttpHeaders({
+      // "Content-Type":"application/json",
+      "token":localStorage.getItem("user-token")
+    });
+    return this.http.get<any>(`${this.readPublicChatApi}/${username}`);
   }
   
   readSingleChat(chatid){

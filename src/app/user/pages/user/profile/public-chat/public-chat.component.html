@@ -1,0 +1,27 @@
+<section *ngIf="publicChat && publicChat.length > 0 && username ; else elseBlock">
+    <div class="public-chat">
+        <div class="container-fluid">
+            <div class="row">
+                <div *ngFor="let item of publicChat" class="col-4">
+                    <div class="item" routerLink="/chat/{{username}}/{{item._id}}/note/view/all">
+                        <h6><b>{{item.title}}</b></h6>
+                        <p class="mb-0">{{item.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #elseBlock>
+    <section>
+        <div class="p-3">
+            <div class="p-3 bg-primary" >
+                <h6>
+                    No public chats yet !
+                </h6>
+            </div>
+    
+        </div>
+    </section>
+</ng-template>
