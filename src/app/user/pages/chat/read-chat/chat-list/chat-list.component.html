@@ -7,7 +7,7 @@
      <div *ngIf="list  && list.length > 0" >
          <div *ngFor="let item of list.slice().reverse() | filter:searchText">
  
-             <div class="item" routerLink="/chat/{{username}}/{{item._id}}/note/view/all" routerLinkActive="active-link" >
+             <div class="item" routerLink="/chat/{{username}}/{{item._id}}/note/view/all" routerLinkActive="active-link"  >
                  <div  class="itm-flx">
                      <div>
                          <div class="circle">

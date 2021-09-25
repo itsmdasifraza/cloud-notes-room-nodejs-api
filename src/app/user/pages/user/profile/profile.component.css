@@ -23,6 +23,15 @@
         overflow-y: unset;
     }
 }
+.router-wrapper{
+
+        padding: 15px;
+        /* padding-top: calc(100vh / 100 * 20); */
+        padding-bottom: 40px;
+         min-height: 100vh;
+         background: var(--themebg);    
+     
+}
 .account-settings .user-profile {
     margin: 0 0 1rem 0;
     padding-bottom: 1rem;
@@ -48,10 +57,7 @@
     color: #9fa8b9;
 }
 
-.account-settings .about h5 {
-    margin: 0 0 15px 0;
-    color: #007ae1;
-}
+
 .account-settings .about p {
     font-size: 0.825rem;
 }
@@ -91,12 +97,33 @@ p{
     min-height: 100vh;
     border-right: 1px solid rgb(228, 225, 225);
     background-color: var(--themenoteslistbg );
+   
+}
+.profile-icon-main{
+    height: calc(100vh - 170px);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-
+/* search box */
+.searchbox{
+    height: 55px;
+    padding: 10px 15px;
+    background-color: #fbfbfb;
+   
+}
+.searchbox input{
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 1px solid rgb(187, 187, 187);
+    outline: none;
+}
+.searchbox input:focus{
+    border: 1px solid var(--themeaddbutton);
+}
+/* search box  */
 
 .item{
     padding:5px 15px;

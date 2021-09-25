@@ -5,6 +5,7 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PublicChatComponent } from './public-chat/public-chat.component';
+import { ReadChatModule } from '../../chat/read-chat/read-chat.module';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { PublicChatComponent } from './public-chat/public-chat.component';
     ProfileRoutingModule,
     ReactiveFormsModule,
     FormsModule, 
+    ReadChatModule
   ]
 })
 export class ProfileModule { }
