@@ -15,7 +15,7 @@
                     placeholder="chat name">
                 <small class=""
                     *ngIf="!chatForm.get('title').valid && chatForm.get('title').touched">
-                    chat name can't be empty
+                    must contain minimum 2 character
                 </small>
             </div>
             <div class="form">
@@ -24,7 +24,7 @@
                     placeholder="chat description">
                 <small class=""
                     *ngIf="!chatForm.get('description').valid && chatForm.get('description').touched">
-                    chat description can't be empty
+                    must contain minimum 4 character
                 </small>
             </div>
             <br>

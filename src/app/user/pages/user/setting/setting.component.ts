@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ConnectService } from 'src/app/user/services/connect/connect.service';
 import { UserService } from 'src/app/user/services/user/user.service';
 
 @Component({
@@ -9,8 +10,13 @@ import { UserService } from 'src/app/user/services/user/user.service';
   styleUrls: ['./setting.component.css']
 })
 export class SettingComponent implements OnInit {
-
-  constructor(private userService : UserService , private router : Router) { }
+  private toggleSubscription: Subscription;
+  settingToggle = true;
+  constructor(private userService : UserService , private connectService : ConnectService, private router : Router) {
+    this.toggleSubscription = this.connectService.settingToggle.subscribe(res => {
+      this.settingToggle = res;
+    });
+   }
   username;
   user;
   userSubscription : Subscription;
@@ -30,5 +36,15 @@ export class SettingComponent implements OnInit {
   add(){
     this.router.navigate(["/chat/create"]);
   }
+
+  visible() {
+    return {
+      'dnone': !this.settingToggle,
+    }
+  }
+  ngOnDestroy(){
+    this.toggleSubscription.unsubscribe();
+  }
+
 
 }

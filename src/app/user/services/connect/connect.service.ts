@@ -11,6 +11,9 @@ export class ConnectService {
   //this subject toggle chat section on following routes => chat/create , chat/:chatid
   chatToggle = new Subject<boolean>();
 
+  //this subject toggle setting section on following routes => settings/user-icon , settings/info , settings/password
+  settingToggle = new Subject<boolean>();
+
   userInfo = new BehaviorSubject({});
   constructor() { }
 }

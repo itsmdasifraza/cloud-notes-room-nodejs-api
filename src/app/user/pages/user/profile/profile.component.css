@@ -79,7 +79,9 @@
     border: 0;
     margin-bottom: 1rem;
 }
-
+.card-body{
+    margin-bottom: 15px;
+}
 
 h1,h2,h3,h4,h5,h6,p{
     margin: 0;
@@ -186,6 +188,10 @@ p{
 @media only screen and (max-width:991px){
     .dnone{
         display: none;
+    }
+    .router-wrapper{
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 .active-link{

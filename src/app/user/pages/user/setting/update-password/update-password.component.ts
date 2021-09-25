@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ConnectService } from 'src/app/user/services/connect/connect.service';
 import { ProfileService } from 'src/app/user/services/profile/profile.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { ProfileService } from 'src/app/user/services/profile/profile.service';
 })
 export class UpdatePasswordComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private profileService: ProfileService) { }
+  constructor(private connectService : ConnectService ,private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private profileService: ProfileService) { }
   userData;
 
   changeProfileForm = this.fb.group({
@@ -23,6 +24,7 @@ export class UpdatePasswordComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.connectService.settingToggle.next(false);
     this.profileService.readOwnerProfile().subscribe(res => {
       if (res) {
         // console.log("res", res);
@@ -57,5 +59,7 @@ export class UpdatePasswordComponent implements OnInit {
     }
   }
 
-
+  ngOnDestroy(): void {
+    this.connectService.settingToggle.next(true);
+}
 }

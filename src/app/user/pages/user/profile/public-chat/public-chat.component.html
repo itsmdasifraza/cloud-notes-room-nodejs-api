@@ -2,7 +2,7 @@
     <div class="public-chat">
         <div class="container-fluid">
             <div class="row">
-                <div *ngFor="let item of publicChat" class="col-4">
+                <div *ngFor="let item of publicChat.slice().reverse()" class="col-xl-4 col-md-6 col-12">
                     <div class="item" routerLink="/chat/{{username}}/{{item._id}}/note/view/all">
                         <h6><b>{{item.title}}</b></h6>
                         <p class="mb-0">{{item.description}}</p>

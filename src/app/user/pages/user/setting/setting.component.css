@@ -1,3 +1,28 @@
+.right-area{
+    height: 100vh;
+    overflow-y: scroll;
+}
+.left-area{
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+@media only screen and (max-width:991px){
+    .right-area{
+        height: auto;
+        /* min-height: calc(100vh - 50px ); */
+        overflow-y: unset;
+    }
+    /* .left-area{
+        height: 0px;
+        overflow-y: auto;
+    } */
+    .left-area{
+        height: auto;
+        /* min-height : calc(100vh - 50px); */
+        overflow-y: unset;
+    }
+}
 h1,h2,h3,h4,h5,h6,p{
     margin: 0;
 }
@@ -158,15 +183,6 @@ p{
 }
 
 @media only screen and (max-width:991px){
-    /* .list{
-        position: fixed;
-        top:0;
-        height: 100vh;
-        left: -50px;
-        z-index: 5;
-        background-color: white;
-        overflow-y:scroll ;
-    } */
     .dnone{
         display: none;
     }

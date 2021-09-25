@@ -1,9 +1,9 @@
 <div class="">
     <div class="row p-0 m-0">
         <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-xs-12 p-0 left-area">
-            <div>
+            <div [ngClass]="visible()">
                 <div  class="list" >
-                    <app-header [username]="username" *ngIf="username"></app-header>
+                    <app-header [username]="username"></app-header>
                     <app-user-nav  [user]="user" *ngIf="user"></app-user-nav>
                      
                    <div class="p-3">

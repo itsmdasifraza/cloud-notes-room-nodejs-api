@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ConnectService } from 'src/app/user/services/connect/connect.service';
 import { ProfileService } from 'src/app/user/services/profile/profile.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { ProfileService } from 'src/app/user/services/profile/profile.service';
 })
 export class UpdateAvatarComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,private fb: FormBuilder,private router: Router , private profileService : ProfileService) { }
+  constructor(private connectService : ConnectService ,private route: ActivatedRoute,private fb: FormBuilder,private router: Router , private profileService : ProfileService) { }
   avatar = ["user0","user1", "user4","user5","user2" , "user6", "user7", "user3","user8", "user9"];
   userData;
   changeAvatarForm = this.fb.group({ 
@@ -18,6 +19,7 @@ export class UpdateAvatarComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.connectService.settingToggle.next(false);
   
   this.profileService.readOwnerProfile().subscribe(res => {
         if (res) {
@@ -52,4 +54,7 @@ export class UpdateAvatarComponent implements OnInit {
         });
     }
   }
+  ngOnDestroy(): void {
+    this.connectService.settingToggle.next(true);
+}
 }

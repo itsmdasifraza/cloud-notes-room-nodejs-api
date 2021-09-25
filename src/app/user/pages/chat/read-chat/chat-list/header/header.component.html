@@ -4,11 +4,16 @@
         <p style="outline:none" routerLink="/">HAT NOTES</p>
     </div>
     
-    <div class="menu-item"></div>
-    <div class="dropdown-container" tabindex="-1">
+    
+    <div *ngIf="username" class="dropdown-container" tabindex="-1">
         <div class="three-dots"></div>
         <div class="dropdown">
-            <a *ngIf="username" (click)="account()" >
+            <a  (click)="chat()" >
+                <div >Chat
+                </div>
+                <hr>
+            </a>
+            <a  (click)="account()" >
                 <div >Profile
                 </div>
                 <hr>

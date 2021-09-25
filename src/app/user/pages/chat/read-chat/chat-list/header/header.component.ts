@@ -16,6 +16,9 @@ export class HeaderComponent implements OnInit {
   home(){
     this.router.navigate(["/"]);
   }
+  chat(){
+    this.router.navigate(["/chat"]);
+  }
   account(){
     // console.log("clicked");
     this.router.navigate(["/"+this.username]);

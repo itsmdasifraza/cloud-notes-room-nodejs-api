@@ -8,10 +8,11 @@ import { UpdateDetailsComponent } from './update-details/update-details.componen
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ReadChatModule } from '../../chat/read-chat/read-chat.module';
+import { DefaultSettingScreenComponent } from './default-setting-screen/default-setting-screen.component';
 
 
 @NgModule({
-  declarations: [SettingComponent, UpdateAvatarComponent, UpdateDetailsComponent, UpdatePasswordComponent],
+  declarations: [SettingComponent, UpdateAvatarComponent, UpdateDetailsComponent, UpdatePasswordComponent, DefaultSettingScreenComponent],
   imports: [
     CommonModule,
     SettingRoutingModule,
