@@ -1,8 +1,12 @@
 .admin-login{
-    padding-top: calc(100vh / 100 * 20);
-    padding-bottom: 40px;
+    padding-top: calc(100vh / 100 * 22);
+    padding-top: calc(calc(var(--vh, 1vh) * 100) / 100 * 22);
+    padding-bottom: calc(100vh / 100 * 22);
+    padding-bottom: calc(calc(var(--vh, 1vh) * 100) / 100 * 22);
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    overflow-y: scroll ;
     background-color: rgb(49 49 49);
-    min-height: 100vh;
 }
 
 
@@ -97,4 +101,9 @@ small{
     background-color: #4e4e4e;
     padding: 5px;
     color: rgb(236, 99, 99);
+}
+@media only screen and (max-width: 600px){
+    .login{
+        max-width:400px;
+    }
 }

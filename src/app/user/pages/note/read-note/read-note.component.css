@@ -1,5 +1,6 @@
 .notes-detail{
     min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
     background: var(--themebg);
     /* animation: fadeIn; */
     /* -webkit-animation: fadeIn; */
@@ -130,6 +131,7 @@ p{
 .more-notes{
     position: sticky;
     top:calc(100vh - 60px);
+    top: calc(calc(var(--vh, 1vh) * 100) - 60px); 
     bottom:0;
     height: 60px;
     background: var(--themebg);
@@ -206,4 +208,11 @@ p{
     .side-hide{
         display: none !important;
     }
+    .notes-detail{
+        min-height:0;
+        height: 100vh; 
+        height: calc(var(--vh, 1vh) * 100);
+              overflow-y: scroll;
+    }
+    
 }

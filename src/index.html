@@ -18,7 +18,29 @@
   <meta property="og:image:secure_url" content="https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png" />
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+<style>
+.main{
+   height: 100vh; 
+height: calc(var(--vh, 1vh) * 100);
+   /* background-color : red; */
+      overflow-y: hidden;
+}
+</style>
 <body>
-  <app-root></app-root>
+  <script>
+    // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+ let vh = window.innerHeight * 0.01;
+ // Then we set the value in the --vh custom property to the root of the document
+ document.documentElement.style.setProperty('--vh', `${vh}px`);
+       // We listen to the resize event
+ window.addEventListener('resize', () => {
+   // We execute the same script as before
+   let vh = window.innerHeight * 0.01;
+   document.documentElement.style.setProperty('--vh', `${vh}px`);
+ });
+     </script>
+     <div class="main">
+       <app-root></app-root>
+     </div>
 </body>
 </html>

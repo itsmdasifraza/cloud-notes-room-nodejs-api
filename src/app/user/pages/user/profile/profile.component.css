@@ -1,34 +1,30 @@
 .right-area{
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     overflow-y: scroll;
 }
 .left-area{
     height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     overflow-y: scroll;
 }
 
 @media only screen and (max-width:991px){
     .right-area{
         height: auto;
-        /* min-height: calc(100vh - 50px ); */
         overflow-y: unset;
     }
-    /* .left-area{
-        height: 0px;
-        overflow-y: auto;
-    } */
     .left-area{
         height: auto;
-        /* min-height : calc(100vh - 50px); */
         overflow-y: unset;
     }
 }
 .router-wrapper{
 
         padding: 15px;
-        /* padding-top: calc(100vh / 100 * 20); */
-        padding-bottom: 40px;
+         padding-bottom: 20px;
          min-height: 100vh;
+         min-height: calc(var(--vh, 1vh) * 100);
          background: var(--themebg);    
      
 }
@@ -97,12 +93,13 @@ p{
     0 8px 8px rgba(0,0,0,0.12),
     0 16px 16px rgba(0,0,0,0.12);
     min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
     border-right: 1px solid rgb(228, 225, 225);
     background-color: var(--themenoteslistbg );
    
 }
 .profile-icon-main{
-    height: calc(100vh - 170px);
+    height: calc(calc(var(--vh, 1vh) * 100) - 170px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -184,7 +181,11 @@ p{
     margin-bottom: 20px;
     border-radius: 4px;
 }
-
+@media only screen and (min-width:992px){
+    .d-lg-none{
+        display: none !important;
+    }
+}
 @media only screen and (max-width:991px){
     .dnone{
         display: none;
@@ -193,6 +194,19 @@ p{
         padding-left: 0;
         padding-right: 0;
     }
+    .pro-scroll{
+        height: 100vh; 
+        height: calc(var(--vh, 1vh) * 100);
+              overflow-y: scroll;
+    }
+    .list{
+        min-height: 400px;
+        background-color: var(--activelink);
+    }
+    .profile-icon-main{
+        height: calc(400px - 55px);
+    }
+    
 }
 .active-link{
     background-color: var(--activelink);
