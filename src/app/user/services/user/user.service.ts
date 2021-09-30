@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  backendIp = environment.backend.ip;
+  connection = environment.backend.connection;
 
-  private readUserApi = "http://127.0.0.1:3000/api/user/read";
+  private readUserApi = `${this.connection}://${this.backendIp}/api/user/read`;
  
   constructor(private http: HttpClient) { }
 

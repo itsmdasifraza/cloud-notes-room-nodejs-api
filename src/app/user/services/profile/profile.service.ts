@@ -1,16 +1,19 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
+  backendIp = environment.backend.ip;
+  connection = environment.backend.connection;
 
-  
-  private readProfileApi = "http://10.12.1.9:3000/api/profile/read";
-  private readOwnerProfileApi = "http://127.0.0.1:3000/api/profile/read/info/owner";
-  private updateAvatarApi = "http://127.0.0.1:3000/api/profile/update/info/avatar";
-  private updatePersonalApi = "http://127.0.0.1:3000/api/profile/update/info/personal";
+  private readProfileApi = `${this.connection}://${this.backendIp}/api/profile/read`;
+  private readOwnerProfileApi = `${this.connection}://${this.backendIp}/api/profile/read/info/owner`;
+  private updateAvatarApi = `${this.connection}://${this.backendIp}/api/profile/update/info/avatar`;
+  private updatePersonalApi = `${this.connection}://${this.backendIp}/api/profile/update/info/personal`;
  
   constructor(private http: HttpClient) { }
 

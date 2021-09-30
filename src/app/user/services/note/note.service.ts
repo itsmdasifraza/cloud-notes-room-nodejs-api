@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoteService {
+  backendIp = environment.backend.ip;
+  connection = environment.backend.connection;
 
-  
-  private ROOT_URL = "http://127.0.0.1:3000/api/chat/create";
-  private readNoteApi = "http://127.0.0.1:3000/api/note/read";
-  private deleteNoteApi = "http://127.0.0.1:3000/api/note/delete";
-  private createNoteApi = "http://127.0.0.1:3000/api/note/create";
+
+  private ROOT_URL = `${this.connection}://${this.backendIp}/api/chat/create`;
+  private readNoteApi = `${this.connection}://${this.backendIp}/api/note/read`;
+  private deleteNoteApi = `${this.connection}://${this.backendIp}/api/note/delete`;
+  private createNoteApi = `${this.connection}://${this.backendIp}/api/note/create`;
+
   constructor(private http: HttpClient) { }
 
 

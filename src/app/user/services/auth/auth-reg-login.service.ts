@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthRegLoginService {
+  backendIp = environment.backend.ip;
+  connection = environment.backend.connection;
 
-  registerApi = "http://10.12.1.9:3000/api/auth/register";
-  loginApi = "http://10.12.1.9:3000/api/auth/login";
+  registerApi = `${this.connection}://${this.backendIp}/api/auth/register`;
+  loginApi = `${this.connection}://${this.backendIp}/api/auth/login`;
+  
   constructor(private http : HttpClient) { }
 
   register(user){

@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
-  private ROOT_URL = "http://127.0.0.1:3000/api/chat/create";
-  private readChatApi = "http://127.0.0.1:3000/api/chat/read";
-  private readPublicChatApi = "http://127.0.0.1:3000/api/chat/read/public";
-  private deleteChatApi = "http://127.0.0.1:3000/api/chat/delete";
+  backendIp = environment.backend.ip;
+  connection = environment.backend.connection;
+
+  private ROOT_URL =  `${this.connection}://${this.backendIp}/api/chat/create`;
+  private readChatApi =  `${this.connection}://${this.backendIp}/api/chat/read`;
+  private readPublicChatApi =  `${this.connection}://${this.backendIp}/api/chat/read/public`;
+  private deleteChatApi =  `${this.connection}://${this.backendIp}/api/chat/delete`;
+
+
   constructor(private http: HttpClient) { }
 
 
