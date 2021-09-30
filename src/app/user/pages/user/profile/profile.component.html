@@ -13,8 +13,8 @@
                     <div class="profile-icon-main" >
                         <div>
 
-                            <div class="circle" style="margin: 0 auto;">
-                                <img  *ngIf="userData" width="100%" src="assets/avatar/{{userData.avatar}}.jpg" alt="Maxwell Admin">                              
+                            <div *ngIf="userData" class="circle" style="margin: 0 auto;">
+                                <img   width="100%" src="assets/avatar/{{userData.avatar}}.jpg" alt="Maxwell Admin">                              
                             </div>
                             <br>
                             <h4 *ngIf="userData" class="user-name text-center"><b>@{{userData.username}}</b></h4>
@@ -105,14 +105,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-3">
+                <div class="p-3" *ngIf="publicChat">
                     <div class="p-3 bg-white">
                         <h5 class="text-primary"><b>Public Chats</b></h5>
                     </div>
                     
                 </div>
                 <app-public-chat [publicChat]="publicChat" [username]="username" ></app-public-chat>
-                
+                <div class="p-3" *ngIf="error">
+                    <div class="p-3 bg-danger">
+                        <h5 class="text-white"><b>{{error.error.mssg}}</b></h5>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     </div>

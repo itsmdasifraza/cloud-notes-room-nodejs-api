@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   username;
   owneruser;
   ownerusername ;
+  error;
 
   searchForm = new FormGroup({
     search: new FormControl('', [Validators.required]),
@@ -35,6 +36,9 @@ export class ProfileComponent implements OnInit {
       }
     });
     this.route.params.subscribe(routeParams => {
+      this.error = undefined;
+      this.publicChat = undefined;
+      this.userData = undefined;
       // console.log(routeParams.username);
       this.profileService.readProfile(routeParams.username).subscribe(res => {
         if (res) {
@@ -50,12 +54,13 @@ export class ProfileComponent implements OnInit {
       });
       this.chatService.readPublicChat(routeParams.username).subscribe(res => {
         if (res) {
-          // console.log("res", res);
+          console.log("res", res);
           this.publicChat = res.data;
         }
       }, err => {
         if (err) {
-          // console.log("err", err);
+          console.log("err", err);
+          this.error = err;
           // this.router.navigate(["/error/page-not-found"]);
         }
       });

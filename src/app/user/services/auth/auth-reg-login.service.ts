@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthRegLoginService {
 
-  registerApi = "http://127.0.0.1:3000/api/auth/register";
-  loginApi = "http://127.0.0.1:3000/api/auth/login";
+  registerApi = "http://10.12.1.9:3000/api/auth/register";
+  loginApi = "http://10.12.1.9:3000/api/auth/login";
   constructor(private http : HttpClient) { }
 
   register(user){

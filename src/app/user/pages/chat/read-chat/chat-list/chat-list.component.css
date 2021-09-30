@@ -101,12 +101,15 @@ p{
     text-decoration: none;
     cursor: pointer;
     /* background-color: var(--themeheader); */
-    background-color: var(--themedeletebutton );
+    background-color: var(--themeheader );
     margin-right: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #212529;
+    border: 1px solid var(--activelink);
+}
+svg {
+    fill : white;
 }
 .no-list{
     padding: 15px;

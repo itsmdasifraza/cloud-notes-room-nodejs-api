@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class ProfileService {
 
   
-  private readProfileApi = "http://127.0.0.1:3000/api/profile/read";
+  private readProfileApi = "http://10.12.1.9:3000/api/profile/read";
   private readOwnerProfileApi = "http://127.0.0.1:3000/api/profile/read/info/owner";
   private updateAvatarApi = "http://127.0.0.1:3000/api/profile/update/info/avatar";
   private updatePersonalApi = "http://127.0.0.1:3000/api/profile/update/info/personal";
