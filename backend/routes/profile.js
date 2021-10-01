@@ -69,7 +69,7 @@ router.post('/update/info/avatar',
 
      // find all the chat with their userid
      try{
-         console.log(req.body);
+        //  console.log(req.body);
          let avatar = {
              avatar : req.body.avatar
          }
@@ -96,7 +96,7 @@ router.post('/update/info/avatar',
 ////////////////////////////////////////////////
 //           update user password             //
 ////////////////////////////////////////////////
-router.post('/update/info/avatar',
+router.post('/update/info/password',
     authToken,
     
     body('newpassword','password must be minimum 8 character').trim().isLength({ min: 8 }),
@@ -120,7 +120,7 @@ router.post('/update/info/avatar',
          }
      var userPasswordData = await userModel.findOneAndUpdate({_id : req.userid },password);
     //  console.log(userData)
-     if(!userData){
+     if(!userPasswordData){
         return res.status(404).json({error:'404',
         mssg:"internal server error",
        });
@@ -131,7 +131,6 @@ router.post('/update/info/avatar',
         mssg:"internal server error",
        });
      }
-     userData.avatar = req.body.avatar;
      return res.status(200).json({success:'200',
      mssg:"user password changed",
     });

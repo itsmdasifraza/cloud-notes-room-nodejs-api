@@ -14,6 +14,7 @@ export class ProfileService {
   private readOwnerProfileApi = `${this.connection}://${this.backendIp}/api/profile/read/info/owner`;
   private updateAvatarApi = `${this.connection}://${this.backendIp}/api/profile/update/info/avatar`;
   private updatePersonalApi = `${this.connection}://${this.backendIp}/api/profile/update/info/personal`;
+  private updatePasswordApi = `${this.connection}://${this.backendIp}/api/profile/update/info/password`;
  
   constructor(private http: HttpClient) { }
 
@@ -43,6 +44,13 @@ export class ProfileService {
       "token":localStorage.getItem("user-token")
     });
     return this.http.post<any>(`${this.updatePersonalApi}`,data,{headers:header});
+  }
+
+  updatePasswordInfo(data){
+    let header= new HttpHeaders({
+      "token":localStorage.getItem("user-token")
+    });
+    return this.http.post<any>(`${this.updatePasswordApi}`,data,{headers:header});
   }
   
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConnectService } from 'src/app/user/services/connect/connect.service';
 import { ProfileService } from 'src/app/user/services/profile/profile.service';
@@ -11,47 +11,28 @@ import { ProfileService } from 'src/app/user/services/profile/profile.service';
 })
 export class UpdatePasswordComponent implements OnInit {
 
-  constructor(private connectService : ConnectService ,private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private profileService: ProfileService) { }
+  constructor(private connectService: ConnectService, private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private profileService: ProfileService) { }
   userData;
 
-  changeProfileForm = this.fb.group({
-    name: new FormControl('', []),
-    phone: new FormControl('', []),
-    address: new FormControl('', []),
-    college: new FormControl('', []),
-    education: new FormControl('', []),
-    about: new FormControl('', []),
+  changePasswordForm = this.fb.group({
+    newpassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    confirmpassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
   });
 
   ngOnInit(): void {
     this.connectService.settingToggle.next(false);
-    this.profileService.readOwnerProfile().subscribe(res => {
-      if (res) {
-        // console.log("res", res);
-        this.userData = res.data;
-        this.changeProfileForm.setValue({
-          name: this.userData.name,
-          phone: this.userData.phone,
-          address: this.userData.address,
-          college: this.userData.college,
-          education: this.userData.education,
-          about: this.userData.about,
-        });
-      }
-    }, err => {
-      if (err) {
-        // console.log("err", err);
-      }
-    });
   }
 
-  changeProfile() {
-    if (this.changeProfileForm.valid) {
+  changePassword() {
+    if (this.changePasswordForm.valid) {
       // console.log(this.changeProfileForm.value);
-      this.profileService.updatePersonalInfo(this.changeProfileForm.value).subscribe(
+      this.profileService.updatePasswordInfo(this.changePasswordForm.value).subscribe(
         (res) => {
           // console.log("res", res);
-          this.router.navigate(["/chat"]);
+          this.connectService.chatRefresh.next([]);
+          this.connectService.userRefresh.next(null);
+          localStorage.removeItem("user-token");
+          this.router.navigate(["/"]);
 
         }, (err) => {
           // console.log("err", err);
@@ -61,5 +42,5 @@ export class UpdatePasswordComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.connectService.settingToggle.next(true);
-}
+  }
 }
