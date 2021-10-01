@@ -10,14 +10,15 @@
                         <input type="text"  name="search" autocomplete="off" formControlName="search"  placeholder="search usernames">
                     </form>
                     </div>
-                    <div class="profile-icon-main" >
-                        <div>
+                    <div class="p-3 profile-icon-main" >
+                        <div style="width:100%;">
 
                             <div *ngIf="userData" class="circle" style="margin: 0 auto;">
                                 <img   width="100%" src="assets/avatar/{{userData.avatar}}.jpg" alt="Maxwell Admin">                              
                             </div>
                             <br>
-                            <h4 *ngIf="userData" class="user-name text-center"><b>@{{userData.username}}</b></h4>
+                            <h4 *ngIf="userData"  style=" overflow: hidden;
+                            word-wrap: break-word; " class="user-name text-center"><b>@{{userData.username}}</b></h4>
                         </div>
                         </div>
 
@@ -33,14 +34,15 @@
                     <input type="text"  name="search" autocomplete="off" formControlName="search"  placeholder="search usernames">
                 </form>
                 </div>
-                <div class="profile-icon-main" >
-                    <div>
+                <div class=" p-3 profile-icon-main" >
+                    <div style="width:100%">
 
                         <div *ngIf="userData" class="circle" style="margin: 0 auto;">
                             <img   width="100%" src="assets/avatar/{{userData.avatar}}.jpg" alt="Maxwell Admin">                              
                         </div>
                         <br>
-                        <h4 *ngIf="userData" class="user-name text-center"><b>@{{userData.username}}</b></h4>
+                        <h4 *ngIf="userData" style=" overflow: hidden;
+                        word-wrap: break-word; " class="user-name text-center"><b>@{{userData.username}}</b></h4>
                     </div>
                     </div>
 
@@ -126,9 +128,9 @@
                     </div>
                 </div>
                 <div class="p-3" *ngIf="publicChat">
-                    <div class="p-3 bg-white">
-                        <h5 class="text-primary"><b>Public Chats</b></h5>
-                    </div>
+                    <!-- <div class="p-3 bg-white"> -->
+                        <h5 class="text-black"><b>PUBLIC CHATS</b></h5>
+                    <!-- </div> -->
                     
                 </div>
                 <app-public-chat [publicChat]="publicChat" [username]="username" ></app-public-chat>

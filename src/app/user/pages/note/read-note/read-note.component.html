@@ -1,11 +1,12 @@
-<div *ngIf="owner == 'false'"  class=" side-hide d-flex align-items-center justify-content-center">
-    <div>
+<div *ngIf="owner == 'false'"  class=" p-3 side-hide d-flex align-items-center justify-content-center">
+    <div style=" width:100%;" >
         <div style="margin: auto;" class="profile-circle" *ngIf="avatar">
             <img src="assets/avatar/{{avatar}}.jpg" width="100%" alt="">
         </div>
         <br>
-        <div>
-            <h4 class="text-center"><b>@{{username}}</b></h4>
+        <div  style="overflow-x:hidden; " >
+            <h4 class="text-center" style=" overflow: hidden;
+              word-wrap: break-word; "><b>@{{username}}</b></h4>
         </div>
     </div>
 </div>
@@ -29,7 +30,7 @@
               word-wrap: break-word; "><b>
                   {{chat.title}}
                 </b></p>
-            <p *ngIf="chat" style=" overflow: hidden;
+            <p *ngIf="chat" style=" overflow: hidden; font-size: 12px;
             text-overflow: ellipsis;
                 -webkit-line-clamp: 1;
                 display: -webkit-box;
@@ -69,7 +70,7 @@
    <div class="more-notes" >
     <form [formGroup]="noteForm" *ngIf="owner == 'true'" (ngSubmit)="createNote()" >
         <div class="flx">
-            <input type="text" formControlName="message" placeholder="type more details about this topic ...">
+            <input type="text" formControlName="message" placeholder="send information to this chat">
             <button type="submit">SEND</button>
         </div>
     </form>

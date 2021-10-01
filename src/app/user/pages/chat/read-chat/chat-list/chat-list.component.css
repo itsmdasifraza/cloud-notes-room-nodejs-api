@@ -116,8 +116,7 @@ svg {
 .no-list{
     padding: 15px;
     height: calc(100vh - 165px);
-    height: calc(var(--vh, 1vh) * 100);
-    overflow-y: scroll;
+    height: calc(calc(var(--vh, 1vh) * 100) - 165px);
     background-color: var(--themenonotesbg);
     display: flex;
     flex-direction: column;

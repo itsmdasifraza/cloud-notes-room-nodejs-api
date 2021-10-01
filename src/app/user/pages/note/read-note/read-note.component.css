@@ -181,11 +181,10 @@ p{
 .side-hide{
     background-color: var(--themenoteslistbg );
     width: 23.8%;
-    height: 100vh;
+    height: calc(calc(var(--vh, 1vh) * 100) - 55px);
     position: fixed;
-    top: 0;
+    top: 55px;
     left: 0;
-    height: 100%;
 }
 .profile-circle{
     height: 100px;
