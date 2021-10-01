@@ -49,10 +49,10 @@ export class ChatListComponent implements OnInit {
         // console.log("err", err);
       }
     });
-    this.userSubscription = this.userService.readUser().subscribe(res => {
+    this.userSubscription = this.connectService.userRefresh.subscribe(res => {
       if (res) {
         // console.log("res",res);
-        this.user = res.info;
+        this.user = res;
         this.username = this.user.username;
       }
     }, err => {

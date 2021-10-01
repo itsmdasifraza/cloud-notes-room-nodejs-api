@@ -31,6 +31,7 @@ export class HeaderComponent implements OnInit {
   logout(){
     // console.log("clicked");
     this.connectService.chatRefresh.next([]);
+    this.connectService.userRefresh.next(null);
     localStorage.removeItem("user-token");
     this.router.navigate(["/login"]);
   }

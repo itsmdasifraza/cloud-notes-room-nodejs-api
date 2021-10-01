@@ -3,6 +3,7 @@ import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthRegLoginService } from '../../services/auth/auth-reg-login.service';
+import { ConnectService } from '../../services/connect/connect.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { AuthRegLoginService } from '../../services/auth/auth-reg-login.service'
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService : AuthRegLoginService, private router : Router) { }
+  constructor(private connectService: ConnectService, private authService : AuthRegLoginService, private router : Router) { }
 
   loginForm = new FormGroup({
     usermail: new FormControl('', [Validators.required, Validators.minLength(4)]),
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
           (res)=>{
             // console.log("res",res);
             localStorage.setItem("user-token",res.token);
+            this.connectService.userRefresh.next(res.data);
             this.spinner = false;
             this.loginForm.reset();
             this.router.navigate(["/chat"]);

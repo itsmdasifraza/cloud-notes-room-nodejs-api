@@ -21,10 +21,10 @@ export class UpdateAvatarComponent implements OnInit {
   ngOnInit(): void {
     this.connectService.settingToggle.next(false);
   
-  this.profileService.readOwnerProfile().subscribe(res => {
+  this.connectService.userRefresh.subscribe(res => {
         if (res) {
           // console.log("res",res);
-          this.userData = res.data;
+          this.userData = res;
           this.changeAvatarForm.setValue({
             user_icon : this.userData.avatar
           });
@@ -47,7 +47,8 @@ export class UpdateAvatarComponent implements OnInit {
         this.profileService.updateProfileAvatar(avatar).subscribe(
           (res)=>{
             // console.log("res",res);
-            this.router.navigate(["/chat"]);
+            this.connectService.userRefresh.next(res.data);
+            this.router.navigate(["/settings"]);
 
           },(err)=>{
             // console.log("err",err);

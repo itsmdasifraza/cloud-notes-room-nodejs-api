@@ -29,6 +29,7 @@ router.post('/',
              res.status(200).json({
                  token : token,
                  msg: "verified with username password",
+                 data : usernameExist
                 //  id : usernameExist.id
              });
          }    
@@ -50,6 +51,7 @@ router.post('/',
                 res.status(200).json({
                     token : token,
                     msg: "verified with email password",
+                    data : emailExist
                    //  id : emailExist.id
                 });
             }

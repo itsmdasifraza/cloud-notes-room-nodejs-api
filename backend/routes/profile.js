@@ -86,8 +86,10 @@ router.post('/update/info/avatar',
         mssg:"internal server error",
        });
      }
+     userData.avatar = req.body.avatar;
      return res.status(200).json({success:'200',
      mssg:"user avatar changed",
+     data : userData
     });
 });
 
@@ -123,8 +125,16 @@ router.post('/update/info/personal',
         mssg:"internal server error",
        });
      }
+     personalData.name = req.body.name;
+     personalData.phone = req.body.phone;
+     personalData.address = req.body.address;
+     personalData.college = req.body.college;
+     personalData.education = req.body.education;
+     personalData.about = req.body.about;
+
      return res.status(200).json({success:'200',
      mssg:"user personal detail changed",
+     data: personalData
     });
 });
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService } from 'src/app/user/services/chat/chat.service';
+import { ConnectService } from 'src/app/user/services/connect/connect.service';
 import { ProfileService } from 'src/app/user/services/profile/profile.service';
 import { UserService } from 'src/app/user/services/user/user.service';
 
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/user/services/user/user.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router, private chatService: ChatService, private profileService: ProfileService) { }
+  constructor(private connectService : ConnectService, private route: ActivatedRoute, private userService: UserService, private router: Router, private chatService: ChatService, private profileService: ProfileService) { }
   userData;
   publicChat;
   username;
@@ -24,10 +25,10 @@ export class ProfileComponent implements OnInit {
   });
 
   ngOnInit(): void {
-      this.userService.readUser().subscribe(res => {
-      if (res) {
+      this.connectService.userRefresh.subscribe(res => {
+        if (res) {
         // console.log("res",res);
-        this.owneruser = res.info;
+        this.owneruser = res;
         this.ownerusername = this.owneruser.username;
       }
     }, err => {
@@ -54,12 +55,12 @@ export class ProfileComponent implements OnInit {
       });
       this.chatService.readPublicChat(routeParams.username).subscribe(res => {
         if (res) {
-          console.log("res", res);
+          // console.log("res", res);
           this.publicChat = res.data;
         }
       }, err => {
         if (err) {
-          console.log("err", err);
+          // console.log("err", err);
           this.error = err;
           // this.router.navigate(["/error/page-not-found"]);
         }

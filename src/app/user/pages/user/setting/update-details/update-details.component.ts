@@ -25,10 +25,10 @@ export class UpdateDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.connectService.settingToggle.next(false);
-    this.profileService.readOwnerProfile().subscribe(res => {
+    this.connectService.userRefresh.subscribe(res => {
       if (res) {
         // console.log("res", res);
-        this.userData = res.data;
+        this.userData = res;
         this.changeProfileForm.setValue({
           name: this.userData.name,
           phone: this.userData.phone,
@@ -51,7 +51,8 @@ export class UpdateDetailsComponent implements OnInit {
       this.profileService.updatePersonalInfo(this.changeProfileForm.value).subscribe(
         (res) => {
           // console.log("res", res);
-          this.router.navigate(["/chat"]);
+          this.connectService.userRefresh.next(res.data);
+          this.router.navigate(["/settings"]);
 
         }, (err) => {
           // console.log("err", err);
