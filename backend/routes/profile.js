@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const { body, validationResult } = require('express-validator');
 const authToken = require('../middlewares/auth-token');
-
+var bcrypt = require('bcryptjs');
 var userModel = require('../models/user');
 
 
@@ -93,6 +93,49 @@ router.post('/update/info/avatar',
     });
 });
 
+////////////////////////////////////////////////
+//           update user password             //
+////////////////////////////////////////////////
+router.post('/update/info/avatar',
+    authToken,
+    
+    body('newpassword','password must be minimum 8 character').trim().isLength({ min: 8 }),
+    body('confirmpassword','password must be minimum 8 character').trim().isLength({ min: 8 }),
+     
+     async (req, res) => {
+        if(req.body.newpassword != req.body.confirmpassword){
+            return res.status(404).json({error:'404',
+            mssg:"password didn't match",
+           });
+        }
+     // enctypting password 
+     var salt = bcrypt.genSaltSync(10);
+     var hash = bcrypt.hashSync(req.body.newpassword, salt);
+
+     // find all the chat with their userid
+     try{
+        //  console.log(req.body);
+         let password = {
+             password : hash
+         }
+     var userPasswordData = await userModel.findOneAndUpdate({_id : req.userid },password);
+    //  console.log(userData)
+     if(!userData){
+        return res.status(404).json({error:'404',
+        mssg:"internal server error",
+       });
+     }       
+     }
+     catch{
+        return res.status(404).json({error:'404',
+        mssg:"internal server error",
+       });
+     }
+     userData.avatar = req.body.avatar;
+     return res.status(200).json({success:'200',
+     mssg:"user password changed",
+    });
+});
 
 ////////////////////////////////////////////////
 //           Route for read username          //
