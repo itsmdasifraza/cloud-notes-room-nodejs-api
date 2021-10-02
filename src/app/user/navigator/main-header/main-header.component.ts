@@ -34,7 +34,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
         top:0,
         left:0,
         right:0,
-        height:'100vh',
+        bottom:0,
         backgroundColor: 'rgb(0,0,0,0.6)',
         zIndex: 998
       })),
