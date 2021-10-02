@@ -5,7 +5,7 @@ var bcrypt = require('bcryptjs');
 
 var userModel = require('../models/user');
 router.post('/',
-    body('username','username must be minimum 3 character').trim().isLength({ min: 3 }),
+    body('username','username must between 4 to 36 character').trim().isLength({ min: 4, max: 36 }),
     body('email','email must be valid').isEmail(),
     body('password','password must be minimum 8 character').trim().isLength({ min: 8 }),
      async (req, res) => {

@@ -49,9 +49,10 @@ a{
     outline: none;
     border: none;
     border-radius: 3px;
-    height:40px;
-    width:45px;
-    padding:6px;
+    height:30px;
+  width:33px;
+  padding:6px;
+  padding-right: 0;
     position: relative;
     display: flex;
     align-items: center;
@@ -114,7 +115,7 @@ a{
     width:300px; 
     bottom: 0;
     top:0; 
-    left:0;  
+    left : -300px;
     z-index: 999;
     background-color: rgb(241, 241, 243);
     box-shadow: 2px 0px 10px 0px rgba(0,0,0,0.75);
