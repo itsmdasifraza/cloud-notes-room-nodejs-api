@@ -64,6 +64,7 @@ router.get('/read/info/owner',
 //           Route for read username          //
 ////////////////////////////////////////////////
 router.post('/update/info/avatar',
+body('avatar').isLength({ min: 1 }),
     authToken,
      async (req, res) => {
 

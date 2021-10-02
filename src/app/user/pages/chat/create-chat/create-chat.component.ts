@@ -40,7 +40,7 @@ ownerusername;
 
   chatForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    description: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    description: new FormControl('', [Validators.required, Validators.minLength(2)]),
     protected: new FormControl('', [Validators.required]),
   });
   

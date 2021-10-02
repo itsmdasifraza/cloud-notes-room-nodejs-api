@@ -70,7 +70,7 @@
    <div class="more-notes" >
     <form [formGroup]="noteForm" *ngIf="owner == 'true'" (ngSubmit)="createNote()" >
         <div class="flx">
-            <input type="text" formControlName="message" placeholder="send information to this chat">
+            <input type="text" autocomplete="off" formControlName="message" placeholder="send information to this chat">
             <button type="submit">SEND</button>
         </div>
     </form>

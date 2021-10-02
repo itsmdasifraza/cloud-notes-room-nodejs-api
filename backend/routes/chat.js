@@ -12,7 +12,7 @@ var noteModel = require('../models/note');
 ////////////////////////////////////////////////
 router.post('/create',
     body('title', 'title must be minimum 2 character').trim().isLength({ min: 2 }),
-    body('description', 'description must be minimum 4 character').trim().isLength({ min: 4 }), authToken,
+    body('description', 'description must be minimum 2 character').trim().isLength({ min: 2 }), authToken,
     async (req, res) => {
 
         const errors = validationResult(req);
