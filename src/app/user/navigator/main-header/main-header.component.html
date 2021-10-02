@@ -1,21 +1,69 @@
 <!-- side nav for mobile start-->
 <div [@mobileNav]="tglState ? 'invisible' : 'visible'" class="side-nav-mobile nav-mobile-hide" id="mob-nav" *ngIf="headerDetail">
-
-    <div class="px-3 py-3 sdnav">
-        <!-- <div class="mb-4">
-            <img src="assets/logo/nav_logo.png" width="100%"  alt="chat notes">
-        </div> -->
-        <a routerLink="/" (click)="toggle()" class="py-3 px-4">HOME
+    <app-header></app-header>
+    <div class="sdnav">
+        <div class="p-3">
+            <p class="m-0"><b>EXPLORE</b></p>
+        </div>
+        <hr class="m-0">
+        <a routerLink="/" routerLinkActive="nav-active-link" [routerLinkActiveOptions]="{exact: true}" (click)="toggle()" >
+            <div class="d-flex align-items-center">
+            <svg width="25px" height="25px"
+            viewBox="0 0 16 16" class="bi bi-house" fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+                d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+            <path fill-rule="evenodd"
+                d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+        </svg><div class="ml-3">HOME</div></div>
         </a>
-        <a routerLink="/about" (click)="toggle()" class="py-3 px-4">ABOUT
+        <a routerLink="/chat" routerLinkActive="nav-active-link" [routerLinkActiveOptions]="{exact: true}" (click)="toggle()">
+            <div class="d-flex  align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px"  fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+                    <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                    <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z"/>
+                  </svg><div class="ml-3">CHAT</div></div>
         </a>
-        <a routerLink="/policy" (click)="toggle()" class="py-3 px-4">POLICY
+        <a routerLink="/about" routerLinkActive="nav-active-link" [routerLinkActiveOptions]="{exact: true}" (click)="toggle()" >
+            <div class="d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-code-slash" viewBox="0 0 16 16">
+                    <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"/>
+                  </svg><div class="ml-3">ABOUT</div></div>
         </a>
-        <a routerLink="/contact" (click)="toggle()" class="py-3 px-4">CONTACT
+       
+       
+        
+        <a routerLink="/login" routerLinkActive="nav-active-link" (click)="toggle()" >
+            <div class="d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
+                    <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                  </svg><div class="ml-3">LOGIN</div></div>
         </a>
-        <a routerLink="/shownotes" (click)="toggle()" class="py-3 px-4">EXPLORE
+        <a routerLink="/register" routerLinkActive="nav-active-link"  (click)="toggle()" >
+            <div class="d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                    <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                  </svg><div class="ml-3">REGISTER</div></div>
         </a>
-
+        <a routerLink="/contact" routerLinkActive="nav-active-link" [routerLinkActiveOptions]="{exact: true}" (click)="toggle()">
+            <div class="d-flex  align-items-center">
+                <svg width="25px" height="25px"
+                viewBox="0 0 16 16" class="bi bi-envelope" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z" />
+            </svg><div class="ml-3">CONTACT</div></div>
+        </a>
+        <a routerLink="/policy" routerLinkActive="nav-active-link" [routerLinkActiveOptions]="{exact: true}" (click)="toggle()">
+            <div class="d-flex  align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                    <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+                    <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+                  </svg><div class="ml-3">POLICY</div></div>
+        </a>
+        
     </div>
 </div>
 
