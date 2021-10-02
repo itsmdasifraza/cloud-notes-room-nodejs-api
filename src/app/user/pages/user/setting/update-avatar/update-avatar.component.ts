@@ -11,7 +11,10 @@ import { ProfileService } from 'src/app/user/services/profile/profile.service';
 })
 export class UpdateAvatarComponent implements OnInit {
 
-  constructor(private connectService : ConnectService ,private route: ActivatedRoute,private fb: FormBuilder,private router: Router , private profileService : ProfileService) { }
+  constructor(private connectService : ConnectService ,private route: ActivatedRoute,private fb: FormBuilder,private router: Router , private profileService : ProfileService) { 
+    this.connectService.settingToggle.next(false);
+
+  }
   avatar = ["user0","user1", "user4","user5","user2" , "user6", "user7", "user3","user8", "user9"];
   userData;
   changeAvatarForm = this.fb.group({ 
@@ -19,7 +22,6 @@ export class UpdateAvatarComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.connectService.settingToggle.next(false);
   
   this.connectService.userRefresh.subscribe(res => {
         if (res) {

@@ -11,7 +11,9 @@ import { ProfileService } from 'src/app/user/services/profile/profile.service';
 })
 export class UpdatePasswordComponent implements OnInit {
 
-  constructor(private connectService: ConnectService, private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private profileService: ProfileService) { }
+  constructor(private connectService: ConnectService, private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private profileService: ProfileService) {
+    this.connectService.settingToggle.next(false);
+   }
   userData;
 
   changePasswordForm = this.fb.group({
@@ -20,7 +22,7 @@ export class UpdatePasswordComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.connectService.settingToggle.next(false);
+   
   }
 
   changePassword() {
