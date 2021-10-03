@@ -1,8 +1,8 @@
-<section *ngIf="publicChat && publicChat.length > 0 && username">
+<section *ngIf="publicChat && publicChat.length > 0">
     <div class="public-chat">
         <div class="container-fluid">
             <div class="row">
-                <div *ngFor="let item of publicChat.slice().reverse()" class="col-xl-4 col-md-6 col-12">
+                <div *ngFor="let item of publicChat.slice().reverse()" class="col-xl-4 col-md-6 col-12 pb-lg-3 pl-lg-3 pr-lg-3 p-0">
                     <div class="item" routerLink="/chat/{{username}}/{{item._id}}/note/view/all">
                         <div  class="itm-flx">
                             <div>
@@ -37,27 +37,15 @@
     </div>
 </section>
 
-<div *ngIf="publicChat && publicChat.length == 0">
+<div *ngIf="!publicChat || publicChat.length == 0">
     <section>
-        <div class="p-3">
-            <div class="p-3 bg-primary" >
-                <h6>
+        <div class="p-lg-3 p-0">
+            <div class="p-3 no-public-chats" >
+                <p class="m-0 p-0">
                     No public chats yet !
-                </h6>
+                </p>
             </div>
     
         </div>
     </section>
-<div>
-    <div *ngIf="!publicChat">
-        <section>
-            <div class="p-3">
-                <div class="p-3 bg-primary" >
-                    <h6>
-                        username not exist !
-                    </h6>
-                </div>
-        
-            </div>
-        </section>
-    <div>
+</div>

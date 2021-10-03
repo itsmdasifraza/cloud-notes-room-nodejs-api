@@ -147,7 +147,7 @@ router.get('/read/public/:username',
                 try{
                     var publicChatData = await chatModel.find({ userid: publicChatOwner._id , privacy : 'public'});
                     //  console.log(chatData)
-                    if (!publicChatData) {
+                    if (!publicChatData || publicChatData.length < 1) {
                         return res.status(404).json({
                             error: '404',
                             mssg: "no public chats"
