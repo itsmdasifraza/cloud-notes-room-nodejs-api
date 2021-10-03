@@ -41,14 +41,14 @@ ownerusername;
   chatForm = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.minLength(2)]),
     description: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    protected: new FormControl('', [Validators.required]),
+    privacy: new FormControl('', [Validators.required]),
   });
   
   ngOnInit(): void {
       this.chatForm.setValue({
         title : '',
         description:'',
-        protected : "false"
+        privacy : "public"
       });
 
       this.connectService.chatToggle.next(false);
@@ -90,7 +90,7 @@ ownerusername;
         let chat = {
           "title" : this.chatForm.value.title,
          "description" : this.chatForm.value.description,
-         "protected" : this.chatForm.value.protected
+         "privacy" : this.chatForm.value.privacy
         } 
         
         this.chatService.createChat(chat).subscribe(

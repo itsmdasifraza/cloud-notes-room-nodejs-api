@@ -12,7 +12,8 @@ var noteModel = require('../models/note');
 ////////////////////////////////////////////////
 router.post('/create',
     body('title', 'title must be minimum 2 character').trim().isLength({ min: 2 }),
-    body('description', 'description must be minimum 2 character').trim().isLength({ min: 2 }), authToken,
+    body('description', 'description must be minimum 2 character').trim().isLength({ min: 2 }),
+    body('privacy', 'description must be minimum 1 character').trim().isLength({ min: 1 }), authToken,
     async (req, res) => {
 
         const errors = validationResult(req);
@@ -27,7 +28,7 @@ router.post('/create',
             userid: req.userid,
             title: req.body.title,
             description: req.body.description,
-            protected: req.body.protected,
+            privacy: req.body.privacy,
             stamp: {
                 day: date.getDate(),
                 month: date.getMonth(),
@@ -51,7 +52,49 @@ router.post('/create',
             }
         });
     });
+////////////////////////////////////////////////
+//           Route for edit chat            //
+////////////////////////////////////////////////
+router.post('/edit/:chatid',
+    body('title', 'title must be minimum 2 character').trim().isLength({ min: 2 }),
+    body('description', 'description must be minimum 2 character').trim().isLength({ min: 2 }),
+    body('privacy', 'description must be minimum 1 character').trim().isLength({ min: 1 }), authToken,
+    async (req, res) => {
 
+        const errors = validationResult(req);
+
+        // throw validation errors
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        try{
+        let date = new Date();
+        // creating update chat object
+        let updateChat = {
+            title: req.body.title,
+            description: req.body.description,
+            privacy: req.body.privacy,
+            lastupdated : date.getDate()
+        }
+        var updateChatData = await chatModel.findOneAndUpdate({_id : req.params.chatid , userid : req.userid   },updateChat);
+        
+         if(!updateChatData){
+            return res.status(404).json({error:'404',
+            mssg:"chat not exist",
+           });
+         }       
+         }
+         catch{
+            return res.status(404).json({error:'404',
+            mssg:"internal server error",
+           });
+         }
+         return res.status(200).json({success:'200',
+         mssg:"chat detail changed"
+        });
+
+      
+    });
 ////////////////////////////////////////////////
 //             Route for read chat            //
 ////////////////////////////////////////////////
@@ -84,7 +127,7 @@ router.get('/read',
     });
 
 ////////////////////////////////////////////////
-//             Route for public cha           //
+//             Route for public chat           //
 ////////////////////////////////////////////////
 router.get('/read/public/:username',
    
@@ -102,7 +145,7 @@ router.get('/read/public/:username',
             }
             else{
                 try{
-                    var publicChatData = await chatModel.find({ userid: publicChatOwner._id , protected : 'false'});
+                    var publicChatData = await chatModel.find({ userid: publicChatOwner._id , privacy : 'public'});
                     //  console.log(chatData)
                     if (!publicChatData) {
                         return res.status(404).json({
@@ -147,7 +190,7 @@ router.get('/read/:chatid',
             //  console.log(chatData)
             if (!chatData) {
                 try{
-                    var verifyChat = await chatModel.findOne({ _id: req.params.chatid, protected : 'false'});
+                    var verifyChat = await chatModel.findOne({ _id: req.params.chatid, privacy : 'public'});
                     if(!verifyChat){
                         return res.status(404).json({
                             error: '404',

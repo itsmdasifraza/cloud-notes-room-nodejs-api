@@ -15,7 +15,7 @@ const chatSchema = new Schema ({
         type : String,
         required : true,
     },
-    protected : {
+    privacy : {
         type : String,
         required : true,
     },

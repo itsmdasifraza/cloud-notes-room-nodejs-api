@@ -14,6 +14,7 @@ export class ChatService {
   private readChatApi =  `${this.connection}://${this.backendIp}/api/chat/read`;
   private readPublicChatApi =  `${this.connection}://${this.backendIp}/api/chat/read/public`;
   private deleteChatApi =  `${this.connection}://${this.backendIp}/api/chat/delete`;
+  private editChatApi =  `${this.connection}://${this.backendIp}/api/chat/edit`;
 
 
   constructor(private http: HttpClient) { }
@@ -28,6 +29,13 @@ export class ChatService {
       "token":localStorage.getItem("user-token")
     });
     return this.http.post<any>(this.ROOT_URL,chat,{headers:header} );
+  }
+  editChat(chat,chatid) {
+    let header= new HttpHeaders({
+      "Content-Type":"application/json",
+      "token":localStorage.getItem("user-token")
+    });
+    return this.http.post<any>(`${this.editChatApi}/${chatid}`,chat,{headers:header} );
   }
 
   readChat(){

@@ -182,7 +182,9 @@ export class ReadNoteComponent implements OnInit {
       }
     });
   }
-
+  editChat(){
+    this.router.navigate([`/chat/edit/${this.username}/${this.chatid}`]);
+  }
 
   visible() {
     return {
