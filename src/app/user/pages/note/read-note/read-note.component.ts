@@ -69,17 +69,7 @@ export class ReadNoteComponent implements OnInit {
       this.chatid = routeParams.chatid;
       this.username = routeParams.username;
       this.notes = undefined;
-      this.subscription = this.noteService.readNote(routeParams.chatid).subscribe(res => {
-        if (res) {
-          // console.log("res",res);
-          
-          this.notes = res.data;
-        }
-      }, err => {
-        if (err) {
-          // console.log("err", err);
-        }
-      });
+     
 
 
       this.subscription = this.chatService.readSingleChat(routeParams.chatid).subscribe(res => {
@@ -88,6 +78,18 @@ export class ReadNoteComponent implements OnInit {
           this.owner = res.owner;
           this.chat = res.data;
           this.chat.stamp.month = this.months[this.chat.stamp.month];
+
+          this.subscription = this.noteService.readNote(routeParams.chatid).subscribe(res => {
+            if (res) {
+              // console.log("res",res);
+              
+              this.notes = res.data;
+            }
+          }, err => {
+            if (err) {
+              // console.log("err", err);
+            }
+          });
           // console.log(this.chat);
           if(this.owner == "false"){
             this.own = false;
@@ -109,6 +111,7 @@ export class ReadNoteComponent implements OnInit {
       }, err => {
         if (err) {
           // console.log("err", err);
+          this.router.navigate(['/chat']);
         }
       });
 
