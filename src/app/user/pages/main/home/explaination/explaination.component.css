@@ -1,4 +1,4 @@
-.main{
+/* .main{
     margin-top: -20px !important;
     background-color:white;
     position: relative;
@@ -121,5 +121,32 @@
 @media screen and (max-width: 992px) {
     .icon-content {
         width: 50%
+    }
+} */
+.exp-main{
+    z-index: 4 !important;
+    margin-top: -5px;
+    background-color: white;
+    position: relative;
+}
+h1{
+    font-size: 50px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+p{
+    font-size: 18px;
+}
+.demo-img{
+    overflow: hidden;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+}
+@media screen and (max-width: 992px) {
+    h1{
+        font-size: 35px;
     }
 }

@@ -43,14 +43,17 @@
                         </div>
                       </div>
                     </div>
+                    <div class="error" *ngIf="error">
+                        <p class="m-0 text-center" style="font-size:12px; ">{{error}}</p>
+                    </div>
                     <form [formGroup]="loginForm" (ngSubmit)="login()">
-                        <input formControlName="usermail" placeholder="username or email">
+                        <input formControlName="usermail" autocomplete="off" placeholder="username or email">
                         <small *ngIf="!loginForm.get('usermail').valid && loginForm.get('usermail').touched">
-                            must contain minimum 4 characters !
+                            must contain between 4 to 36 character !
                         </small>
-                        <input type="password" formControlName="password" placeholder="password">
+                        <input type="password" autocomplete="off" formControlName="password" placeholder="password">
                         <small *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
-                            must contain minimum 8 characters !
+                            must contain minimum 8 character !
                         </small>
                         <button type="submit">LOGIN</button>
                  
@@ -61,5 +64,6 @@
      </div>
  </div>
  <app-explaination></app-explaination>
+ 
  <app-footer></app-footer>
 </div>

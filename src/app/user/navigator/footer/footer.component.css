@@ -16,5 +16,6 @@ color: rgb(221, 220, 220);
 @media only screen and (max-width : 786px){
     .footer a,span{
         margin-right: 5px;
+        font-size: 14px;
     }
 }
