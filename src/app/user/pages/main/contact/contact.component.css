@@ -1,27 +1,40 @@
 .contact{
     background: var(--themehome);
+    margin-top: -55px;
+    min-height: calc(100vh - 55px);
+    min-height: calc(calc(var(--vh, 1vh) * 100) - 55px);
 }
 .contact-data{
     color: white;
     margin-top:150px;
     margin-bottom:150px;
-    max-width: 400px;
-    
 }
 h1{
-    font-weight: bold;
+    font-size: 50px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    text-align: center;
 }
 p{
     color:rgb(229, 226, 226);
+}
+p{
+    font-size: 18px;
+    text-align: center;
 }
 a{
     outline: none;
     color: white;
 }
+@media screen and (max-width: 992px) {
+    h1{
+        font-size: 35px;
+    }
+}
 @media only screen and (max-width:767px){
     .contact-data{
        
-        margin-top:50px;
+        margin-top:150px;
         margin-bottom:50px;   
     }
 }
