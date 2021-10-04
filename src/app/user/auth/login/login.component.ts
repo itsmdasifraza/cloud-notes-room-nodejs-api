@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthRegLoginService } from '../../services/auth/auth-reg-login.service';
 import { ConnectService } from '../../services/connect/connect.service';
@@ -11,8 +12,12 @@ import { ConnectService } from '../../services/connect/connect.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor(private connectService: ConnectService, private authService : AuthRegLoginService, private router : Router) { }
+  location = window.location.href;
+  constructor(private connectService: ConnectService, private authService : AuthRegLoginService, private router : Router, private titleService: Title, private meta : Meta) { 
+    this.titleService.setTitle("Login");
+    this.meta.updateTag({ name: 'description', content: `type username or email and password.` });
+    this.meta.updateTag({ property: "og:url", content: `${this.location}` });
+  }
 
   loginForm = new FormGroup({
     usermail: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(36)]),

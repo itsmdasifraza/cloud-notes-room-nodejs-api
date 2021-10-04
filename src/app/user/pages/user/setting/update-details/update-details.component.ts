@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Title, Meta } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConnectService } from 'src/app/user/services/connect/connect.service';
 import { ProfileService } from 'src/app/user/services/profile/profile.service';
@@ -10,9 +11,13 @@ import { ProfileService } from 'src/app/user/services/profile/profile.service';
   styleUrls: ['./update-details.component.css']
 })
 export class UpdateDetailsComponent implements OnInit {
-
-  constructor(private connectService : ConnectService ,private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private profileService: ProfileService) { 
+  location = window.location.href;
+  constructor(private connectService : ConnectService ,private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private profileService: ProfileService,private titleService:Title, private meta: Meta) { 
     this.connectService.settingToggle.next(false);
+    this.titleService.setTitle("Change Info");
+    this.meta.updateTag({ name: 'description', content: `Change user info.` });
+    this.meta.updateTag({ property: "og:url", content: `${this.location}` });
+ 
   }
   userData;
 

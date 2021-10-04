@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Title, Meta } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthRegLoginService } from '../../services/auth/auth-reg-login.service';
 
@@ -11,8 +12,13 @@ import { AuthRegLoginService } from '../../services/auth/auth-reg-login.service'
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-  constructor(private authService : AuthRegLoginService, private router : Router) { }
+  location = window.location.href;
+  constructor(private authService : AuthRegLoginService, private router : Router, private titleService: Title, private meta : Meta) {
+    this.titleService.setTitle("Register");
+    this.meta.updateTag({ name: 'description', content: `type username, email and password.` });
+    this.meta.updateTag({ property: "og:url", content: `${this.location}` });
+ 
+   }
 
   registerForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(36)]),

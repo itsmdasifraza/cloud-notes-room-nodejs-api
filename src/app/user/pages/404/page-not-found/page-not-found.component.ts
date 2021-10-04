@@ -9,17 +9,12 @@ export class PageNotFoundComponent implements OnInit {
 
   location = window.location.href;
   constructor(private titleService:Title, private meta: Meta) {
-    this.titleService.setTitle("Page Not Found | Chat Notes");
-    this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
-    this.meta.updateTag({ name: 'keywords', content: `chat notes, chatnotes, md asif raza` });
-    this.meta.updateTag({ name: 'description', content: `Page Not Found or incorrect URL.` });
-    this.meta.updateTag({ property: "og:url", content: `${this.location}` });
-    this.meta.updateTag({ property:"og:type", content:"website" });
-    this.meta.updateTag({ property: "og:title", content: `Page Not Found | Chat Notes` });
-    this.meta.updateTag({ property: "og:description", content: `Page Not Found or incorrect URL.`});
-    this.meta.updateTag({ property: "og:image", content: `https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png` });
-    this.meta.updateTag({ property:"og:image:secure_url", content: `https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png`});
+    this.titleService.setTitle("Page Not Found");
+    this.meta.updateTag({ name: 'description', content: `Page doesn't exist.
 
+    Try pressing the back button or click home button.` });
+    this.meta.updateTag({ property: "og:url", content: `${this.location}` });
+ 
   }
 
   ngOnInit(): void {

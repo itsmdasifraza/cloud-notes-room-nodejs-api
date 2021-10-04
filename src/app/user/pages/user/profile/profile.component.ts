@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Title, Meta } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService } from 'src/app/user/services/chat/chat.service';
 import { ConnectService } from 'src/app/user/services/connect/connect.service';
@@ -12,7 +13,13 @@ import { UserService } from 'src/app/user/services/user/user.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  constructor(private connectService : ConnectService, private route: ActivatedRoute, private userService: UserService, private router: Router, private chatService: ChatService, private profileService: ProfileService) { }
+  location = window.location.href;
+  constructor(private connectService : ConnectService, private route: ActivatedRoute, private userService: UserService, private router: Router, private chatService: ChatService, private profileService: ProfileService, private titleService: Title, private meta : Meta) { 
+    this.titleService.setTitle("User Profile");
+    this.meta.updateTag({ name: 'description', content: `Visit user account.` });
+    this.meta.updateTag({ property: "og:url", content: `${this.location}` });
+ 
+  }
   userData;
   publicChat;
   username;

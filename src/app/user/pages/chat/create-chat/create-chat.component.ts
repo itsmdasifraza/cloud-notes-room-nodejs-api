@@ -22,17 +22,10 @@ owneruser;
 ownerusername;
   location = window.location.href;
   constructor(private connectService: ConnectService,private userService: UserService, private chatService : ChatService, private router : Router,private titleService:Title, private meta: Meta) {
-    this.titleService.setTitle("Create New Notes | Chat Notes");
-    this.meta.updateTag({ name: 'robots', content: 'index, follow' });
-    this.meta.updateTag({ name: 'keywords', content: `chat notes, chatnotes, md asif raza` });
-    this.meta.updateTag({ name: 'description', content: `Fill your notes in the form below. topic contains heading and notes contain description.` });
+    this.titleService.setTitle("Create Chat");
+    this.meta.updateTag({ name: 'description', content: `Create new chat.` });
     this.meta.updateTag({ property: "og:url", content: `${this.location}` });
-    this.meta.updateTag({ property:"og:type", content:"website" });
-    this.meta.updateTag({ property: "og:title", content: `Create New Notes | Chat Notes` });
-    this.meta.updateTag({ property: "og:description", content: `Fill your notes in the form below. topic contains heading and notes contain description.`});
-    this.meta.updateTag({ property: "og:image", content: `https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png` });
-    this.meta.updateTag({ property:"og:image:secure_url", content: `https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png`});
-
+ 
 
 
    }

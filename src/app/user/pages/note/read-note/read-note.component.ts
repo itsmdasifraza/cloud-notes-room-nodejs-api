@@ -28,17 +28,9 @@ export class ReadNoteComponent implements OnInit {
   location = window.location.href;
   refreshSubscription : Subscription;
   constructor(private profileService: ProfileService ,private route: ActivatedRoute, private chatService: ChatService, private noteService: NoteService, private router: Router, private connectService: ConnectService, private titleService: Title, private meta: Meta) {
-
-    this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
-    this.meta.updateTag({ name: 'keywords', content: `chat notes, chatnotes, md asif raza` });
-    this.meta.updateTag({ name: 'description', content: `Click to see your private notes` });
+    this.titleService.setTitle("Read Chat");
+    this.meta.updateTag({ name: 'description', content: `Read your chat.` });
     this.meta.updateTag({ property: "og:url", content: `${this.location}` });
-    this.meta.updateTag({ property: "og:type", content: "website" });
-
-    this.meta.updateTag({ property: "og:description", content: `Click to see your private notes` });
-    this.meta.updateTag({ property: "og:image", content: `https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png` });
-    this.meta.updateTag({ property: "og:image:secure_url", content: `https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png` });
-
   }
 
   noteForm = new FormGroup({

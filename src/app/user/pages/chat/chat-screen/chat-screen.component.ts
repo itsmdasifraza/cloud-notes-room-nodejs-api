@@ -11,17 +11,10 @@ export class ChatScreenComponent implements OnInit {
   
   location = window.location.href;
   constructor(private titleService:Title, private meta: Meta) {
-    this.titleService.setTitle("Checkout Saved Notes | Chat Notes");
-    this.meta.updateTag({ name: 'robots', content: 'index, follow' });
-    this.meta.updateTag({ name: 'keywords', content: `chat notes, chatnotes, md asif raza` });
-    this.meta.updateTag({ name: 'description', content: `Hurry Up, Insert Your Notes But, Never Clear Browser Local Storage.` });
+    this.titleService.setTitle("My Chat");
+    this.meta.updateTag({ name: 'description', content: `Your chats will display here.` });
     this.meta.updateTag({ property: "og:url", content: `${this.location}` });
-    this.meta.updateTag({ property:"og:type", content:"website" });
-    this.meta.updateTag({ property: "og:title", content: `Checkout Saved Notes | Chat Notes` });
-    this.meta.updateTag({ property: "og:description", content: `Hurry Up, Insert Your Notes But, Never Clear Browser Local Storage.`});
-    this.meta.updateTag({ property: "og:image", content: `https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png` });
-    this.meta.updateTag({ property:"og:image:secure_url", content: `https://www.chatnotes.mdasifraza.com/assets/logo/featured_logo.png`});
-
+ 
   }
   ngOnInit(): void {
   }
