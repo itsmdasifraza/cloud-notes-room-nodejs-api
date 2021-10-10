@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   backend: {
     connection : "http",
-    ip : "10.12.1.9:3000"
+    ip : "192.168.43.99:3000"
   }
 };
 

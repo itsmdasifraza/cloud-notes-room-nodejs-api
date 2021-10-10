@@ -6,16 +6,15 @@
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
     overflow-y: scroll ;
-    background-color: rgb(49 49 49);
+    background: var(--themehome);
 }
 
 
 .login{
-    color: white;
     padding: 30px 20px;
     max-width:300px;
     margin: 0 auto;
-    background-color: rgb(54, 54, 54);
+    background-color: var(--themenonotesbg);
     /*background-image: linear-gradient(to right top, #8b49f1, #8147ea, #7744e4, #6c42dd, #623fd6, #583acb, #4e35c1, #4430b6, #3828a6, #2d2095, #201986, #131176);
     */box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
     border-radius:4px;
@@ -50,15 +49,15 @@ form{
     padding:5px 0px;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid rgb(214, 214, 214);
-    color: rgb(214, 214, 214);
+    border-bottom: 1px solid rgb(143, 143, 143);
+    /* color: rgb(214, 214, 214); */
 }
 .login button{
     width: 100%;
     margin-top: 20px;
     outline: none;
     padding: 5px 10px;
-    background-color: #1fce6d;
+    background-color: var(--themeheader);
     color:white;
     border: none;
     font-weight: 600;
@@ -79,7 +78,7 @@ form{
 }
 .login input:focus{
     /* box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35); */
-    border-bottom: 1px solid #1fce6d;
+    border-bottom: 1px solid var(--themeheader);
 }
 .login p{
     font-size: 12px;
@@ -88,7 +87,7 @@ form{
 .login p a{
     font-size: 12px;
     margin-bottom: 0;
-    color: #1fce6d;
+    color: var(--themeheader);
 }
 small{
     margin-bottom: 0;
@@ -98,7 +97,7 @@ small{
 }
 
 .error{
-    background-color: #4e4e4e;
+    background-color: #c2c2c2;
     padding: 5px;
     color: rgb(236, 99, 99);
 }

@@ -9,7 +9,7 @@
     overflow-y: scroll;
 }
 
-@media only screen and (max-width:991px){
+@media only screen and (max-width:767px){
     .right-area{
         height: auto;
         overflow-y: unset;
@@ -170,7 +170,7 @@ p{
     border-radius: 4px;
 }
 
-@media only screen and (max-width:991px){
+@media only screen and (max-width:767px){
     .dnone{
         display: none !important;
     }

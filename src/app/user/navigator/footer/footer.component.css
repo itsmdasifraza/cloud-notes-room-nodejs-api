@@ -10,6 +10,7 @@
     color: rgb(235, 235, 235);
     margin-right: 10px;
     outline: none;
+    font-size: 14px;
 }
 .footer a:hover{
 color: rgb(221, 220, 220);
@@ -17,6 +18,6 @@ color: rgb(221, 220, 220);
 @media only screen and (max-width : 786px){
     .footer a,span{
         margin-right: 5px;
-        font-size: 14px;
+        font-size: 12px;
     }
 }

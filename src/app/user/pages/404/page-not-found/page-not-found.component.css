@@ -7,13 +7,12 @@
             height: 100vh;
             height: calc(var(--vh, 1vh) * 100);
             overflow-y: scroll ;
-            color: white;
-            background-color: rgb(26, 26, 26);
+            background: var(--themehome);
         }
         .not-found .jumbo{
             margin-bottom: 0;
-            background-color: rgb(54, 54, 54);
-            padding: 15px;
+            background-color: var(--themenonotesbg);
+            padding:30px 15px;
             box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
             border-radius:4px;
             -webkit-border-radius:4px;
@@ -26,5 +25,23 @@
         }
     
 .my-custom-button{
-    width: 180px;
+    width: 350px;
+    margin-top: 20px;
+    outline: none;
+    padding: 5px 10px;
+    background-color: var(--themeheader);
+    color:white;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+     border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+@media only screen and (max-width: 435px){
+    .my-custom-button{
+        width: 100%;
+    }
 }

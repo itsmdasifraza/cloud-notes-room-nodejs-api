@@ -180,11 +180,12 @@ p{
 }
 .side-hide{
     background-color: var(--themenoteslistbg );
-    width: 23.8%;
+    width: 24.8%;
     height: calc(calc(var(--vh, 1vh) * 100) - 55px);
     position: fixed;
     top: 55px;
     left: 0;
+    z-index: 3;
 }
 .profile-circle{
     height: 100px;
@@ -202,7 +203,8 @@ p{
         width: 33.3%;
     }
 }
-@media only screen and (max-width:991px){
+
+@media only screen and (max-width:767px){
    
     .side-hide{
         display: none !important;

@@ -142,11 +142,11 @@
     background-color: rgb(235, 116, 100);
  }
  /* radio buttons label */
- @media only screen and (min-width:992px){
+ /* @media only screen and (min-width:992px){
     .dnone{
         display: none;
     }
- }
+ } */
  small{
     margin-bottom: 0;
     color: white;
@@ -154,7 +154,7 @@
     /* padding: 0px 10px; */
  }
  
- @media only screen and (max-width:991px){
+ @media only screen and (max-width:767px){
     .addnotes{
         min-height: 0;
         height: 100vh;
