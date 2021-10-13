@@ -13,6 +13,7 @@ var chatRouter = require('./routes/chat');
 var noteRouter = require('./routes/note');
 var userRouter = require('./routes/user');
 var profileRouter = require('./routes/profile');
+var verifyEmailRouter = require('./routes/verify-email');
 
 var app = express();
 
@@ -44,7 +45,7 @@ app.use('/api/chat', chatRouter);
 app.use('/api/note', noteRouter);
 app.use('/api/user', userRouter);
 app.use('/api/profile', profileRouter);
-
+app.use('/api/verify/email', verifyEmailRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

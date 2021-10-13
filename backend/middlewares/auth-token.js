@@ -1,3 +1,4 @@
+require('dotenv').config()
 var jwt = require('jsonwebtoken');
 
 module.exports = async (req, res, next) => {
@@ -8,7 +9,7 @@ module.exports = async (req, res, next) => {
                             mssg: "access denied - unauthorized"
                              });
     }
-    const jwtSecret = "secretEncryptionByAsif";
+    const jwtSecret = process.env.JWT_SECRET;
     try {
         // verify token is valid or not and return decoded header data
         const data = await jwt.verify(token, jwtSecret);

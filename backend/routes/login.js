@@ -1,9 +1,10 @@
+require('dotenv').config()
 var express = require('express');
 var router = express.Router();
 const { body, validationResult } = require('express-validator');
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
-var jwtSecret = "secretEncryptionByAsif";
+var jwtSecret = process.env.JWT_SECRET;
 var userModel = require('../models/user');
 router.post('/',
     body('usermail','wrong username or email').trim().isLength({ min: 3 }),

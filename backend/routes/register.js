@@ -1,10 +1,11 @@
+require('dotenv').config()
 var express = require('express');
 var router = express.Router();
 const { body, validationResult } = require('express-validator');
 var bcrypt = require('bcryptjs');
 const nodemailer = require("nodemailer");
 var jwt = require('jsonwebtoken');
-var jwtSecret = "secretEncryptionByAsif";
+var jwtSecret = process.env.JWT_SECRET;
 
 var userModel = require('../models/user');
 
@@ -14,8 +15,8 @@ const transporter = nodemailer.createTransport({
     secure: false,
     requireTLS: true,
     auth: {
-        user: 'itsmdasifraza@gmail.com',
-        pass: 'kfhdkhgkhkrshevfxm'
+        user: process.env.SENDER_EMAIL,
+        pass: process.env.SENDER_PASSWORD
     }
 });
 
