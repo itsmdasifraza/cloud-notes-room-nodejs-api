@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   location = window.location.href;
   
   constructor(private titleService:Title, private meta: Meta, private connectService: ConnectService, private authService : AuthRegLoginService, private router : Router) {
-    this.titleService.setTitle("Social Chat Notes | Where the World Store Notes Private or Public");
+    this.titleService.setTitle("Social Chat Notes: Where the World Store Notes Private or Public");
     this.meta.updateTag({ name: 'description', content: `Millions of users build, push, and maintain their notes on Social Chat Notes — the largest and most advanced Notes Sharing platform in the world. Connect to see your friends notes.` });
     this.meta.updateTag({ property: "og:url", content: `${this.location}` });
    }

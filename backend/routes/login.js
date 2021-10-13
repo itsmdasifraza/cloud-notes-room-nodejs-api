@@ -16,7 +16,7 @@ router.post('/',
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-  
+    try{
      //check username already exist or not
      let usernameExist = await userModel.findOne({username:req.body.usermail});
      if(usernameExist){
@@ -39,6 +39,7 @@ router.post('/',
         }      
      }
      else{
+         try{
         //check email already exist or not
         let emailExist = await userModel.findOne({email:req.body.usermail});
         if(emailExist){
@@ -48,7 +49,7 @@ router.post('/',
             }
             if(bcrypt.compareSync(req.body.password, emailExist.password)){
                 let token = jwt.sign( jwtData, jwtSecret);
-                res.status(200).json({
+                return res.status(200).json({
                     token : token,
                     msg: "verified with email password",
                     data : emailExist
@@ -64,6 +65,19 @@ router.post('/',
             return res.status(400).json({error:'request failed',
             mssg:"wrong username or email"});
         }
+    }
+    catch{
+        return res.status(404).json({error:'404',
+        mssg:"internal server error",
+       });
+     }
+    
+    }
+    }
+    catch{
+        return res.status(404).json({error:'404',
+        mssg:"internal server error",
+       });
      }
 
 });

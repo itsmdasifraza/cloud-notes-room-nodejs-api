@@ -179,14 +179,19 @@ p{
     transform: scale(.95);
 }
 .side-hide{
+    padding-top: 165px !important;
     background-color: var(--themenoteslistbg );
-    width: 24.8%;
-    height: calc(calc(var(--vh, 1vh) * 100) - 55px);
+    width: 25%;
+    /* border-right: 1px solid gray; */
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
     position: fixed;
-    top: 55px;
+    top: 0;
     left: 0;
     z-index: 3;
+    overflow-y: scroll;
 }
+
 .profile-circle{
     height: 100px;
     width: 100px;
