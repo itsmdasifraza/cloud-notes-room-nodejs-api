@@ -87,15 +87,15 @@ router.post('/',
                 let token = jwt.sign( jwtData, jwtSecret);
                 // send mail with defined transport object
                 let info = transporter.sendMail({
-                    from: 'itsmdasifraza@gmail.com', // sender address
-                    to: "asif20856@gmail.com", // list of receivers
-                    subject: "SocialChatNotes - Email confirmation", // Subject line
+                    from: process.env.SENDER_EMAIL, // sender address
+                    to: req.body.email, // list of receivers
+                    subject: `${process.env.APP_NAME} - Email confirmation`, // Subject line
                     text: `Hello ${req.body.username}`, // plain text body
-                    html: `<p>Hello ${req.body.username}.</p><p>Your email was provided for registration on socialChatNotes and you were successfully registered.</p>
-                    <p>To confirm your email please follow the link <a href="http://192.168.43.99:4200/verify/email/${token}">http://192.168.43.99:4200/verify/email/${token}</a></p>
-                    <p>After that, please, go to <a href="http://192.168.43.99:4200/login">http://192.168.43.99:4200/login</a> Where you can login into the system.</p>
-                    <p>Thank you for your interest in SocialChatNotes, If it was not you, just ignore this letter.</p>
-                    <p>With best regards,<br/>SocialChatNotes Developer.</p>`, // html body
+                    html: `<p>Hello ${req.body.username}.</p><p>Your email was provided for registration on ${process.env.APP_NAME} and you were successfully registered.</p>
+                    <p>To confirm your email please follow the link <a href="${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/verify/email/${token}">${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/verify/email/${token}</a></p>
+                    <p>After that, please, go to <a href="${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/login">${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/login</a> Where you can login into the system.</p>
+                    <p>Thank you for your interest in ${process.env.APP_NAME}, If it was not you, just ignore this letter.</p>
+                    <p>With best regards,<br/>${process.env.APP_NAME} Developer.</p>`, // html body
                 }, (err, res) => {
                     if (err) {
                         // console.log(err);
@@ -106,7 +106,7 @@ router.post('/',
                 });
                 return res.status(200).json({
                     success: 'request success',
-                    mssg: "congratulations user registered",
+                    mssg: `Verification link sent on your email ${data.email}, please click the link to finish registration.`,
                     info: { username: data.username, email: data.email }
                 });
             }

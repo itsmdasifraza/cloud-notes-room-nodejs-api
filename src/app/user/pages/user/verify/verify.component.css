@@ -1,0 +1,47 @@
+
+        .not-found{
+            padding-top: calc(100vh / 100 * 28);
+            padding-top: calc(calc(var(--vh, 1vh) * 100) / 100 * 28);
+            padding-bottom: calc(100vh / 100 * 28);
+            padding-bottom: calc(calc(var(--vh, 1vh) * 100) / 100 * 28);
+            height: 100vh;
+            height: calc(var(--vh, 1vh) * 100);
+            overflow-y: scroll ;
+            background: var(--themehome);
+        }
+        .not-found .jumbo{
+            margin-bottom: 0;
+            background-color: var(--themenonotesbg);
+            padding:30px 15px;
+            box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+            border-radius:4px;
+            -webkit-border-radius:4px;
+            -moz-border-radius:4px;
+            -ms-border-radius:4px;
+            -o-border-radius:4px;
+}
+        .not-found .not-found-btn i{
+            font-size: 18px;
+        }
+    
+.my-custom-button{
+    width: 350px;
+    margin-top: 20px;
+    outline: none;
+    padding: 5px 10px;
+    background-color: var(--themeheader);
+    color:white;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+     border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+@media only screen and (max-width: 435px){
+    .my-custom-button{
+        width: 100%;
+    }
+}

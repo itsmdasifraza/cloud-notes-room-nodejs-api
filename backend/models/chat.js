@@ -33,6 +33,11 @@ const chatSchema = new Schema ({
         default : Date.now,
         required : true
     },
+    lastnote : {
+        type : String,
+        default : "No notes to show !",
+        required : true,
+    },
 });
 
 const chatModel = mongoose.model('chat', chatSchema);

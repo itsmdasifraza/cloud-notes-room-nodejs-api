@@ -26,26 +26,26 @@ router.get('/',
                 if(!emailExist){
                     return res.status(401).json({
                         error: "404",
-                        mssg: "not a registered user"
+                        mssg: "Can't verify unregistered user."
                     });
                 }
                 if(emailExist){
-                    return res.status(401).json({
-                        error: "404",
-                        mssg: "email verified successfully"
+                    return res.status(200).json({
+                        error: "200",
+                        mssg: "Email verified successfully."
                     });
                 }
             }catch{
                 return res.status(401).json({
                     error: "401",
-                    mssg: "internal server error"
+                    mssg: "Internal server error."
                 });
             }
         }
         catch (error) {
             return res.status(401).json({
                 error: "401",
-                mssg: "access denied - unauthorized"
+                mssg: "Access denied - Unauthorized."
             });
         }
 

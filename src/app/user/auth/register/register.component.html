@@ -17,6 +17,9 @@
                         <div class="error" *ngIf="error">
                             <p >{{error}}</p>
                         </div>
+                        <div class="success" *ngIf="success">
+                            <p >{{success}}</p>
+                        </div>
                         <form [formGroup]="registerForm" (ngSubmit)="register()">
                             <input formControlName="username" autocomplete="off" placeholder="username">
                             <small *ngIf="!registerForm.get('username').valid && registerForm.get('username').touched">

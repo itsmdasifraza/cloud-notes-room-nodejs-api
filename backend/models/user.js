@@ -21,7 +21,8 @@ const userSchema = {
     },
     avatar : {
         type : String,
-        default : "user0"
+        default : "user0",
+        required : true
     },
     phone : {
         type : String,
@@ -45,11 +46,13 @@ const userSchema = {
     },
     date : {
         type : Date,
-        default : Date.now
+        default : Date.now,
+        required : true
     },
     verified : {
         type : Boolean,
-        default : false
+        default : false,
+        required : true
     },
     
 }

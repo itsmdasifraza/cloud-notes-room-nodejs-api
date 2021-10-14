@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  success = false;
   error = false;
   spinner : boolean = false;
   
@@ -51,7 +51,8 @@ export class RegisterComponent implements OnInit {
     
             this.spinner = false;
             this.registerForm.reset();
-            this.router.navigate(["/login"]);
+            this.success  = res.mssg;
+            // this.router.navigate(["/login"]);
 
           },(err)=>{
             // console.log("err",err);

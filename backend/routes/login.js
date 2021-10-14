@@ -19,7 +19,7 @@ router.post('/',
     }
     try{
      //check username already exist or not
-     let usernameExist = await userModel.findOne({username:req.body.usermail});
+     let usernameExist = await userModel.findOne({username:req.body.usermail , verified : true});
      if(usernameExist){
          // verify password
          let jwtData = {
@@ -29,20 +29,20 @@ router.post('/',
             let token = jwt.sign( jwtData, jwtSecret);
              res.status(200).json({
                  token : token,
-                 msg: "verified with username password",
+                 msg: "Verified with username password.",
                  data : usernameExist
                 //  id : usernameExist.id
              });
          }    
          else{
             return res.status(400).json({error:'request failed',
-        mssg:"wrong password"});
+        mssg:"Wrong password."});
         }      
      }
      else{
          try{
         //check email already exist or not
-        let emailExist = await userModel.findOne({email:req.body.usermail});
+        let emailExist = await userModel.findOne({email:req.body.usermail , verified : true});
         if(emailExist){
             //verify password
             let jwtData = {
@@ -52,24 +52,24 @@ router.post('/',
                 let token = jwt.sign( jwtData, jwtSecret);
                 return res.status(200).json({
                     token : token,
-                    msg: "verified with email password",
+                    msg: "Verified with email password.",
                     data : emailExist
                    //  id : emailExist.id
                 });
             }
             else{
                 return res.status(400).json({error:'request failed',
-            mssg:"wrong password"});
+            mssg:"Wrong password."});
             }  
         } 
         else{
             return res.status(400).json({error:'request failed',
-            mssg:"wrong username or email"});
+            mssg:"Wrong username or email or not verified."});
         }
     }
     catch{
         return res.status(404).json({error:'404',
-        mssg:"internal server error",
+        mssg:"Internal server error.",
        });
      }
     
@@ -77,7 +77,7 @@ router.post('/',
     }
     catch{
         return res.status(404).json({error:'404',
-        mssg:"internal server error",
+        mssg:"Internal server error.",
        });
      }
 

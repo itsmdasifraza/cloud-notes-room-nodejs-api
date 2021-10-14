@@ -100,6 +100,11 @@ small{
     padding: 5px;
     color: rgb(236, 99, 99);
 }
+.success{
+    background-color: #dbdbdb;
+    padding: 5px;
+    color: rgb(48, 128, 23);
+}
 @media only screen and (max-width: 600px){
     .login{
         max-width:400px;
