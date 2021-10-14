@@ -21,7 +21,13 @@ body{
 
 }
 /* Default App Theme Colors */
+@media only screen and (max-width : 767px){
+    [theme="blue-white"]{
+        --themebg:linear-gradient(to right, #734ae4, #8b67e6);
+        --themehome : linear-gradient(to right,#734ae4, #8b67e6 );  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+    }
+}
 
 /* Custom App Theme Colors */
 [theme="black-gray"]{

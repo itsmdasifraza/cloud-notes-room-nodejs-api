@@ -1,5 +1,5 @@
 .contact{
-    background: var(--themehome);
+    background: var(--themebg);
     margin-top: -55px;
     min-height: calc(100vh - 55px);
     min-height: calc(calc(var(--vh, 1vh) * 100) - 55px);

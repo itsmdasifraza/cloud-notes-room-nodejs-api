@@ -18,10 +18,10 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
         opacity: 1
       })),
       transition('invisible => visible', [
-        animate('0.4s ease-in-out')
+        animate('0.2s ease-in-out')
       ]),
       transition('visible => invisible', [
-        animate('0.4s ease-in-out')
+        animate('0.2s ease-in-out')
       ]),
       
     ]),

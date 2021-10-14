@@ -7,7 +7,7 @@
             height: 100vh;
             height: calc(var(--vh, 1vh) * 100);
             overflow-y: scroll ;
-            background: var(--themehome);
+            background: var(--themebg);
         }
         .not-found .jumbo{
             margin-bottom: 0;

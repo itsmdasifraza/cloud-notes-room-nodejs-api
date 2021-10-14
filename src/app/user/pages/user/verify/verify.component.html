@@ -19,6 +19,7 @@
                         <h6 *ngIf="errorMessage" class="text-center text-danger">{{errorMessage}}</h6>
                         <h6 *ngIf="successMessage" class="text-center text-success">{{successMessage}}</h6>
                         <p *ngIf="successMessage" class="text-center"><a class="not-found-btn" routerLink="/login"><button class="my-custom-button"> LOGIN</button></a></p>
+                        <p *ngIf="errorMessage" class="text-center"><a class="not-found-btn" routerLink="/register"><button class="my-custom-button"> REGISTER</button></a></p>
                   
                     </div>
                 </div>
