@@ -44,7 +44,7 @@ router.post('/',
                     to: req.body.email, // list of receivers
                     subject: `${process.env.APP_NAME} - Password recovery`, // Subject line
                     html: `<p>Hello ${emailExist.username}.</p>
-                    <p>To change the password follow the link <a href="${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/force/login/${token}">${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/force/login/${token}</a></p>
+                    <p>To change the password follow the link <a href="${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/forgot-password/force/login/${token}">${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/forgot-password/force/login/${token}</a></p>
                     
                     <p>If it was not you, just ignore this letter.</p>
                     <p>With best regards,<br/>${process.env.APP_NAME} Developer.</p>`, // html body
