@@ -89,7 +89,7 @@ router.post('/',
                 let info = transporter.sendMail({
                     from: process.env.SENDER_EMAIL, // sender address
                     to: req.body.email, // list of receivers
-                    subject: `${process.env.APP_NAME} - Email confirmation`, // Subject line
+                    subject: `${process.env.APP_NAME} - Email Confirmation`, // Subject line
                     html: `<p>Hello ${req.body.username}.</p><p>Your email was provided for registration on ${process.env.APP_NAME} and you were successfully registered.</p>
                     <p>To confirm your email please follow the link <a href="${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/verify/email/${token}">${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/verify/email/${token}</a></p>
                     <p>After that, please, go to <a href="${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/login">${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/login</a> Where you can login into the system.</p>

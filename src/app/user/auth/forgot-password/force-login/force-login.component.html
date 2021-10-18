@@ -16,6 +16,9 @@
                         
                         <h4 class="text-center"><b>FORCE LOGIN !</b><p></p></h4>
                         <p class="text-center">Do not press the back button while Force Login.</p>
+                        <div class="error" *ngIf="error">
+                            <p class="m-0 text-center">{{error}}</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-2 col-xs-12">

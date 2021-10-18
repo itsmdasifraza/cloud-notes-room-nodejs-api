@@ -42,9 +42,9 @@ router.post('/',
                 let info = transporter.sendMail({
                     from: process.env.SENDER_EMAIL, // sender address
                     to: req.body.email, // list of receivers
-                    subject: `${process.env.APP_NAME} - Password recovery`, // Subject line
+                    subject: `${process.env.APP_NAME} - Force Login`, // Subject line
                     html: `<p>Hello ${emailExist.username}.</p>
-                    <p>To change the password follow the link <a href="${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/forgot-password/force/login/${token}">${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/forgot-password/force/login/${token}</a></p>
+                    <p>To force login your account follow the link <a href="${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/forgot-password/force/login/${token}">${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/forgot-password/force/login/${token}</a></p>
                     
                     <p>If it was not you, just ignore this letter.</p>
                     <p>With best regards,<br/>${process.env.APP_NAME} Developer.</p>`, // html body
@@ -58,7 +58,7 @@ router.post('/',
                 });
                 return res.status(200).json({
                     success: 'request success',
-                    mssg: `Change password link sent on your email ${req.body.email}, please click the link to forgot password.`,
+                    mssg: `Force login link sent on your email ${req.body.email}, please click the link to access your account.`,
                 });
             }
             else{

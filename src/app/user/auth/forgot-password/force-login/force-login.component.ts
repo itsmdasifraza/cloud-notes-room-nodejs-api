@@ -19,6 +19,7 @@ export class ForceLoginComponent implements OnInit {
     this.meta.updateTag({ property: "og:url", content: `${this.location}` });
  
   }
+  error = "";
   user;
   spinner =  true;
   ngOnInit(): void {
@@ -31,15 +32,20 @@ export class ForceLoginComponent implements OnInit {
           // console.log(this.user);
           this.connectService.userRefresh.next(this.user);
           this.spinner =  false;
+          this.router.navigate(['/chat']);
         }
       }, err => {
         if (err) {
           // console.log("err", err);
           this.spinner =  false;
+          if(err.error.mssg == "access denied - unauthorized"){
+            localStorage.removeItem("user-token");
+            this.error = "Invalid or expired force login link";
+          }else{
+            this.router.navigate(['/chat']);
+          }
         }
       });
-      
-      this.router.navigate(['/settings/password']);
     });
   }
 

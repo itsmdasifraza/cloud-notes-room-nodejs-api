@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { trigger, transition, style, query, group,  animateChild, animate } from '@angular/animations';
-import { RouterOutlet } from '@angular/router';
+import { trigger, transition, style, query, group, animateChild, animate } from '@angular/animations';
+import { Router, RouterOutlet } from '@angular/router';
 import { ConnectService } from './user/services/connect/connect.service';
 import { UserService } from './user/services/user/user.service';
 
@@ -11,15 +11,15 @@ import { UserService } from './user/services/user/user.service';
   animations: [
     trigger('anim', [
       transition('* => *', [
-            query(':enter', [style({position:'relative',opacity:'0.2'}), animate('.5s ease-in-out', style({  opacity:'1'}))], {
-                optional: true,
-            }),   
+        query(':enter', [style({ position: 'relative', opacity: '0.2' }), animate('.5s ease-in-out', style({ opacity: '1' }))], {
+          optional: true,
+        }),
       ])
-    ]) ]
+    ])]
 })
 export class AppComponent {
-  
-  constructor(private connectService: ConnectService , private userService : UserService){}
+
+  constructor(private connectService: ConnectService, private userService: UserService, private router: Router) { }
   user;
   ngOnInit(): void {
 
@@ -32,6 +32,12 @@ export class AppComponent {
     }, err => {
       if (err) {
         // console.log("err", err);
+        if (err.error.mssg == "access denied - unauthorized") {
+          this.connectService.chatRefresh.next([]);
+          this.connectService.userRefresh.next(null);
+          localStorage.removeItem("user-token");
+          // this.router.navigate(["/"]);
+        }
       }
     });
   }

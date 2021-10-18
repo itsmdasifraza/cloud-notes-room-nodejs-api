@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Title, Meta } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 import { ForgotPasswordService } from '../../services/forgot-password/forgot-password.service';
 
 @Component({
@@ -12,7 +11,7 @@ import { ForgotPasswordService } from '../../services/forgot-password/forgot-pas
 export class ForgotPasswordComponent implements OnInit {
 
   location = window.location.href;
-  constructor(private forgotPasswordService : ForgotPasswordService, private router : Router, private titleService: Title, private meta : Meta) { 
+  constructor(private forgotPasswordService : ForgotPasswordService, private titleService: Title, private meta : Meta) { 
     this.titleService.setTitle("Forgot Password");
     this.meta.updateTag({ name: 'description', content: `type email.` });
     this.meta.updateTag({ property: "og:url", content: `${this.location}` });
@@ -31,8 +30,10 @@ export class ForgotPasswordComponent implements OnInit {
   
   forgotPassword(){
     if(this.forgotPasswordForm.valid){
+
       this.spinner = true;
       this.error = false;
+      this.success = false;
         // console.log(this.forgotPasswordForm.value);
         let email = {
           "email" : this.forgotPasswordForm.value.email,
