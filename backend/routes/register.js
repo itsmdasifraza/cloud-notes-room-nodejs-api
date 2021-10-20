@@ -45,12 +45,23 @@ router.post('/',
         });
         try {
             //check username already exist or not
-            let usernameExist = await userModel.findOne({ username: req.body.username });
-            if (usernameExist) {
+            let usernameExist = await userModel.findOne({ username: req.body.username});
+            // console.log(usernameExist);
+            if (usernameExist && usernameExist.verified == true) {
                 return res.status(400).json({
                     error: 'request failed',
                     mssg: "username already in use"
                 });
+            }
+            if (usernameExist && usernameExist.verified == false) {
+                let reUsernameExist = await userModel.findOneAndDelete({ username: req.body.username , verified: false });
+                if(!reUsernameExist){
+                    return res.status(404).json({
+                        error: '404',
+                        mssg: "internal server error",
+                    });
+                }
+
             }
         } catch {
             return res.status(404).json({
@@ -61,11 +72,20 @@ router.post('/',
         try {
             //check email already exist or not
             let emailExist = await userModel.findOne({ email: req.body.email });
-            if (emailExist) {
+            if (emailExist && emailExist.verified == true) {
                 return res.status(400).json({
                     error: 'request failed',
                     mssg: "email already in use"
                 });
+            }
+            if (emailExist && emailExist.verified == false) {
+                let reEmailExist = await userModel.findOneAndDelete({ email: req.body.email , verified : false });
+                if(!reEmailExist){
+                    return res.status(404).json({
+                        error: '404',
+                        mssg: "internal server error",
+                    });
+                }
             }
         } catch {
             return res.status(404).json({

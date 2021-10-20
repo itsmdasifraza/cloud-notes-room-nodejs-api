@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
    }
 
   registerForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(36)]),
+    username: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(36) , this.userVal.bind(this)]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
 
@@ -37,6 +37,7 @@ export class RegisterComponent implements OnInit {
     if(this.registerForm.valid){
       this.spinner = true;
       this.error = false;
+      this.success = false;
         // console.log(this.registerForm.value);
         
         let user = {
@@ -60,5 +61,12 @@ export class RegisterComponent implements OnInit {
             this.error = err.error.mssg;
         });
     }
+  }
+  userVal(control:FormControl) {
+    let regUser=/^[a-zA-Z0-9._]+$/;
+    if(!regUser.test(control.value)){
+      return { 'usernameSyntaxInvalid': true };
+    }
+    return null;
   }
 }

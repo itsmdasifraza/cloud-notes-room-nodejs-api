@@ -50,6 +50,7 @@ form{
     border: none;
     border-bottom: 1px solid rgb(143, 143, 143);
     /* color: rgb(214, 214, 214); */
+    font-size: 13px;
 }
 .login button{
     width: 100%;
@@ -92,6 +93,7 @@ small{
     margin-bottom: 0;
     color: white;
     color: rgb(236, 99, 99);
+    font-size: 12px;
     /* padding: 0px 10px; */
 }
 
