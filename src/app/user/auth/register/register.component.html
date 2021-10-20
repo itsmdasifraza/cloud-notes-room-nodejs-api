@@ -31,7 +31,7 @@
                             </small>
                             <input type="password" autocomplete="off" formControlName="password" placeholder="password">
                             <small *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched">
-                                must contain minimum 8 character !
+                                at least one uppercase, one lowercase, one number, one special character @$!%*?& and contain minimum 8 character !
                             </small>
                             <button type="submit">REGISTER</button>
                             <br/><br>

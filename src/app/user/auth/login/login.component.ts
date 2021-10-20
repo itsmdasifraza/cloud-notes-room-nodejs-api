@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginForm = new FormGroup({
-    usermail: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(36)]),
+    usermail: new FormControl('', [Validators.required, Validators.minLength(4), this.userVal.bind(this)]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
 
   });
@@ -56,6 +56,13 @@ export class LoginComponent implements OnInit {
             this.error = err.error.mssg;
         });
     }
+  }
+  userVal(control:FormControl) {
+    let regUser=/^[a-zA-Z0-9._@]+$/;
+    if(!regUser.test(control.value)){
+      return { 'usernameSyntaxInvalid': true };
+    }
+    return null;
   }
 
 }

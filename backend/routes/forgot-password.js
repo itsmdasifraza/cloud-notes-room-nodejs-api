@@ -43,8 +43,8 @@ router.post('/',
                     from: process.env.SENDER_EMAIL, // sender address
                     to: req.body.email, // list of receivers
                     subject: `${process.env.APP_NAME} - Force Login`, // Subject line
-                    html: `<p>Hello ${emailExist.username}.</p>
-                    <p>To force login your account follow the link <a href="${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/forgot-password/force/login/${token}">${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/forgot-password/force/login/${token}</a></p>
+                    html: `<p>Hello <b>${emailExist.username}!</b></p>
+                    <p>To force login your account follow the link <a href="${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/forgot-password/force/login/${token}">${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/forgot-password/force/login/${token}</a>.</p>
                     
                     <p>If it was not you, just ignore this letter.</p>
                     <p>With best regards,<br/>${process.env.APP_NAME} Developer.</p>`, // html body

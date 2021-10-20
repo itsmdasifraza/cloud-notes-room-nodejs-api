@@ -7,7 +7,7 @@ var jwt = require('jsonwebtoken');
 var jwtSecret = process.env.JWT_SECRET;
 var userModel = require('../models/user');
 router.post('/',
-    body('usermail','wrong username or email').trim().isLength({ min: 3 }),
+    body('usermail','wrong username or email').trim().isLength({ min: 4 }),
     body('password','password must be minimum 8 character').trim().isLength({ min: 8 }),
      async (req, res) => {
 
