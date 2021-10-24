@@ -140,6 +140,7 @@ a{
     border: none;
     border-bottom: 1px solid rgb(143, 143, 143);
     color: rgb(48, 48, 48);
+    font-size: 13px;
 }
 .login-form button{
     width: 100%;
@@ -169,14 +170,19 @@ a{
     /* box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35); */
     border-bottom: 1px solid var(--themeheader);
 }
+.login-form button:disabled,
+.login-form button[disabled]{
+  opacity: .7;
+}
 .login-form small{
     color: rgb(236, 99, 99);
+    font-size: 12px;
 }
 
 
 
 .error{
-    background-color: #c2c2c2;
+    background-color: #ffe0e0;
     padding: 5px;
     color: rgb(236, 99, 99);
 }

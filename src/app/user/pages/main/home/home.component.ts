@@ -20,8 +20,8 @@ export class HomeComponent implements OnInit {
    }
 
   loginForm = new FormGroup({
-    usermail: new FormControl('', [Validators.required, Validators.minLength(4),Validators.maxLength(36)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    usermail: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
 
   });
 
