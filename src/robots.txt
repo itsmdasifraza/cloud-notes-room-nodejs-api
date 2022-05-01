@@ -1,5 +1,0 @@
-User-agent: Googlebot-Image
-Disallow: /assets/featured.jpg
-Disallow: /assets/sticky-notes.png
-Disallow: /assets/logo/featured_logo.png
-Disallow: /assets/logo/nav_logo.png
