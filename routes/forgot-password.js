@@ -9,10 +9,14 @@ var jwtSecret = process.env.JWT_SECRET;
 var userModel = require('../models/user');
 
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+     host: 'smtp-mail.outlook.com',
+	secureConnection: false, // TLS requires secureConnection to be false
     port: 587,
-    secure: false,
-    requireTLS: true,
+	tls: {
+       ciphers:'SSLv3'
+    },
+    //secure: false,
+    //requireTLS: true,
     auth: {
         user: process.env.SENDER_EMAIL,
         pass: process.env.SENDER_PASSWORD
@@ -40,13 +44,13 @@ router.post('/',
                 let token = jwt.sign( jwtData, jwtSecret);
                 // send mail with defined transport object
                 let info = transporter.sendMail({
-                    from: process.env.SENDER_EMAIL, // sender address
+                   from: `${process.env.APP_NAME} <${process.env.SENDER_EMAIL}>`, // sender address
                     to: req.body.email, // list of receivers
-                    subject: `${process.env.APP_NAME} - Force Login`, // Subject line
+                    subject: `Force login your account in just one simple step`, // Subject line
                     html: `<p>Hello <b>${emailExist.username}!</b></p>
-                    <p>To force login your account follow the link <a href="${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/forgot-password/force/login/${token}">${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/forgot-password/force/login/${token}</a>.</p>
+                    <p>A request has been raised to force login your account, to continue the process just follow the link below: <br/><br/> <a href="${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/forgot-password/force/login/${token}">${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/forgot-password/force/login/${token}</a>.</p>
                     
-                    <p>If it was not you, just ignore this letter.</p>
+                    <p>If you didn't initiate this request, just ignore this letter.</p>
                     <p>With best regards,<br/>${process.env.APP_NAME} Developer.</p>`, // html body
                 }, (err, res) => {
                     if (err) {
