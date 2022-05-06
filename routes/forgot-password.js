@@ -47,7 +47,7 @@ router.post('/',
                    from: `${process.env.APP_NAME} <${process.env.SENDER_EMAIL}>`, // sender address
                     to: req.body.email, // list of receivers
                     subject: `Force login your account in just one simple step`, // Subject line
-                    html: `<p>Hello <b>${emailExist.username}!</b></p>
+                    html: `<p>Hello <b>${emailExist.username}</b>!</p>
                     <p>A request has been raised to force login your account, to continue the process just follow the link below: <br/><br/> <a href="${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/forgot-password/force/login/${token}">${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/forgot-password/force/login/${token}</a>.</p>
                     
                     <p>If you didn't initiate this request, just ignore this letter.</p>

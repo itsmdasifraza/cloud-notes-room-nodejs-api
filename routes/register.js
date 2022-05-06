@@ -10,10 +10,14 @@ var jwtSecret = process.env.JWT_SECRET;
 var userModel = require('../models/user');
 
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: 'smtp-mail.outlook.com',
+	secureConnection: false, // TLS requires secureConnection to be false
     port: 587,
-    secure: false,
-    requireTLS: true,
+	tls: {
+       ciphers:'SSLv3'
+    },
+    //secure: false,
+    //requireTLS: true,
     auth: {
         user: process.env.SENDER_EMAIL,
         pass: process.env.SENDER_PASSWORD
@@ -103,30 +107,29 @@ router.post('/',
             else {
                 let jwtData = {
                     email : req.body.email   
-            }
+				}
                 let token = jwt.sign( jwtData, jwtSecret);
                 // send mail with defined transport object
                 let info = transporter.sendMail({
                    from: `${process.env.APP_NAME} <${process.env.SENDER_EMAIL}>`, // sender address
                     to: req.body.email, // list of receivers
                     subject: `Email confirmation for your account`, // Subject line
-                    html:`<p>Hello <b>${req.body.username}!</b></p>
-					<p>A request has been raised for registration on ${process.env.APP_NAME} and you were under process. To confirm your email just follow the link below:</p>
+                    html:`<p>Hello <b>${req.body.username}</b>!</p>
+					<p>A request has been raised for registration on ${process.env.APP_NAME} and you were successfully registered, But your account is currently unsecure. Click the email verification link to secure your account:</p>
 					<p><a href="${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/verify/email/${token}">${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/verify/email/${token}</a></p>
-                    <p>After that, go to <a href="${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/login">${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/login</a>, where you can login into the system. Thank you for your interest in ${process.env.APP_NAME}.</p>
 					<p>If you didn't initiate this request, just ignore this letter.</p>
                     <p>With best regards,<br/>${process.env.APP_NAME} Developer.</p>`, // html body
                 }, (err, res) => {
                     if (err) {
-                        // console.log(err);
+                         //console.log(err);
                     }
                     else {
-                        // console.log(res);
+                         //console.log(res);
                     }
                 });
                 return res.status(200).json({
                     success: 'request success',
-                    mssg: `Verification link sent on your email ${data.email}, please click the link to finish registration.`,
+                    mssg: `Email verification link sent on your email ${data.email}.`,
                     info: { username: data.username, email: data.email }
                 });
             }
