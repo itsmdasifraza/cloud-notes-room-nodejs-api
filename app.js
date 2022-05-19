@@ -9,8 +9,8 @@ var cors = require('cors');
 
 var registerRouter = require('./routes/register');
 var loginRouter = require('./routes/login');
-var chatRouter = require('./routes/chat');
-var noteRouter = require('./routes/note');
+var noteRouter = require('./routes/note/note.route');
+var listRouter = require('./routes/list/list.route');
 var userRouter = require('./routes/user');
 var profileRouter = require('./routes/profile');
 var verifyEmailRouter = require('./routes/verify-email');
@@ -42,8 +42,8 @@ app.use(cors());
 
 app.use('/api/auth/register', registerRouter);
 app.use('/api/auth/login', loginRouter);
-app.use('/api/chat', chatRouter);
 app.use('/api/note', noteRouter);
+app.use('/api/list', listRouter);
 app.use('/api/user', userRouter);
 app.use('/api/profile', profileRouter);
 app.use('/api/verify/email', verifyEmailRouter);

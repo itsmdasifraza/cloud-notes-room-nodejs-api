@@ -44,7 +44,7 @@ const userSchema = {
         type : String,
         default : ""
     },
-    date : {
+    timestamp : {
         type : Date,
         default : Date.now,
         required : true
@@ -57,5 +57,5 @@ const userSchema = {
     
 }
 
-const userModel = mongoose.model('user', userSchema);
+const userModel = mongoose.model('users', userSchema);
 module.exports = userModel;

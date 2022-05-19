@@ -5,7 +5,7 @@ const { body, validationResult } = require('express-validator');
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var jwtSecret = process.env.JWT_SECRET;
-var userModel = require('../models/user');
+var userModel = require('../models/user/user.model');
 router.post('/',
     body('usermail','wrong username or email').isLength({ min: 1 }),
     body('password','password must be minimum 8 character').isLength({ min: 1 }),
@@ -20,12 +20,14 @@ router.post('/',
     try{
 		//check username already exist or not
 		let usernameExist = await userModel.findOne({username:req.body.usermail});
-		console.log(usernameExist);
+		//console.log(usernameExist);
 		if(usernameExist){
 			// verify password
 			let jwtData = {
                 id : usernameExist._id   ,
-				pass : usernameExist.password
+				pass : usernameExist.password,
+				username : usernameExist.username,
+				email : usernameExist.email
 			}
 			if(bcrypt.compareSync(req.body.password, usernameExist.password)){
 				let token = jwt.sign( jwtData, jwtSecret);
@@ -49,7 +51,9 @@ router.post('/',
 				//verify password
 				let jwtData = {
                     id : emailExist._id ,
-					pass : emailExist.password
+					pass : emailExist.password,
+					username : emailExist.username,
+					email : emailExist.email
 				}
 				if(bcrypt.compareSync(req.body.password, emailExist.password)){
 					let token = jwt.sign( jwtData, jwtSecret);

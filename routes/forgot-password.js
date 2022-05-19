@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 var jwt = require('jsonwebtoken');
 var jwtSecret = process.env.JWT_SECRET;
 
-var userModel = require('../models/user');
+var userModel = require('../models/user/user.model');
 
 const transporter = nodemailer.createTransport({
      host: 'smtp-mail.outlook.com',

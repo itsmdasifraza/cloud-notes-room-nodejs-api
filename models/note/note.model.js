@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const chatSchema = new Schema ({
+const noteSchema = new Schema ({
     userid : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "user",
@@ -9,7 +9,7 @@ const chatSchema = new Schema ({
     },
     title : {
         type : String,
-        required : true,
+        required : true
     },
     description : {
         type : String,
@@ -19,26 +19,16 @@ const chatSchema = new Schema ({
         type : String,
         required : true,
     },
-    stamp : {
-        type : Object,
-        required : true
-    },
-    date : {
-        type : Date,
-        default : Date.now,
-        required : true
-    },
-    lastupdated : {
-        type : Date,
-        default : Date.now,
-        required : true
-    },
-    lastnote : {
+	slug : {
         type : String,
-        default : "No notes to show !",
-        required : true,
+        required : true
     },
+    timestamp : {
+        type : Date,
+        default : Date.now,
+        required : true
+    }
 });
 
-const chatModel = mongoose.model('chat', chatSchema);
-module.exports = chatModel;
+const noteModel = mongoose.model('notes', noteSchema);
+module.exports = noteModel;

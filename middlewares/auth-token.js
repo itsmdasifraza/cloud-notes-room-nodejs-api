@@ -14,6 +14,8 @@ module.exports = async (req, res, next) => {
         // verify token is valid or not and return decoded header data
         const data = await jwt.verify(token, jwtSecret);
         req.userid = data.id;
+		req.username = data.username;
+		req.email = data.email;
         next();
     }
     catch (error) {

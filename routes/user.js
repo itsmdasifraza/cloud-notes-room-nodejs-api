@@ -3,7 +3,7 @@ var router = express.Router();
 const { body, validationResult } = require('express-validator');
 const authToken = require('../middlewares/auth-token');
 
-var userModel = require('../models/user');
+var userModel = require('../models/user/user.model');
 
 
 router.get('/read',
