@@ -97,21 +97,23 @@ router.get('/read/:username/:slug',
 				 mssg: "all notes & lists retrieved",
 				 data: note,
 				 data2: lists,
+				 avatar: user.avatar,
 				 owner: true
 			  });
 		 }
-		 else if(note.protected == false){
+		 else if(note.privacy == "public"){
 			 return res.status(200).json({
 				 success: '200',
 				 mssg: "all notes & lists retrieved",
 				 data: note,
 				 data2: lists,
+				 avatar: user.avatar,
 				 owner: false
 			  });
 		 }
 		 else{
-			  return res.status(404).json({
-				 error: '404',
+			  return res.status(401).json({
+				 error: '401',
 				 mssg: "unauthorized"
 			  });
 		 }
