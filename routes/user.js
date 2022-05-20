@@ -10,21 +10,25 @@ router.get('/read',
     authToken,
      async (req, res) => {
 
-     // find all the chat with their userid
+     // find user with their userid
      try{
-     var userData = await userModel.findOne({ _id : req.userid });
-    //  console.log(chatData)
-     if( !userData ){
-        return res.status(404).json({error:'404',
-        mssg:"user not found"});
+		 let user = await userModel.findOne({ _id : req.userid }).select("-password");
+		 if( !user ){
+			return res.status(404).json({error:'404',
+			mssg:"user not found"});
+		}
+		else{
+			 return res.status(200).json({success:'200',
+			 mssg:"user retrieved",
+			info : user});
+		 }
      }
-     }
+	 
      catch{
-        return res.status(404).json({error:'404',
-        mssg:"user not found"});
+        return res.status(500).json({
+			error:'500',
+        mssg:"Internal server error"});
      }
-     return res.status(200).json({success:'200',
-     mssg:"user retrieved",
-    info : userData});
+     
 });
 module.exports = router;

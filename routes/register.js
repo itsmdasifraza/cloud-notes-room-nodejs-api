@@ -7,6 +7,8 @@ const nodemailer = require("nodemailer");
 var jwt = require('jsonwebtoken');
 var jwtSecret = process.env.JWT_SECRET;
 
+var noteModel = require('../models/note/note.model');
+var listModel = require('../models/list/list.model');
 var userModel = require('../models/user/user.model');
 
 const transporter = nodemailer.createTransport({
@@ -38,11 +40,11 @@ router.post('/',
         }
 
         // enctypting password 
-        var salt = bcrypt.genSaltSync(10);
-        var hash = bcrypt.hashSync(req.body.password, salt);
+        let salt = bcrypt.genSaltSync(10);
+        let hash = bcrypt.hashSync(req.body.password, salt);
 
         // creating user object
-        var newUser = new userModel({
+        let newUser = new userModel({
             username: req.body.username,
             email: req.body.email,
             password: hash
@@ -58,18 +60,13 @@ router.post('/',
                 });
             }
             if (usernameExist && usernameExist.verified == false) {
-                let reUsernameExist = await userModel.findOneAndDelete({ username: req.body.username , verified: false });
-                if(!reUsernameExist){
-                    return res.status(404).json({
-                        error: '404',
-                        mssg: "internal server error",
-                    });
-                }
-
+				let listExist = await listModel.deleteMany({ userid : usernameExist._id });
+				let noteExist = await noteModel.deleteMany({ userid : usernameExist._id });
+                let reUsernameExist = await userModel.findOneAndDelete({ _id: usernameExist._id , verified: false });
             }
         } catch {
-            return res.status(404).json({
-                error: '404',
+            return res.status(500).json({
+                error: '500',
                 mssg: "internal server error",
             });
         }
@@ -83,17 +80,13 @@ router.post('/',
                 });
             }
             if (emailExist && emailExist.verified == false) {
-                let reEmailExist = await userModel.findOneAndDelete({ email: req.body.email , verified : false });
-                if(!reEmailExist){
-                    return res.status(404).json({
-                        error: '404',
-                        mssg: "internal server error",
-                    });
-                }
+				let listExist = await listModel.deleteMany({ userid : emailExist._id });
+				let noteExist = await noteModel.deleteMany({ userid : emailExist._id });
+                let reEmailExist = await userModel.findOneAndDelete({ _id: emailExist._id , verified : false });
             }
         } catch {
-            return res.status(404).json({
-                error: '404',
+            return res.status(500).json({
+                error: '500',
                 mssg: "internal server error",
             });
         }

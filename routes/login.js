@@ -24,18 +24,17 @@ router.post('/',
 		if(usernameExist){
 			// verify password
 			let jwtData = {
-                id : usernameExist._id   ,
-				pass : usernameExist.password,
+                id : usernameExist._id,
 				username : usernameExist.username,
 				email : usernameExist.email
 			}
 			if(bcrypt.compareSync(req.body.password, usernameExist.password)){
 				let token = jwt.sign( jwtData, jwtSecret);
+				usernameExist.password = "******";
 				return res.status(200).json({
 					token : token,
 					mssg: "verified with username password.",
 					data : usernameExist
-					//  id : usernameExist.id
 				});
 			}    
 			else{
@@ -51,17 +50,16 @@ router.post('/',
 				//verify password
 				let jwtData = {
                     id : emailExist._id ,
-					pass : emailExist.password,
 					username : emailExist.username,
 					email : emailExist.email
 				}
 				if(bcrypt.compareSync(req.body.password, emailExist.password)){
 					let token = jwt.sign( jwtData, jwtSecret);
+					emailExist.password = "******";
 					return res.status(200).json({
 						token : token,
 						mssg: "verified with email password.",
 						data : emailExist
-						//  id : emailExist.id
 					});
 				}
 				else{
@@ -76,8 +74,8 @@ router.post('/',
 		}
     }
     catch{
-        return res.status(404).json({error:'404',
-			mssg:"internal server error.",
+        return res.status(500).json({error:'500',
+		mssg:"internal server error.",
 		});
 	}
 });
