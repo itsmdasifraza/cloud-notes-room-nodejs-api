@@ -1,14 +1,14 @@
 {
-  "name": "cloud-notes-room-nodejs-api",
-  "version": "0.0.0",
+  "name": "zexagram-express-server",
+  "version": "2.0.0",
   "private": true,
   "engines": {
     "node": "12.15.0",
     "npm": "6.13.4"
   },
   "scripts": {
-    "start": "node ./bin/www",
-	"dev": "nodemon ./bin/www"
+    "build": "node ./bin/www",
+    "start": "nodemon ./bin/www"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
