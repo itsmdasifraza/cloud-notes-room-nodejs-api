@@ -109,7 +109,7 @@ router.post('/',
                     subject: `Email confirmation for your account`, // Subject line
                     html:`<p>Hello <b>${req.body.username}</b>!</p>
 					<p>A request has been raised for registration on ${process.env.APP_NAME} and you were successfully registered, But your account is currently unsecure. Click the email verification link to secure your account:</p>
-					<p><a href="${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/verify/email/${token}">${process.env.FRONTEND_CONNECTION}://${process.env.FRONTEND_IP}/verify/email/${token}</a></p>
+					<p><a href="${process.env.FRONTEND_PROTOCOL}://${process.env.FRONTEND_HOST}/verify/email/${token}">${process.env.FRONTEND_PROTOCOL}://${process.env.FRONTEND_HOST}/verify/email/${token}</a></p>
 					<p>If you didn't initiate this request, just ignore this letter.</p>
                     <p>With best regards,<br/>${process.env.APP_NAME} Developer.</p>`, // html body
                 }, (err, res) => {

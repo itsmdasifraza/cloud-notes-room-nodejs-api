@@ -7,6 +7,8 @@ var sassMiddleware = require('node-sass-middleware');
 const connectMongo = require('./database');
 var cors = require('cors');
 
+const port =  process.env.PORT || '3000';
+
 var registerRouter = require('./routes/register');
 var loginRouter = require('./routes/login');
 var noteRouter = require('./routes/note/note.route');
@@ -63,6 +65,10 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
 });
 
 module.exports = app;
